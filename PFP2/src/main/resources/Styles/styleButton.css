@@ -1,0 +1,32 @@
+/* === BOTÓN ESTILO MODERNO TURQUESA === */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #00b3b3, #008080); /* degradado de arriba hacia abajo */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25;  /* bordes redondeados */
+    -fx-border-radius: 25;
+    -fx-padding: 8 24;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 6, 0, 0, 2);
+    -fx-border-color: transparent;
+    -fx-transition: all 0.2s ease;
+}
+
+/* === EFECTO AL PASAR EL RATÓN === */
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #00cccc, #009999);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 8, 0, 0, 3);
+}
+
+/* === EFECTO AL PRESIONAR === */
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #009999, #007777);
+    -fx-translate-y: 1;
+}
+
+/* === OPCIONAL: EFECTO DE FOCO (cuando se selecciona con tab) === */
+.button:focused {
+    -fx-border-color: white;
+    -fx-border-width: 2;
+}

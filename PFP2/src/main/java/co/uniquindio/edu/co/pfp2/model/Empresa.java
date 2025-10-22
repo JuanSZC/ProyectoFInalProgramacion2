@@ -1,10 +1,20 @@
 package co.uniquindio.edu.co.pfp2.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class Empresa {
 
     private String nombre;
     private String direccion;
     private int NIT;
+
+
+    private List<Envio> listPedidos = new ArrayList<>();
+    private List<Producto> listProductos = new ArrayList<>();
+    private List<Usuario> listUsuarios = new ArrayList<>();
+    private List<Repartidor> listRepartidors = new ArrayList<>();
+
 
     private Empresa instance;
 

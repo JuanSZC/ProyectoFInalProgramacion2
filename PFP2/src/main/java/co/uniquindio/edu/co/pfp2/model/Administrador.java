@@ -17,6 +17,7 @@ public final class Administrador {
     }
 
 
+
     public String getCorreo() {
         return correo;
     }

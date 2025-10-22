@@ -3,7 +3,7 @@ package co.uniquindio.edu.co.pfp2.model;
 public class Tarifa {
 
     private Paquete paquete;
-    private PrioridadPedido prioridadPedido;
+    private IServicioAdicional servicioAdicional;
 
     public Tarifa(Paquete paquete, PrioridadPedido prioridadPedido) {
         this.paquete = paquete;
@@ -18,11 +18,11 @@ public class Tarifa {
         this.paquete = paquete;
     }
 
-    public PrioridadPedido getPrioridadPedido() {
-        return prioridadPedido;
+    public IServicioAdicional getServicioAdicional() {
+        return servicioAdicional;
     }
 
-    public void setPrioridadPedido(PrioridadPedido prioridadPedido) {
-        this.prioridadPedido = prioridadPedido;
+    public void setServicioAdicional(IServicioAdicional servicioAdicional) {
+        this.servicioAdicional = servicioAdicional;
     }
 }

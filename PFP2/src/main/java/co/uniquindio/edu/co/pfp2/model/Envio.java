@@ -10,14 +10,16 @@ public class Envio {
     private Paquete paquete;
     private EstadoEnvio estado;
     private LocalDate fechaCreacion;
+    private EstadoEnvio estadoEnvio;
 
-    public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete, EstadoEnvio estado, LocalDate fechaCreacion) {
+    public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete, EstadoEnvio estado, LocalDate fechaCreacion, EstadoEnvio estadoEnvio) {
         this.idEnvio = idEnvio;
         this.origen = origen;
         this.destino = destino;
         this.paquete = paquete;
         this.estado = estado;
         this.fechaCreacion = fechaCreacion;
+        this.estadoEnvio = estadoEnvio;
     }
 
     public int getIdEnvio() {
@@ -66,5 +68,13 @@ public class Envio {
 
     public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public EstadoEnvio getEstadoEnvio() {
+        return estadoEnvio;
+    }
+
+    public void setEstadoEnvio(EstadoEnvio estadoEnvio) {
+        this.estadoEnvio = estadoEnvio;
     }
 }
