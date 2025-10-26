@@ -5,9 +5,9 @@ public class Tarifa {
     private Paquete paquete;
     private IServicioAdicional servicioAdicional;
 
-    public Tarifa(Paquete paquete, PrioridadPedido prioridadPedido) {
+    public Tarifa(Paquete paquete) {
         this.paquete = paquete;
-        this.prioridadPedido = prioridadPedido;
+
     }
 
     public Paquete getPaquete() {
