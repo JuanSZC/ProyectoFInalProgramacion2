@@ -33,4 +33,6 @@ public final class Administrador {
     public void setClave(int clave) {
         this.clave = clave;
     }
+
+
 }

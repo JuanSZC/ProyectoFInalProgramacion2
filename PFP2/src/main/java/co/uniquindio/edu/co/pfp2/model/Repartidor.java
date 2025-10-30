@@ -37,4 +37,10 @@ public class Repartidor  extends Persona {
     public void setDisponibilidadRepartidor(DisponibilidadRepartidor disponibilidadRepartidor) {
         this.disponibilidadRepartidor = disponibilidadRepartidor;
     }
+    public boolean isDisponible(){
+        if(disponibilidadRepartidor == null){
+            return false;
+        }
+        return true;
+    }
 }
