@@ -32,18 +32,7 @@ public class Usuario extends Persona {
     public void setListDireccionesUsuario(List<Direccion> listDireccionesUsuario) {
         this.listDireccionesUsuario = listDireccionesUsuario;
     }
-    //Clase que registra un usuario
-    public boolean registrarUsuario(Usuario usuario) {
-        if (buscarUsuario(usuario.getCorreo()) == null) {
-            listUsuarios.add(usuario);
-            return true;
-        }
-        return false;
-    }
-    //Clase que se utiliza para leer los usuarios agregados
-    public List<Usuario> listarUsuarios() {
-        return new ArrayList<>(listUsuarios);
-    }
+
     //Clase para iniciar sesion
     public Usuario iniciarSesion(String correo, String contrasenia) {
         return listUsuarios.stream()
@@ -52,12 +41,61 @@ public class Usuario extends Persona {
                 .orElse(null);
     }
 
-    //Clase para buscar al usuario por el correo
-    private Usuario buscarUsuario(String correo) {
-        return listUsuarios.stream()
-                .filter(u -> u.getCorreo().equals(correo))
-                .findFirst()
-                .orElse(null);
+    public boolean agregarDireccion(Direccion direccion) {
+        boolean centinela = false;
+        if (!verificarDireccion(direccion.getIdDireccion())) {
+            listDireccionesUsuario.add(direccion);
+            centinela = true;
+        }
+        return centinela;
+    }
+    public boolean verificarDireccion(int idDireccion) {
+        boolean centinela = false;
+        for (Direccion direccion : listDireccionesUsuario) {
+            if (direccion.getIdDireccion() == (idDireccion)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+    public List<Direccion> listarDirecciones() {
+        return new ArrayList<>(listDireccionesUsuario);
+    }
+
+    public boolean actualizarDireccion(int idDireccion, Direccion actualizado) {
+        boolean centinela = false;
+        for (Direccion direccion : listDireccionesUsuario) {
+            if (direccion.getIdDireccion() == (idDireccion)) {
+                direccion.setIdDireccion(actualizado.getIdDireccion());
+                direccion.setDescripcion(actualizado.getDescripcion());
+                direccion.setLatitud(actualizado.getLatitud());
+                direccion.setLongitud(actualizado.getLongitud());
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+
+    public boolean eliminarDireccion(int idDireccion) {
+        boolean centinela = false;
+        for (Direccion direccion : listDireccionesUsuario) {
+            if (direccion.getIdDireccion() == (idDireccion)) {
+                listDireccionesUsuario.remove(direccion);
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+
+    public Direccion buscarDireccionPorID(int idDireccion) {
+        for (Direccion direccion : listDireccionesUsuario) {
+            if (direccion.getIdDireccion() == (idDireccion)) {
+                return direccion;
+            }
+        }
+        return null;
     }
 
 

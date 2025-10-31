@@ -12,10 +12,11 @@ public class Envio {
     private Paquete paquete;
     private EstadoEnvio estado;
     private LocalDate fechaCreacion;
-    private EstadoEnvio estadoEnvio;
+    private EstadoEnvio estadoEnvio = EstadoEnvio.ASIGNADO;
     private List<Envio> listEnvios;
+    private Repartidor repartidor;
 
-    public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete, EstadoEnvio estado, LocalDate fechaCreacion, EstadoEnvio estadoEnvio) {
+    public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete, EstadoEnvio estado, LocalDate fechaCreacion, EstadoEnvio estadoEnvio, Repartidor repartidor) {
         this.idEnvio = idEnvio;
         this.origen = origen;
         this.destino = destino;
@@ -24,6 +25,7 @@ public class Envio {
         this.fechaCreacion = fechaCreacion;
         this.estadoEnvio = estadoEnvio;
         this.listEnvios = new ArrayList<Envio>();
+        this.repartidor = repartidor;
     }
 
     public int getIdEnvio() {
@@ -82,14 +84,34 @@ public class Envio {
         this.estadoEnvio = estadoEnvio;
     }
 
+    public Repartidor getRepartidor() {
+        return repartidor;
+    }
+
+    public void setRepartidor(Repartidor repartidor) {
+        this.repartidor = repartidor;
+    }
+
+    public List<Envio> getListEnvios() {
+        return listEnvios;
+    }
+
+    public void setListEnvios(List<Envio> listEnvios) {
+        this.listEnvios = listEnvios;
+    }
+
     public void registrarEnvio(Envio envio) {
         listEnvios.add(envio);
     }
 
     public boolean asignarRepartidor(Envio envio, Repartidor repartidor) {
-        if (repartidor.isDisponible()) {
-            envio.cambiarEstado(EstadoEnvio.EN_RUTA);
-            repartidor.setDisponible(false);
+        if (envio == null || repartidor == null)
+            return false;
+
+        if (repartidor.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE) {
+            envio.cambiarEstado(EstadoEnvio.ASIGNADO);
+            envio.setRepartidor(repartidor);
+            repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
             return true;
         }
         return false;
@@ -97,8 +119,9 @@ public class Envio {
 
     public void cambiarEstado(Envio envio, EstadoEnvio nuevoEstado) {
         envio.cambiarEstado(nuevoEstado);
-        if (nuevoEstado == EstadoEnvio.ENTREGADO) {
-            System.out.println("Envío entregado correctamente");
+        if (nuevoEstado == EstadoEnvio.ENTREGADO && envio.getRepartidor() != null) {
+            envio.getRepartidor().setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
+            System.out.println("Envío entregado correctamente. Repartidor disponible nuevamente.");
         }
     }
 

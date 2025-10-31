@@ -51,42 +51,6 @@ public final class Empresa {
         this.NIT = NIT;
     }
 
-    public boolean agregarRepartidor(Repartidor r) {
-        if (buscarRepartidor(r.getIdRepartidor()) == null) {
-            listRepartidors.add(r);
-            return true;
-        }
-        return false;
-    }
-    public List<Repartidor> listarRepartidores() {
-        return new ArrayList<>(listRepartidors);
-    }
-
-    public boolean actualizarRepartidor(int idRepartidor, Repartidor nuevo) {
-        Repartidor r = buscarRepartidor(idRepartidor);
-        if (r != null) {
-            r.setDisponibilidadRepartidor(nuevo.isDisponible());
-            return true;
-        }
-        return false;
-    }
-
-    public boolean eliminarRepartidor(int idRepartidor) {
-        Repartidor r = buscarRepartidor(idRepartidor);
-        if (r != null) {
-            listRepartidors.remove(r);
-            return true;
-        }
-        return false;
-    }
-
-    private Repartidor buscarRepartidor(int idRepartidor) {
-        return listRepartidors.stream()
-                .filter(rep -> rep.getIdRepartidor() == idRepartidor)
-                .findFirst()
-                .orElse(null);
-    }
-
 
 }
 
