@@ -2,14 +2,14 @@ package co.uniquindio.edu.co.pfp2.model;
 
 public final class Administrador {
 
-    private Administrador instance;
+    private static Administrador instance;
 
     private String correo;
     private int clave;
 
     private Administrador() {}
 
-    public Administrador getInstance() {
+    public static Administrador getInstance() {
         if (instance == null) {
             instance = new Administrador();
         }

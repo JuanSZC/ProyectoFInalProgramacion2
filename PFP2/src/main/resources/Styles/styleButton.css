@@ -1,32 +1,72 @@
-/* === BOTÓN ESTILO MODERNO TURQUESA === */
-.button {
-    -fx-background-color: linear-gradient(to bottom, #00b3b3, #008080); /* degradado de arriba hacia abajo */
-    -fx-text-fill: white;
+/* === PALETA DE COLORES === */
+* {
+    -fx-color-blanco: #FFFFFF;
+    -fx-color-azul-claro: #E8F6FD;
+    -fx-color-azul-medio: #66BFFF;
+    -fx-color-azul-oscuro: #2F6FAF;
+    -fx-color-rojo: #FF5B5B;
+}
+
+/* === ROOT === */
+.root {
+    -fx-background-color: -fx-color-azul-claro;
+    -fx-font-family: "Segoe UI";
+}
+
+/* === BOTONES (base) === */
+.button-primary,
+.button-danger,
+.button-dark {
+    -fx-text-fill: -fx-color-blanco;
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-background-radius: 25;  /* bordes redondeados */
-    -fx-border-radius: 25;
-    -fx-padding: 8 24;
+    -fx-background-radius: 10;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 6, 0, 0, 2);
-    -fx-border-color: transparent;
-    -fx-transition: all 0.2s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 3, 0, 0, 1);
+    -fx-padding: 8 16 8 16;
+    -fx-font-size: 14px;
+    -fx-border-width: 0;
 }
 
-/* === EFECTO AL PASAR EL RATÓN === */
-.button:hover {
-    -fx-background-color: linear-gradient(to bottom, #00cccc, #009999);
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 8, 0, 0, 3);
+/* === BOTÓN AZUL CLARO === */
+.button-primary {
+    -fx-background-color: -fx-color-azul-medio;
+}
+.button-primary:hover {
+    -fx-background-color: #55ACEF; /* color fijo */
+    -fx-effect: none; /* evita el parpadeo por el blur */
 }
 
-/* === EFECTO AL PRESIONAR === */
-.button:pressed {
-    -fx-background-color: linear-gradient(to bottom, #009999, #007777);
-    -fx-translate-y: 1;
+/* === BOTÓN ROJO === */
+.button-danger {
+    -fx-background-color: -fx-color-rojo;
+}
+.button-danger:hover {
+    -fx-background-color: #E24A4A;
+    -fx-effect: none;
 }
 
-/* === OPCIONAL: EFECTO DE FOCO (cuando se selecciona con tab) === */
-.button:focused {
-    -fx-border-color: white;
-    -fx-border-width: 2;
+/* === BOTÓN AZUL OSCURO === */
+.button-dark {
+    -fx-background-color: -fx-color-azul-oscuro;
+}
+.button-dark:hover {
+    -fx-background-color: #275D93;
+    -fx-effect: none;
+}
+
+/* === CAMPOS DE TEXTO === */
+.text-field {
+    -fx-background-color: -fx-color-blanco;
+    -fx-border-color: -fx-color-azul-medio;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-color-azul-oscuro;
+    -fx-effect: none;
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-color-azul-oscuro;
+    -fx-background-color: derive(-fx-color-blanco, -5%);
 }

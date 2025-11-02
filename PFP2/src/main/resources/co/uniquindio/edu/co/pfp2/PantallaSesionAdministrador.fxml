@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaSesionAdministradorViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="panelPrincipal" prefHeight="720.0" prefWidth="720.0" stylesheets="@../../../../../Styles/styleButton.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaSesionAdministradorViewController">
+   <children>
+      <Rectangle fill="#ff5b5b" height="220.0" width="720.0" />
+      <Text fill="white" layoutX="0.0" layoutY="130.0" text="Inicio de Sesión" textAlignment="CENTER" wrappingWidth="720.0">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="55.0" />
+         </font>
+      </Text>
+      <Text fill="#ff5b5b" layoutX="308.0" layoutY="302.0" text="Correo:">
+         <font>
+            <Font name="Segoe UI Bold" size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtCorreo" alignment="TOP_CENTER" layoutX="195.0" layoutY="332.0" prefHeight="40.0" prefWidth="330.0" stylesheets="@../../../../../Styles/styleButton.css" />
+      <Text fill="#ff5b5b" layoutX="317.0" layoutY="432.0" text="Clave:">
+         <font>
+            <Font name="Segoe UI Bold" size="30.0" />
+         </font>
+      </Text>
+      <PasswordField fx:id="txtContrasena" layoutX="195.0" layoutY="462.0" prefHeight="40.0" prefWidth="330.0" />
+      <Text fill="white" layoutY="203.0" text="Administrador" textAlignment="CENTER" wrappingWidth="720.0">
+         <font>
+            <Font name="Segoe UI Italic" size="35.0" />
+         </font>
+      </Text>
+      <Button layoutX="291.0" layoutY="574.0" mnemonicParsing="false" onAction="#verificarAdmin" styleClass="button-danger" text="Iniciar Sesion">
+         <font>
+            <Font name="Segoe UI Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="671.0" mnemonicParsing="false" onAction="#openPantallaBienvenida" text="Volver">
+         <font>
+            <Font name="Segoe UI Bold" size="18.0" />
+         </font>
+         <styleClass>
+            <String fx:value="button-danger" />
+            <String fx:value="button-dark" />
+         </styleClass>
+      </Button>
+   </children>
 </AnchorPane>
