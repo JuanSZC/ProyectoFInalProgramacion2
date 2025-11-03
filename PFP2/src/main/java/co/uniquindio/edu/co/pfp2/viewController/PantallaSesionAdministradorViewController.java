@@ -33,7 +33,7 @@ public class PantallaSesionAdministradorViewController {
         String contrasenaTexto = txtContrasena.getText().trim();
 
         if (correo.isEmpty() || contrasenaTexto.isEmpty()) {
-            DialogUtils.mostrarError("Por favor ingresa tu correo y contraseña.");
+            DialogUtils.mostrarError("Por favor ingresa tu correo y Clave.");
             return;
         }
 
@@ -41,7 +41,7 @@ public class PantallaSesionAdministradorViewController {
         try {
             contrasena = Integer.parseInt(contrasenaTexto);
         } catch (NumberFormatException e) {
-            DialogUtils.mostrarError("La contraseña debe ser numérica.");
+            DialogUtils.mostrarError("La Clave debe ser numérica.");
             return;
         }
 
@@ -53,7 +53,7 @@ public class PantallaSesionAdministradorViewController {
             openPantallaBienvenida();
 
         } else {
-            DialogUtils.mostrarError("Correo o contraseña incorrectos.");
+            DialogUtils.mostrarError("Correo o Clave incorrectos.");
         }
     }
 

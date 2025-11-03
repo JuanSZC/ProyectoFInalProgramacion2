@@ -2,10 +2,7 @@ package co.uniquindio.edu.co.pfp2;
 
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.*;
-import co.uniquindio.edu.co.pfp2.viewController.PantallaBienvenidaViewController;
-import co.uniquindio.edu.co.pfp2.viewController.PantallaSesionAdministradorViewController;
-import co.uniquindio.edu.co.pfp2.viewController.PantallaSesionUsuarioViewController;
-import co.uniquindio.edu.co.pfp2.viewController.pantallaSesionRepartidorViewController;
+import co.uniquindio.edu.co.pfp2.viewController.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +19,7 @@ public class App extends Application {
     public Administrador admin;
     public ObservableList<Usuario> listGlobalUsuarios = FXCollections.observableArrayList();
     public ObservableList<Repartidor> listGlobalRepartidores = FXCollections.observableArrayList();
-
+    public int idUsuario = 1111;
     public static void main(String[] args) {
         launch(args);
     }
@@ -30,7 +27,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.stage = primaryStage;
-        primaryStage.setTitle("Mercado Libre");
+        primaryStage.setTitle("Proyecto Final Programación");
         openPantallaBienvenida();
         inicializarData();
     }
@@ -127,6 +124,30 @@ public class App extends Application {
             ex.printStackTrace();
         }
     }
+    public void openPantallaRegistroUsuario() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaRegistroUsuario.fxml"));
+
+            AnchorPane rootLayout = loader.load();
+
+            PantallaRegistroUsuarioViewController pantallaRegistroUsuarioViewController= loader.getController();
+            pantallaRegistroUsuarioViewController.app = this;
+            pantallaRegistroUsuarioViewController.usuarios = listGlobalUsuarios;
+
+            Scene scene = new Scene(rootLayout);
+
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.centerOnScreen();
+
+            stage.show();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void inicializarData(){
 
         Administrador admin = Administrador.getInstance();
@@ -134,11 +155,11 @@ public class App extends Application {
         admin.setClave(1234);
         this.admin = admin;
 
-        Usuario usuario = new Usuario("Juan Carlos Ceballos","123456789","jcarlosc@gmail.com","jcc",123456789,1111);
+        Usuario usuario = new Usuario("Juan Carlos Ceballos","123456789","jcarlosc@gmail.com","jcc",123456789,this.idUsuario+1);
         listGlobalUsuarios.add(usuario);
         Repartidor repartidor = new Repartidor("Manuel Perez","123456789","mp@hotmail.com","mprep",987654321, ZonaCobertura.NORTE, DisponibilidadRepartidor.DISPONIBLE);
         listGlobalRepartidores.add(repartidor);
-
+        System.out.println(listGlobalUsuarios);
 
 
 

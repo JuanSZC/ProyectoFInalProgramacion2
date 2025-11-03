@@ -27,6 +27,9 @@ public class PantallaSesionUsuarioViewController {
     public void openPantallaBienvenida(){
         this.app.openPantallaBienvenida();
     }
+    public void openPantallaRegistroUsuario(){
+        this.app.openPantallaRegistroUsuario();
+    }
 
     public void verificarUsuario() {
         String correo = txtCorreo.getText().trim();
