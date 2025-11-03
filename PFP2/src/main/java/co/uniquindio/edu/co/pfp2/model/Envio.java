@@ -1,5 +1,6 @@
 package co.uniquindio.edu.co.pfp2.model;
 
+import java.lang.classfile.instruction.ThrowInstruction;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,21 +11,17 @@ public class Envio {
     private Direccion origen;
     private Direccion destino;
     private Paquete paquete;
-    private EstadoEnvio estado;
+    private EstadoEnvio estadoEnvio;
     private LocalDate fechaCreacion;
-    private EstadoEnvio estadoEnvio = EstadoEnvio.ASIGNADO;
-    private List<Envio> listEnvios;
     private Repartidor repartidor;
 
-    public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete, EstadoEnvio estado, LocalDate fechaCreacion, EstadoEnvio estadoEnvio, Repartidor repartidor) {
+    public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete, LocalDate fechaCreacion, EstadoEnvio estadoEnvio, Repartidor repartidor) {
         this.idEnvio = idEnvio;
         this.origen = origen;
         this.destino = destino;
         this.paquete = paquete;
-        this.estado = estado;
         this.fechaCreacion = fechaCreacion;
         this.estadoEnvio = estadoEnvio;
-        this.listEnvios = new ArrayList<Envio>();
         this.repartidor = repartidor;
     }
 
@@ -60,12 +57,12 @@ public class Envio {
         this.paquete = paquete;
     }
 
-    public EstadoEnvio getEstado() {
-        return estado;
+    public EstadoEnvio getEstadoEnvio() {
+        return estadoEnvio;
     }
 
-    public void setEstado(EstadoEnvio estado) {
-        this.estado = estado;
+    public void setEstadoEnvio(EstadoEnvio estado) {
+        this.estadoEnvio = estado;
     }
 
     public LocalDate getFechaCreacion() {
@@ -76,13 +73,6 @@ public class Envio {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public EstadoEnvio getEstadoEnvio() {
-        return estadoEnvio;
-    }
-
-    public void setEstadoEnvio(EstadoEnvio estadoEnvio) {
-        this.estadoEnvio = estadoEnvio;
-    }
 
     public Repartidor getRepartidor() {
         return repartidor;
@@ -92,42 +82,17 @@ public class Envio {
         this.repartidor = repartidor;
     }
 
-    public List<Envio> getListEnvios() {
-        return listEnvios;
-    }
-
-    public void setListEnvios(List<Envio> listEnvios) {
-        this.listEnvios = listEnvios;
-    }
-
-    public void registrarEnvio(Envio envio) {
-        listEnvios.add(envio);
-    }
-
-    public boolean asignarRepartidor(Envio envio, Repartidor repartidor) {
-        if (envio == null || repartidor == null)
-            return false;
-
-        if (repartidor.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE) {
-            envio.cambiarEstado(EstadoEnvio.ASIGNADO);
-            envio.setRepartidor(repartidor);
-            repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
-            return true;
-        }
-        return false;
-    }
-
-    public void cambiarEstado(Envio envio, EstadoEnvio nuevoEstado) {
-        envio.cambiarEstado(nuevoEstado);
-        if (nuevoEstado == EstadoEnvio.ENTREGADO && envio.getRepartidor() != null) {
-            envio.getRepartidor().setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
-            System.out.println("Envío entregado correctamente. Repartidor disponible nuevamente.");
-        }
+    public void cambiarEstado( EstadoEnvio nuevoEstado) {
+        this.setEstadoEnvio(nuevoEstado);
     }
 
     //Clase que agrega los nuevos envios
     public List<Envio> listEnvios() {
         return new ArrayList<>(listEnvios());
     }
+    }
 
-}
+
+
+
+

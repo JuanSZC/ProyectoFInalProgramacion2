@@ -109,4 +109,10 @@ public class Usuario extends Persona {
             System.out.println("Tipo no soportado");
     }
 
+    // Crear -->ConsultarHistorialEnvio /
+
+    //Crear -->  RastrearEstadoEnvio /
+
+    //Crear, modificar y cancelar solicitudes de envío antes de ser asignadas.
+
 }

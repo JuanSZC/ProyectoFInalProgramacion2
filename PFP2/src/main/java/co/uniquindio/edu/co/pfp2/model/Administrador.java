@@ -5,7 +5,7 @@ import java.util.List;
 
 public final class Administrador {
 
-    private Administrador instance;
+    public static Administrador instance;
 
     private String correo;
     private int clave;
@@ -18,7 +18,7 @@ public final class Administrador {
 
     private Administrador() {}
 
-    public Administrador getInstance() {
+    public static Administrador getInstance() {
         if (instance == null) {
             instance = new Administrador();
         }
@@ -164,5 +164,18 @@ public final class Administrador {
         }
         return null;
     }
+
+
+    public boolean asignarRepartidor(Envio envio, Repartidor repartidor) {
+
+        if (repartidor.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE) {
+            envio.cambiarEstado(EstadoEnvio.ASIGNADO);
+            envio.setRepartidor(repartidor);
+            repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
+            return true;
+        }
+        return false;
+    }
+
 
 }
