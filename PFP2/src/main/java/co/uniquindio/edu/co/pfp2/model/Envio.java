@@ -1,10 +1,13 @@
 package co.uniquindio.edu.co.pfp2.model;
 
-import java.lang.classfile.instruction.ThrowInstruction;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que representa un Envío dentro del sistema.
+ * Contiene información del paquete, direcciones, repartidor y estado del envío.
+ */
 public class Envio {
 
     private int idEnvio;
@@ -15,7 +18,9 @@ public class Envio {
     private LocalDate fechaCreacion;
     private Repartidor repartidor;
 
-    public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete, LocalDate fechaCreacion, EstadoEnvio estadoEnvio, Repartidor repartidor) {
+    // --- Constructor ---
+    public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete,
+                 LocalDate fechaCreacion, EstadoEnvio estadoEnvio, Repartidor repartidor) {
         this.idEnvio = idEnvio;
         this.origen = origen;
         this.destino = destino;
@@ -25,6 +30,7 @@ public class Envio {
         this.repartidor = repartidor;
     }
 
+    // --- Getters y Setters ---
     public int getIdEnvio() {
         return idEnvio;
     }
@@ -61,8 +67,8 @@ public class Envio {
         return estadoEnvio;
     }
 
-    public void setEstadoEnvio(EstadoEnvio estado) {
-        this.estadoEnvio = estado;
+    public void setEstadoEnvio(EstadoEnvio estadoEnvio) {
+        this.estadoEnvio = estadoEnvio;
     }
 
     public LocalDate getFechaCreacion() {
@@ -73,7 +79,6 @@ public class Envio {
         this.fechaCreacion = fechaCreacion;
     }
 
-
     public Repartidor getRepartidor() {
         return repartidor;
     }
@@ -82,17 +87,53 @@ public class Envio {
         this.repartidor = repartidor;
     }
 
-    public void cambiarEstado( EstadoEnvio nuevoEstado) {
-        this.setEstadoEnvio(nuevoEstado);
+    /**
+     * Cambia el estado del envío.
+     *
+     * @param nuevoEstado nuevo estado del envío
+     */
+    public void cambiarEstado(EstadoEnvio nuevoEstado) {
+        this.estadoEnvio = nuevoEstado;
     }
 
-    //Clase que agrega los nuevos envios
-    public List<Envio> listEnvios() {
-        return new ArrayList<>(listEnvios());
+    /**
+     * Convierte este objeto Envio a un EnvioDTO (Data Transfer Object)
+     * para transferir solo los datos esenciales a otras capas del sistema.
+     *
+     * @return objeto EnvioDTO con los datos del envío
+     */
+    public EnvioDTO toDTO() {
+        return new EnvioDTO(
+                this.idEnvio,
+                this.origen != null ? this.origen.toString() : "Sin origen",
+                this.destino != null ? this.destino.toString() : "Sin destino",
+                this.repartidor != null ? this.repartidor.getNombreCompleto() : "Sin repartidor",
+                this.estadoEnvio != null ? this.estadoEnvio.name() : "No definido",
+                this.fechaCreacion,
+                this.paquete != null ? this.paquete.getPeso() : 0.0
+        );
     }
+
+
+    @Override
+    public String toString() {
+        return "Envio{" +
+                "idEnvio=" + idEnvio +
+                ", origen=" + origen +
+                ", destino=" + destino +
+                ", paquete=" + paquete +
+                ", estadoEnvio=" + estadoEnvio +
+                ", fechaCreacion=" + fechaCreacion +
+                ", repartidor=" + repartidor +
+                '}';
     }
 
-
-
-
+    /**
+     * Metodo simulado que devuelve la lista de envíos.
+     * (En un caso real, se usaría un repositorio o servicio para esto).
+     */
+    public static List<Envio> listarEnvios() {
+        return new ArrayList<>();
+    }
+}
 
