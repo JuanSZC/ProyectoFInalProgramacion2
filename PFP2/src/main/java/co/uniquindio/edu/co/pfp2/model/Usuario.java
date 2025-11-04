@@ -8,6 +8,9 @@ public class Usuario extends Persona {
     private int idUsuario;
     private List<Direccion> listDireccionesUsuario;
     private List<Usuario> listUsuarios;
+    private List<Producto> listProductosUsuario;
+    private List<Envio> listEnviosUsuario;
+    private List<Producto> listCarritosUsuario;
 
 
     public Usuario(String nombreCompleto, String cedula, String correo, String contrasenia, int telefono, int idUsuario) {
@@ -15,6 +18,41 @@ public class Usuario extends Persona {
         this.idUsuario = idUsuario;
         this.listDireccionesUsuario = new ArrayList<>();
         this.listUsuarios = new ArrayList<>();
+        this.listProductosUsuario = new ArrayList<>();
+        this.listEnviosUsuario = new ArrayList<>();
+        this.listCarritosUsuario = new ArrayList<>();
+    }
+
+    public List<Usuario> getListUsuarios() {
+        return listUsuarios;
+    }
+
+    public void setListUsuarios(List<Usuario> listUsuarios) {
+        this.listUsuarios = listUsuarios;
+    }
+
+    public List<Producto> getListCarritosUsuario() {
+        return listCarritosUsuario;
+    }
+
+    public void setListCarritosUsuario(List<Producto> listCarritosUsuario) {
+        this.listCarritosUsuario = listCarritosUsuario;
+    }
+
+    public List<Envio> getListEnviosUsuario() {
+        return listEnviosUsuario;
+    }
+
+    public void setListEnviosUsuario(List<Envio> listEnviosUsuario) {
+        this.listEnviosUsuario = listEnviosUsuario;
+    }
+
+    public List<Producto> getListProductosUsuario() {
+        return listProductosUsuario;
+    }
+
+    public void setListProductosUsuario(List<Producto> listProductosUsuario) {
+        this.listProductosUsuario = listProductosUsuario;
     }
 
     public int getIdUsuario() {
