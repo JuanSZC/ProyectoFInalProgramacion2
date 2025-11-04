@@ -1,6 +1,6 @@
 package co.uniquindio.edu.co.pfp2.model;
 
-public final class Administrador {
+public final  class Administrador {
 
     private static Administrador instance;
 

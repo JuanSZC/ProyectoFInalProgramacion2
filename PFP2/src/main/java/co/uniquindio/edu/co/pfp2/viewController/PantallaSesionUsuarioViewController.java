@@ -47,7 +47,9 @@ public class PantallaSesionUsuarioViewController {
 
         if (usuarioEncontrado != null) {
             DialogUtils.mostrarMensaje("¡Bienvenido " + usuarioEncontrado.getNombreCompleto() + "!");
-            openPantallaBienvenida();
+            app.usuarioSesion = usuarioEncontrado;
+            app.openPantallaUsuario();
+
         } else {
             DialogUtils.mostrarMensaje("Correo o contraseña incorrectos. Intenta de nuevo.");
         }

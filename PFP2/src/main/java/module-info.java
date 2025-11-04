@@ -4,7 +4,7 @@ module co.uniquindio.edu.co.pfp2 {
     requires javafx.graphics;
 
     requires javafx.base;
-
+    requires java.compiler;
 
 
     opens co.uniquindio.edu.co.pfp2 to javafx.fxml;
