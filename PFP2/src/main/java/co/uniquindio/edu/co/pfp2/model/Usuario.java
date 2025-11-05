@@ -147,10 +147,88 @@ public class Usuario extends Persona {
             System.out.println("Tipo no soportado");
     }
 
-    // Crear -->ConsultarHistorialEnvio /
+    /**
+     * Permite al usuario crear una nueva solicitud de envío antes de ser asignada.
+     * @param envio Envío que se desea crear.
+     * @return true si se agregó correctamente, false si ya existía un envío con el mismo ID.
+     */
+    public boolean crearSolicitudEnvio(Envio envio) {
+        boolean existe = listEnviosUsuario.stream()
+                .anyMatch(e -> e.getIdEnvio() == envio.getIdEnvio());
+        if (!existe) {
+            listEnviosUsuario.add(envio);
+            System.out.println("Solicitud de envío creada correctamente: " + envio.getIdEnvio());
+            return true;
+        }
+        System.out.println("Ya existe una solicitud con ese ID.");
+        return false;
+    }
 
-    //Crear -->  RastrearEstadoEnvio /
+    /**
+     * Permite modificar una solicitud de envío antes de que sea asignada a un repartidor.
+     * Solo se puede modificar si su estado es SOLICITADO.
+     * @param idEnvio ID del envío a modificar.
+     * @param nuevoEnvio Datos nuevos del envío.
+     * @return true si se modificó correctamente, false si no se pudo.
+     */
+    public boolean modificarSolicitudEnvio(int idEnvio, Envio nuevoEnvio) {
+        for (Envio envio : listEnviosUsuario) {
+            if (envio.getIdEnvio() == idEnvio && envio.getEstadoEnvio() == EstadoEnvio.SOLICITADO) {
+                envio.setOrigen(nuevoEnvio.getOrigen());
+                envio.setDestino(nuevoEnvio.getDestino());
+                envio.setPaquete(nuevoEnvio.getPaquete());
+                envio.setFechaCreacion(nuevoEnvio.getFechaCreacion());
+                System.out.println("Solicitud de envío modificada correctamente.");
+                return true;
+            }
+        }
+        System.out.println("No se encontró el envío o ya fue asignado.");
+        return false;
+    }
 
-    //Crear, modificar y cancelar solicitudes de envío antes de ser asignadas.
+    /**
+     * Cancela una solicitud de envío si aún no ha sido asignada.
+     * @param idEnvio ID del envío a cancelar.
+     * @return true si se canceló correctamente, false si no se puede cancelar.
+     */
+    public boolean cancelarSolicitudEnvio(int idEnvio) {
+        for (Envio envio : listEnviosUsuario) {
+            if (envio.getIdEnvio() == idEnvio && envio.getEstadoEnvio() == EstadoEnvio.SOLICITADO) {
+                envio.cambiarEstado(EstadoEnvio.CANCELADO);
+                System.out.println("Solicitud cancelada correctamente.");
+                return true;
+            }
+        }
+        System.out.println("No se pudo cancelar el envío (ya está en proceso o no existe).");
+        return false;
+    }
+
+    /**
+     * Consulta el historial de envíos del usuario (todos los estados).
+     * @return lista de envíos registrados por el usuario.
+     */
+    public List<Envio> consultarHistorialEnvio() {
+        if (listEnviosUsuario.isEmpty()) {
+            System.out.println("No hay envíos registrados en el historial.");
+        }
+        return new ArrayList<>(listEnviosUsuario);
+    }
+
+    /**
+     * Permite rastrear el estado actual de un envío específico.
+     * @param idEnvio ID del envío a rastrear.
+     * @return estado actual del envío o null si no se encuentra.
+     */
+    public EstadoEnvio rastrearEstadoEnvio(int idEnvio) {
+        for (Envio envio : listEnviosUsuario) {
+            if (envio.getIdEnvio() == idEnvio) {
+                System.out.println("Estado actual del envío " + idEnvio + ": " + envio.getEstadoEnvio());
+                return envio.getEstadoEnvio();
+            }
+        }
+        System.out.println("No se encontró el envío con ID " + idEnvio);
+        return null;
+    }
+
 
 }

@@ -5,5 +5,6 @@ public enum EstadoEnvio {
     SOLICITADO,
     ASIGNADO,
     EN_RUTA,
-    ENTREGADO;
+    ENTREGADO,
+    CANCELADO;
 }
