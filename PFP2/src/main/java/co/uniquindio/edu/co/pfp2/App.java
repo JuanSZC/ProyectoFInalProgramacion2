@@ -216,10 +216,11 @@ public class App extends Application {
         listGlobalRepartidores.add(repartidor);
         Usuario usuario1 = new Usuario("Diana Paola Rodriguez","1077865892","dpr@gmail.com","dpr",3789456,this.idUsuario+1);
         this.idUsuario ++;
+        listGlobalUsuarios.add(usuario1);
 // Productos iniciales
         Producto producto = new Producto(this.idProducto, "Mouse", "Para jugar mucho.", 140000, 10, 60);
         listGlobalProductos.add(producto);
-        usuario1.getListProductosUsuario().add(producto);
+        usuario.getListProductosUsuario().add(producto);
         this.idProducto++;
 
         Producto producto1 = new Producto(this.idProducto, "Audífonos", "Inalámbricos con cancelación de ruido.", 60000, 5, 6);

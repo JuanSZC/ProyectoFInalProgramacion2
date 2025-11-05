@@ -26,11 +26,11 @@
                 <Font name="Segoe UI Italic" size="25.0" />
             </font>
         </Text>
-        <MenuButton layoutX="1148.0" layoutY="19.0" mnemonicParsing="false" styleClass="button-danger" text="Ajustes"> <items> <MenuItem mnemonicParsing="false" onAction="#openPantallaUsuarioConfiguracion" text="Mi cuenta" /> <MenuItem mnemonicParsing="false" text="Cerrar Sesión" /> </items> </MenuButton>
+        <MenuButton layoutX="1148.0" layoutY="19.0" mnemonicParsing="false" styleClass="button-danger" text="Ajustes"> <items> <MenuItem mnemonicParsing="false" onAction="#openPantallaUsuarioConfiguracion" text="👤 Mi cuenta" /> <MenuItem mnemonicParsing="false" text="🚪 Cerrar Sesión" /> </items> </MenuButton>
         <!-- TabPane vertical -->
         <TabPane layoutY="120.0" prefHeight="600.0" prefWidth="1280.0" side="LEFT" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="🏠 Inicio">
+                <Tab text="☉ Inicio">
                     <content>
                         <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                      <children>
@@ -51,13 +51,49 @@
                      </children></AnchorPane>
                     </content>
                 </Tab>
-            <Tab text="Untitled Tab">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-               <graphic>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-               </graphic>
+            <Tab text="🏠 Mi Catálogo">
+               <content>
+                  <AnchorPane prefHeight="600.0" prefWidth="1080.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f6faf" height="60.0" stroke="#2f6faf" strokeType="INSIDE" width="1210.0" />
+                        <TableView fx:id="tbMiCatalogo" layoutY="60.0" prefHeight="478.0" prefWidth="948.0">
+                           <columns>
+                              <TableColumn fx:id="colMCNombre" prefWidth="224.0" text="Nombre" />
+                              <TableColumn fx:id="colMCDescripcion" prefWidth="361.0" text="Descripción" />
+                              <TableColumn fx:id="colMCCantidad" prefWidth="182.0" text="Cantidad Disponible" />
+                              <TableColumn fx:id="colMCPrecio" prefWidth="171.0" text="Precio" />
+                           </columns>
+                        </TableView>
+                        <Text fill="white" layoutX="8.0" layoutY="40.0" text="Mi Catálogo" wrappingWidth="720.0">
+                           <font>
+                              <Font name="Segoe UI Bold Italic" size="25.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="🛒 Mi Carrito">
+               <content>
+                  <AnchorPane prefHeight="600.0" prefWidth="1080.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f6faf" height="60.0" stroke="#2f6faf" strokeType="INSIDE" width="1210.0" />
+                        <TableView fx:id="tbCarrito" layoutY="60.0" prefHeight="478.0" prefWidth="948.0">
+                           <columns>
+                              <TableColumn fx:id="colCNombre" prefWidth="224.0" text="Nombre" />
+                              <TableColumn fx:id="colCDescripcion" prefWidth="361.0" text="Descripción" />
+                              <TableColumn fx:id="colCCantidad" prefWidth="182.0" text="Cantidad" />
+                              <TableColumn fx:id="colCSubTotal" prefWidth="171.0" text="SubTotal" />
+                           </columns>
+                        </TableView>
+                        <Text fill="white" layoutX="8.0" layoutY="40.0" text="Mi Carrito" wrappingWidth="720.0">
+                           <font>
+                              <Font name="Segoe UI Bold Italic" size="25.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
             </Tab>
             </tabs>
         </TabPane>
