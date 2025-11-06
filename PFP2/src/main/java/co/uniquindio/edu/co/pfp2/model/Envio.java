@@ -89,7 +89,6 @@ public class Envio {
 
     /**
      * Cambia el estado del envío.
-     *
      * @param nuevoEstado nuevo estado del envío
      */
     public void cambiarEstado(EstadoEnvio nuevoEstado) {
@@ -99,7 +98,6 @@ public class Envio {
     /**
      * Convierte este objeto Envio a un EnvioDTO (Data Transfer Object)
      * para transferir solo los datos esenciales a otras capas del sistema.
-     *
      * @return objeto EnvioDTO con los datos del envío
      */
     public EnvioDTO toDTO() {

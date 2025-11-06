@@ -11,7 +11,7 @@ import java.util.List;
  */
 public final class Administrador {
 
-    public static Administrador instance;
+    private static Administrador instance;
 
     private String correo;
     private int clave;

@@ -16,16 +16,23 @@ public final class Empresa {
     private List<Repartidor> listRepartidors = new ArrayList<>();
 
 
-    private Empresa instance;
+    private static Empresa instance;
 
     private Empresa(){}
 
-    private Empresa getInstance() {
+    /**
+     * Obtiene la instancia única de la empresa.
+     * Si no existe, se crea una nueva instancia.
+     * @return instancia única de {Empresa}
+     */
+    public static Empresa getInstance() {
         if (instance == null) {
             instance = new Empresa();
         }
         return instance;
     }
+
+    // --- Getters y Setters ---
 
     public String getNombre() {
         return nombre;
