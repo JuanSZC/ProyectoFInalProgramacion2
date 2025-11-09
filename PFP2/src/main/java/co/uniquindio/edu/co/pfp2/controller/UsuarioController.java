@@ -1,6 +1,8 @@
 package co.uniquindio.edu.co.pfp2.controller;
 
 import co.uniquindio.edu.co.pfp2.model.Direccion;
+import co.uniquindio.edu.co.pfp2.model.Envio;
+import co.uniquindio.edu.co.pfp2.model.EstadoEnvio;
 import co.uniquindio.edu.co.pfp2.model.Usuario;
 
 public class UsuarioController {
@@ -58,4 +60,44 @@ public class UsuarioController {
         return usuario.buscarDireccionPorID(idDireccion);
     }
 
+    // =================== CONTROLLER DE ENVIO =================== //
+    /*
+    Todo este bloque es la comunicación del modelo con el controlador de vista
+    sobre toda la logica sobre el envioo hecho por el usuario
+     */
+
+    public void generarReporte(String tipo) {
+        if (tipo == null || tipo.isBlank()) {
+            System.out.println("Ingrese porfavor un texto");
+        }
+        usuario.generarReporte(tipo);
+    }
+
+    public boolean crearSolicitudEnvio(Envio envio) {
+        if (envio == null) {
+            return false;
+        }
+        return usuario.crearSolicitudEnvio(envio);
+    }
+
+    public boolean modificarSolicitudEnvio(int idEnvio, Envio nuevoEnvio) {
+        if (idEnvio <= 0 || nuevoEnvio == null) {
+            return false;
+        }
+        return usuario.modificarSolicitudEnvio(idEnvio, nuevoEnvio);
+    }
+
+    public boolean cancelarSolicitudEnvio(int idEnvio) {
+        if (idEnvio <= 0) {
+            return false;
+        }
+        return usuario.cancelarSolicitudEnvio(idEnvio);
+    }
+
+    public EstadoEnvio rastrearEstadoEnvio(int idEnvio) {
+        if (idEnvio <= 0) {
+            return null;
+        }
+        return usuario.rastrearEstadoEnvio(idEnvio);
+    }
 }
