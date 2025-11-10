@@ -9,20 +9,20 @@ public class Producto {
     private int cantidad;
     private double peso;
 
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
     public Producto(int idProducto, String nombre, String descripcion, double precio, int cantidad, double peso) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.peso = peso;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 

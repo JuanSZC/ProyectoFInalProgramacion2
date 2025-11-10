@@ -4,7 +4,7 @@ public class Repartidor  extends Persona {
 
     private int idRepartidor;
     private ZonaCobertura zonaCobertura;
-    private DisponibilidadRepartidor disponibilidadRepartidor;
+    private DisponibilidadRepartidor disponibilidadRepartidor = DisponibilidadRepartidor.DISPONIBLE;
 
     public Repartidor(String nombreCompleto, String cedula, String correo, String contrasenia, int telefono,ZonaCobertura zonaCobertura, DisponibilidadRepartidor disponibilidadRepartidor) {
         super(nombreCompleto, cedula, correo, contrasenia, telefono);
@@ -36,5 +36,11 @@ public class Repartidor  extends Persona {
 
     public void setDisponibilidadRepartidor(DisponibilidadRepartidor disponibilidadRepartidor) {
         this.disponibilidadRepartidor = disponibilidadRepartidor;
+    }
+    public boolean isDisponible(){
+        if(disponibilidadRepartidor == null){
+            return false;
+        }
+        return true;
     }
 }

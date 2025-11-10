@@ -1,5 +1,12 @@
 package co.uniquindio.edu.co.pfp2.model;
-
+/**
+ * Clase que representa una dirección geográfica dentro del sistema de envíos.
+ * Cada dirección contiene un identificador único, una descripción (como una calle o referencia),
+   y sus coordenadas geográficas (latitud y longitud).
+ * Esta clase es utilizada por usuarios, repartidores y envíos para definir puntos de origen y destino.
+ * Ejemplo de uso:
+ *  Direccion direccion = new Direccion(1, "Calle 10 #15-23, Armenia", 4.5342, -75.6721);
+ */
 public class Direccion {
 
     private int idDireccion;
@@ -7,12 +14,20 @@ public class Direccion {
     private double latitud;
     private double longitud;
 
+    /**
+     * Constructor principal de la clase {Direccion}.
+     * @param idDireccion identificador único de la dirección
+     * @param descripcion texto descriptivo de la ubicación
+     * @param latitud     coordenada de latitud geográfica
+     * @param longitud    coordenada de longitud geográfica
+     */
     public Direccion(int idDireccion, String descripcion, double latitud, double longitud) {
         this.idDireccion = idDireccion;
         this.descripcion = descripcion;
         this.latitud = latitud;
         this.longitud = longitud;
     }
+    // =================== GETTERS Y SETTERS =================== //
 
     public int getIdDireccion() {
         return idDireccion;
