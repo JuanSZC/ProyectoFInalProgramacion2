@@ -1,6 +1,6 @@
 package co.uniquindio.edu.co.pfp2;
 
-import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
+import co.uniquindio.edu.co.pfp2.Extra.*;
 import co.uniquindio.edu.co.pfp2.model.*;
 import co.uniquindio.edu.co.pfp2.viewController.*;
 import javafx.application.Application;
