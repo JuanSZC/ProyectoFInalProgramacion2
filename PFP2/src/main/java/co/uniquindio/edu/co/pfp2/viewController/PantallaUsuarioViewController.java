@@ -61,6 +61,19 @@ public class PantallaUsuarioViewController {
     @FXML
     ComboBox<Integer> cbUnidadesPedir;
 
+    @FXML
+    TextField txNombreProducto;
+    @FXML
+    TextArea txDescripcionProducto;
+    @FXML
+    TextField txPrecioProducto;
+    @FXML
+    TextField txCantidadProducto;
+    @FXML
+    TextField txPesoProducto;
+
+    @FXML
+    Button btAM;
 
     public Usuario getUsuarioSesion() {
         return usuarioSesion;
@@ -99,12 +112,53 @@ public class PantallaUsuarioViewController {
                 Producto nuevo = new Producto(pr.getIdProducto(),pr.getNombre(),pr.getDescripcion(),pr.getPrecio(),cantidad,pr.getPeso());
                 pr.setCantidad(pr.getCantidad() - cantidad);
                 app.usuarioSesion.getListCarritosUsuario().add(nuevo);
-                
+
                 listarTablas();
                 tbCatalogoDisponible.refresh();
                 tbCatalogoDisponible.getSelectionModel().select(null);
                 cbUnidadesPedir.setValue(null);
+                DialogUtils.mostrarMensaje("Producto agregado al carrito.");
             }
+        }
+    }
+    public void agregarProducto() {
+        String nombre = txNombreProducto.getText();
+        String descripcion = txDescripcionProducto.getText();
+        String precioTxt = txPrecioProducto.getText();
+        String cantidadTxt = txCantidadProducto.getText();
+        String pesoTxt = txPesoProducto.getText();
+
+
+        if (nombre.isEmpty() || descripcion.isEmpty() ||
+                precioTxt.isEmpty() || cantidadTxt.isEmpty() || pesoTxt.isEmpty()) {
+            DialogUtils.mostrarError("Hay campos vacíos.");
+            return;
+        }
+
+        try {
+            double precio = Double.parseDouble(precioTxt);
+            int cantidad = Integer.parseInt(cantidadTxt);
+            double peso = Double.parseDouble(pesoTxt);
+
+            if (precio <= 0 || cantidad < 0 || peso < 0) {
+                DialogUtils.mostrarError("Los valores numéricos deben ser mayores que cero.");
+                return;
+            }
+
+            Producto nuevo = new Producto(app.idProducto,nombre, descripcion, precio, cantidad, peso);
+            app.idProducto ++;
+
+
+            app.usuarioSesion.getListProductosUsuario().add(nuevo);
+            app.listGlobalProductos.add(nuevo);
+
+            tbMiCatalogo.refresh();
+            tbCatalogoDisponible.refresh();
+
+            DialogUtils.mostrarMensaje("Producto agregado correctamente.");
+
+        } catch (NumberFormatException e) {
+            DialogUtils.mostrarError("Precio, cantidad o peso inválidos.");
         }
     }
 
@@ -125,8 +179,76 @@ public class PantallaUsuarioViewController {
             tbCarrito.setItems(FXCollections.observableList(usuarioSesion.getListCarritosUsuario()));
         }
     }
+    public void accionAgregarModificar() {
+        Producto seleccionado = tbMiCatalogo.getSelectionModel().getSelectedItem();
+        if (seleccionado != null) {
+            modificarProducto();
+        } else {
+            agregarProducto();
+        }
+    }
+
+    public void modificarProducto() {
+        Producto seleccionado = tbMiCatalogo.getSelectionModel().getSelectedItem();
+
+        if (seleccionado == null) {
+            DialogUtils.mostrarError("Debe seleccionar un producto para modificar.");
+            return;
+        }
+
+        String nombre = txNombreProducto.getText();
+        String descripcion = txDescripcionProducto.getText();
+        String precioTxt = txPrecioProducto.getText();
+        String cantidadTxt = txCantidadProducto.getText();
+        String pesoTxt = txPesoProducto.getText();
+
+        if (nombre.isEmpty() || descripcion.isEmpty() ||
+                precioTxt.isEmpty() || cantidadTxt.isEmpty() || pesoTxt.isEmpty()) {
+            DialogUtils.mostrarError("Hay campos vacíos.");
+            tbMiCatalogo.getSelectionModel().clearSelection();
+            return;
+        }
+
+        try {
+            double precio = Double.parseDouble(precioTxt);
+            int cantidad = Integer.parseInt(cantidadTxt);
+            double peso = Double.parseDouble(pesoTxt);
+
+            if (precio <= 0 || cantidad < 0 || peso < 0) {
+                DialogUtils.mostrarError("Los valores numéricos deben ser mayores que cero.");
+                tbMiCatalogo.getSelectionModel().clearSelection();
+                return;
+            }
+
+            seleccionado.setNombre(nombre);
+            seleccionado.setDescripcion(descripcion);
+            seleccionado.setPrecio(precio);
+            seleccionado.setCantidad(cantidad);
+            seleccionado.setPeso(peso);
+
+            tbMiCatalogo.refresh();
+            tbCatalogoDisponible.refresh();
+
+            DialogUtils.mostrarMensaje("Producto modificado correctamente.");
+            tbMiCatalogo.getSelectionModel().clearSelection();
+
+        } catch (NumberFormatException e) {
+            DialogUtils.mostrarError("Precio, cantidad o peso inválidos.");
+            tbMiCatalogo.getSelectionModel().clearSelection();
+        }
+    }
+
 
     public void initialize(){
+
+        tbMiCatalogo.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
+            if (newSel != null) {
+                btAM.setText("Modificar Producto");
+            } else {
+                btAM.setText("Añadir Producto");
+            }
+        });
+
         tbCDNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tbCDDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescripcion()));
         tbCDCantidad.setCellValueFactory(cellData ->
@@ -157,6 +279,22 @@ public class PantallaUsuarioViewController {
                 cbUnidadesPedir.setItems(lista);
             }
         });
+        tbMiCatalogo.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
+            if (newSel != null) {
+                txNombreProducto.setText(newSel.getNombre());
+                txDescripcionProducto.setText(newSel.getDescripcion());
+                txPrecioProducto.setText(String.valueOf(newSel.getPrecio()));
+                txCantidadProducto.setText(String.valueOf(newSel.getCantidad()));
+                txPesoProducto.setText(String.valueOf(newSel.getPeso()));
+            } else {
+                txNombreProducto.clear();
+                txDescripcionProducto.clear();
+                txPrecioProducto.clear();
+                txCantidadProducto.clear();
+                txPesoProducto.clear();
+            }
+        });
+
 
 
 
