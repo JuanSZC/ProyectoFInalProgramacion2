@@ -1,21 +1,21 @@
 package co.uniquindio.edu.co.pfp2.viewController;
 
 import co.uniquindio.edu.co.pfp2.App;
+import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.Producto;
 import co.uniquindio.edu.co.pfp2.model.Usuario;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 public class PantallaUsuarioViewController {
     App app;
     Usuario usuarioSesion;
+    ObservableList<Integer> cbLista = FXCollections.observableArrayList();
     @FXML
     TableView<Producto> tbCatalogoDisponible;
     @FXML
@@ -58,6 +58,9 @@ public class PantallaUsuarioViewController {
 
     @FXML
     Text tUsuario;
+    @FXML
+    ComboBox<Integer> cbUnidadesPedir;
+
 
     public Usuario getUsuarioSesion() {
         return usuarioSesion;
@@ -74,6 +77,53 @@ public class PantallaUsuarioViewController {
     public void openPantallaUsuarioConfiguracion(){
         this.app.openPantallaUsuarioConfiguracion();
         System.out.println("SI");
+    }
+    public void cerrarSesion(){
+        app.openPantallaBienvenida();
+    }
+
+    public void pedirProducto(){
+        Producto p = tbCatalogoDisponible.getSelectionModel().getSelectedItem();
+        Integer cantidad = cbUnidadesPedir.getValue();
+
+        if (p == null){
+            DialogUtils.mostrarError("Debe seleccionar un producto.");
+            return;
+        }
+        if (cbUnidadesPedir.getValue() == null){
+            DialogUtils.mostrarError("Debe seleccionar una cantidad.");
+            return;
+        }
+        for (Producto pr : app.listGlobalProductos){
+            if (pr == p){
+                Producto nuevo = new Producto(pr.getIdProducto(),pr.getNombre(),pr.getDescripcion(),pr.getPrecio(),cantidad,pr.getPeso());
+                pr.setCantidad(pr.getCantidad() - cantidad);
+                app.usuarioSesion.getListCarritosUsuario().add(nuevo);
+                zz
+                listarTablas();
+                tbCatalogoDisponible.refresh();
+                tbCatalogoDisponible.getSelectionModel().select(null);
+                cbUnidadesPedir.setValue(null);
+            }
+        }
+    }
+
+
+    public void listarTablas() {
+        if (this.app != null) {
+            ObservableList<Producto> obs = FXCollections.observableArrayList();
+            obs.setAll(app.listGlobalProductos);
+            obs.removeAll(app.usuarioSesion.getListProductosUsuario());
+
+
+            FilteredList<Producto> filtrados = new FilteredList<>(obs);
+            filtrados.setPredicate(p -> p.getCantidad() > 0);
+
+            tbCatalogoDisponible.setItems(filtrados);
+
+            tbMiCatalogo.setItems(FXCollections.observableList(usuarioSesion.getListProductosUsuario()));
+            tbCarrito.setItems(FXCollections.observableList(usuarioSesion.getListCarritosUsuario()));
+        }
     }
 
     public void initialize(){
@@ -93,16 +143,21 @@ public class PantallaUsuarioViewController {
         colCDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescripcion()));
         colCCantidad.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCantidad())));
         colCSubTotal.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio()*cellData.getValue().getCantidad())));
+        listarTablas();
 
-       if (this.app != null) {
-           ObservableList<Producto> obs = FXCollections.observableArrayList();
-           obs.setAll(app.listGlobalProductos);
-           obs.removeAll(app.usuarioSesion.getListProductosUsuario());
-           tbCatalogoDisponible.setItems(obs);
-           tbMiCatalogo.setItems(FXCollections.observableList(usuarioSesion.getListProductosUsuario()));
-           tbCarrito.setItems(FXCollections.observableList(usuarioSesion.getListCarritosUsuario()));
+        tbCatalogoDisponible.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
+            cbUnidadesPedir.getItems().clear();
+            cbUnidadesPedir.setValue(null);
 
-       }
+            if (newSel != null) {
+                ObservableList<Integer> lista = FXCollections.observableArrayList();
+                for (int i = 1; i <= newSel.getCantidad(); i++) {
+                    lista.add(i);
+                }
+                cbUnidadesPedir.setItems(lista);
+            }
+        });
+
 
 
 

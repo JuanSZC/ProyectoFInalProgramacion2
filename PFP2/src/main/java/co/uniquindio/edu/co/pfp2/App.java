@@ -241,12 +241,12 @@ public class App extends Application {
 
         Producto producto4 = new Producto(this.idProducto, "Silla gamer", "Ergonómica con soporte lumbar.", 480000, 3, 5);
         listGlobalProductos.add(producto4);
-        usuario1.getListProductosUsuario().add(producto4);
+        usuario.getListProductosUsuario().add(producto4);
         this.idProducto++;
 
         Producto producto5 = new Producto(this.idProducto, "Disco SSD 1TB", "Alta velocidad NVMe.", 350000, 12, 25);
         listGlobalProductos.add(producto5);
-        usuario1.getListProductosUsuario().add(producto5);
+        usuario.getListProductosUsuario().add(producto5);
         this.idProducto++;
 
         Producto producto6 = new Producto(this.idProducto, "Memoria RAM 16GB", "DDR4 3200MHz.", 250000, 10, 30);
@@ -261,12 +261,12 @@ public class App extends Application {
 
         Producto producto8 = new Producto(this.idProducto, "Tarjeta madre", "Compatibilidad Intel 12va Gen.", 500000, 5, 10);
         listGlobalProductos.add(producto8);
-        usuario1.getListProductosUsuario().add(producto8);
+        usuario.getListProductosUsuario().add(producto8);
         this.idProducto++;
 
         Producto producto9 = new Producto(this.idProducto, "Cámara web HD", "Ideal para videollamadas y streaming.", 90000, 8, 14);
         listGlobalProductos.add(producto9);
-        usuario1.getListProductosUsuario().add(producto9);
+        usuario.getListProductosUsuario().add(producto9);
         this.idProducto++;
 
         Producto producto10 = new Producto(this.idProducto, "Micrófono USB", "Calidad de estudio para grabación.", 160000, 6, 12);

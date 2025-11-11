@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
@@ -26,7 +28,7 @@
                 <Font name="Segoe UI Italic" size="25.0" />
             </font>
         </Text>
-        <MenuButton layoutX="1148.0" layoutY="19.0" mnemonicParsing="false" styleClass="button-danger" text="Ajustes"> <items> <MenuItem mnemonicParsing="false" onAction="#openPantallaUsuarioConfiguracion" text="👤 Mi cuenta" /> <MenuItem mnemonicParsing="false" text="🚪 Cerrar Sesión" /> </items> </MenuButton>
+        <MenuButton layoutX="1148.0" layoutY="19.0" mnemonicParsing="false" styleClass="button-danger" text="Ajustes"> <items> <MenuItem mnemonicParsing="false" onAction="#openPantallaUsuarioConfiguracion" text="👤 Mi cuenta" /> <MenuItem mnemonicParsing="false" onAction="#cerrarSesion" text="🚪 Cerrar Sesión" /> </items> </MenuButton>
         <!-- TabPane vertical -->
         <TabPane layoutY="120.0" prefHeight="600.0" prefWidth="1280.0" side="LEFT" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
             <tabs>
@@ -46,6 +48,13 @@
                         <Text fill="white" layoutX="8.0" layoutY="40.0" text="Catálogo Disponible" wrappingWidth="720.0">
                            <font>
                               <Font name="Segoe UI Bold Italic" size="25.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="1010.0" layoutY="321.0" mnemonicParsing="false" onAction="#pedirProducto" styleClass="button-primary" text="Hacer Pedido" />
+                        <ComboBox fx:id="cbUnidadesPedir" layoutX="1015.0" layoutY="241.0" prefHeight="44.0" prefWidth="111.0" styleClass="button-primary" />
+                        <Text layoutX="1034.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cantidad:">
+                           <font>
+                              <Font name="Segoe UI Bold" size="16.0" />
                            </font>
                         </Text>
                      </children></AnchorPane>
