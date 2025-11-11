@@ -99,7 +99,7 @@ public class PantallaUsuarioViewController {
                 Producto nuevo = new Producto(pr.getIdProducto(),pr.getNombre(),pr.getDescripcion(),pr.getPrecio(),cantidad,pr.getPeso());
                 pr.setCantidad(pr.getCantidad() - cantidad);
                 app.usuarioSesion.getListCarritosUsuario().add(nuevo);
-                zz
+                
                 listarTablas();
                 tbCatalogoDisponible.refresh();
                 tbCatalogoDisponible.getSelectionModel().select(null);
