@@ -217,6 +217,13 @@ public class App extends Application {
         Usuario usuario1 = new Usuario("Diana Paola Rodriguez","1077865892","dpr@gmail.com","dpr",3789456,this.idUsuario+1);
         this.idUsuario ++;
         listGlobalUsuarios.add(usuario1);
+        //Usuarios VIP
+        Usuario usuario2 = new Usuario("Juan Manuel Velásquez","115187043","vivamemento@si.com","hola",6745,this.idUsuario+1);
+        this.idUsuario ++;
+        listGlobalUsuarios.add(usuario2);
+
+
+
 // Productos iniciales
         Producto producto = new Producto(this.idProducto, "Mouse", "Para jugar mucho.", 140000, 10, 60);
         listGlobalProductos.add(producto);

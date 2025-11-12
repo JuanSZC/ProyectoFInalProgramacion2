@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="94a076e9-b393-46ef-afe8-436b21357acf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuario.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +102,9 @@
       <workItem from="1762786868383" duration="366000" />
       <workItem from="1762787244531" duration="29000" />
       <workItem from="1762823477118" duration="42000" />
-      <workItem from="1762888937877" duration="10711000" />
+      <workItem from="1762888937877" duration="11322000" />
+      <workItem from="1762902928336" duration="22000" />
+      <workItem from="1762964081633" duration="1351000" />
     </task>
     <servers />
   </component>
