@@ -58,6 +58,36 @@ public final class Empresa {
         this.NIT = NIT;
     }
 
+    public List<Envio> getListPedidos() {
+        return listPedidos;
+    }
 
+    public void setListPedidos(List<Envio> listPedidos) {
+        this.listPedidos = listPedidos;
+    }
+
+    public List<Producto> getListProductos() {
+        return listProductos;
+    }
+
+    public void setListProductos(List<Producto> listProductos) {
+        this.listProductos = listProductos;
+    }
+
+    public List<Usuario> getListUsuarios() {
+        return listUsuarios;
+    }
+
+    public void setListUsuarios(List<Usuario> listUsuarios) {
+        this.listUsuarios = listUsuarios;
+    }
+
+    public List<Repartidor> getListRepartidors() {
+        return listRepartidors;
+    }
+
+    public void setListRepartidors(List<Repartidor> listRepartidors) {
+        this.listRepartidors = listRepartidors;
+    }
 }
 
