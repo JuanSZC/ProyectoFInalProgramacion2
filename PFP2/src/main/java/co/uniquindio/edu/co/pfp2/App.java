@@ -105,56 +105,63 @@ public class App extends Application {
     }
     public void openPantallaUsuarioConfiguracion() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaUsuarioConfiguracion.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaUsuarioConfiguracion.fxml")
+            );
             AnchorPane rootLayout = loader.load();
 
             // Controlador de la pantalla de configuración
             PantallaUsuarioConfiguracionViewController configController = loader.getController();
-            configController.setApp(this); // si necesitás acceso a la App principal
+            configController.setApp(this);
 
-            // Nueva ventana (Stage)
+            // Crear la ventana modal
             Stage ventanaConfig = new Stage();
             ventanaConfig.setTitle("Configuración");
             ventanaConfig.setScene(new Scene(rootLayout));
             ventanaConfig.initModality(Modality.WINDOW_MODAL);
-            ventanaConfig.initOwner(stage); // bloquea la principal mientras está abierta
+            ventanaConfig.initOwner(stage); // el dueño es la ventana principal
             ventanaConfig.setResizable(false);
             ventanaConfig.centerOnScreen();
 
-            // Espera hasta que se cierre
+            // Mostrar la ventana y esperar a que se cierre
             ventanaConfig.showAndWait();
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+
 
     public void openPantallaUsuarioPago() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaUsuarioPago.fxml"));
             AnchorPane rootLayout = loader.load();
 
+            PantallaUsuarioPago controller = loader.getController();
+            controller.setApp(this);
 
-            PantallaUsuarioPago configController = loader.getController();
-            configController.setApp(this);
+            // Crear ventana modal correctamente sin tocar la principal
+            Stage ventanaPago = new Stage();
+            ventanaPago.setTitle("Pago");
+            ventanaPago.setScene(new Scene(rootLayout));
+            ventanaPago.initModality(Modality.WINDOW_MODAL);
+            ventanaPago.initOwner(stage); // dueño = principal
+            ventanaPago.setResizable(false);
+            ventanaPago.centerOnScreen();
 
-            // Nueva ventana (Stage)
-            Stage ventanaConfig = new Stage();
-            ventanaConfig.setTitle("Pago");
-            ventanaConfig.setScene(new Scene(rootLayout));
-            ventanaConfig.initModality(Modality.WINDOW_MODAL);
-            ventanaConfig.initOwner(stage);
-            ventanaConfig.setResizable(false);
-            ventanaConfig.centerOnScreen();
+            // Mostrar sin cerrar la ventana principal
+            ventanaPago.showAndWait();
 
-            // Espera hasta que se cierre
-            ventanaConfig.showAndWait();
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    private void cerrarVentanaModular() {
+        Stage stageActual = (Stage) this.stage.getScene().getWindow();
+        stageActual.close();
+    }
 
 
 
