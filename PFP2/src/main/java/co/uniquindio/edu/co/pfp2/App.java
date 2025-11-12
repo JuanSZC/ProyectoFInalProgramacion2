@@ -129,6 +129,33 @@ public class App extends Application {
         }
     }
 
+    public void openPantallaUsuarioPago() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaUsuarioPago.fxml"));
+            AnchorPane rootLayout = loader.load();
+
+
+            PantallaUsuarioPago configController = loader.getController();
+            configController.setApp(this);
+
+            // Nueva ventana (Stage)
+            Stage ventanaConfig = new Stage();
+            ventanaConfig.setTitle("Pago");
+            ventanaConfig.setScene(new Scene(rootLayout));
+            ventanaConfig.initModality(Modality.WINDOW_MODAL);
+            ventanaConfig.initOwner(stage);
+            ventanaConfig.setResizable(false);
+            ventanaConfig.centerOnScreen();
+
+            // Espera hasta que se cierre
+            ventanaConfig.showAndWait();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 
 
 
