@@ -7,21 +7,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class App extends Application {
 
-    private Stage stage;
+   public Stage stage;
     public Administrador admin;
     public ObservableList<Usuario> listGlobalUsuarios = FXCollections.observableArrayList();
     public ObservableList<Repartidor> listGlobalRepartidores = FXCollections.observableArrayList();
     public ObservableList<Producto> listGlobalProductos = FXCollections.observableArrayList();
     public int idUsuario = 1111;
     public int idProducto = 1111;
+    public int idDireccion = 1111;
+
     public Usuario usuarioSesion;
     public static void main(String[] args) {
         launch(args);
@@ -154,8 +158,39 @@ public class App extends Application {
         }
     }
 
+    public void openPantallaDireccionUsuario(Stage ownerStage) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaDireccionUsuario.fxml")
+            );
+            AnchorPane rootLayout = loader.load();
+
+            PantallaDireccionUsuarioViewController controller = loader.getController();
+            controller.setApp(this);
+
+            Stage ventanaDireccion = new Stage();
+            ventanaDireccion.setTitle("Dirección");
+            ventanaDireccion.setScene(new Scene(rootLayout));
+            ventanaDireccion.initModality(Modality.WINDOW_MODAL);
+            ventanaDireccion.initOwner(ownerStage); // la ventana que la llamó
+            ventanaDireccion.setResizable(false);
+            ventanaDireccion.centerOnScreen();
+
+            ventanaDireccion.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     public void cerrarVentanaModular() {
         Stage stageActual = (Stage) this.stage.getScene().getWindow();
+        stageActual.close();
+    }
+    public void cerrarMod(Button bt){
+        Stage stageActual = (Stage) bt.getScene().getWindow();
         stageActual.close();
     }
 

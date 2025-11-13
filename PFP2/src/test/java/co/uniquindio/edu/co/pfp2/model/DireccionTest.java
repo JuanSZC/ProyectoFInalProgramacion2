@@ -15,7 +15,7 @@ public class DireccionTest {
     @BeforeEach
     void setUp() {
         // Inicializa una dirección antes de cada prueba
-        direccion = new Direccion(1, "Calle 10 #15-23, Armenia", 4.5342, -75.6721);
+        direccion = new Direccion(1, "Calle 10 #15-23, Armenia", 4.5342, -75.6721,ZonaCobertura.NORTE);
     }
 
     @Test

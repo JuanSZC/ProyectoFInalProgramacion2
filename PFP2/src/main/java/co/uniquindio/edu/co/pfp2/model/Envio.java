@@ -17,11 +17,10 @@ public class Envio {
     private EstadoEnvio estadoEnvio;
     private LocalDate fechaCreacion;
     private Repartidor repartidor;
-    private double precio;
 
     // --- Constructor ---
     public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete,
-                 LocalDate fechaCreacion, EstadoEnvio estadoEnvio, Repartidor repartidor, double precio) {
+                 LocalDate fechaCreacion, EstadoEnvio estadoEnvio, Repartidor repartidor) {
         this.idEnvio = idEnvio;
         this.origen = origen;
         this.destino = destino;
@@ -29,7 +28,6 @@ public class Envio {
         this.fechaCreacion = fechaCreacion;
         this.estadoEnvio = estadoEnvio;
         this.repartidor = repartidor;
-        this.precio = precio;
     }
 
     // --- Getters y Setters ---
@@ -88,9 +86,6 @@ public class Envio {
     public void setRepartidor(Repartidor repartidor) {
         this.repartidor = repartidor;
     }
-
-    public double getPrecio() { return precio;}
-    public void setPrecio(double precio) {}
 
     /**
      * Cambia el estado del envío.

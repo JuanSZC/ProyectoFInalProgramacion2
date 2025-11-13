@@ -23,8 +23,8 @@ public class EnvioTest {
 
     @BeforeEach
     void setUp() {
-        origen = new Direccion(1, "Calle 10 #15-23, Armenia", 4.5342, -75.6721);
-        destino = new Direccion(2, "Carrera 20 #12-45, Pereira", 4.8132, -75.6984);
+        origen = new Direccion(1, "Calle 10 #15-23, Armenia", 4.5342, -75.6721,ZonaCobertura.NORTE);
+        destino = new Direccion(2, "Carrera 20 #12-45, Pereira", 4.8132, -75.6984,ZonaCobertura.SUR);
         paquete = new Paquete(1, 3.5, 4);
         repartidor = new Repartidor("Carlos Ruiz", "123", "carlos@correo.com", "1234", 312345678, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
         fecha = LocalDate.of(2025, 10, 10);
@@ -53,7 +53,7 @@ public class EnvioTest {
 
     @Test
     void testSettersActualizanValores() {
-        Direccion nuevaDireccion = new Direccion(3, "Av. Bolívar #80", 4.5312, -75.6782);
+        Direccion nuevaDireccion = new Direccion(3, "Av. Bolívar #80", 4.5312, -75.6782,ZonaCobertura.NORTE);
         envio.setOrigen(nuevaDireccion);
         envio.setEstadoEnvio(EstadoEnvio.ASIGNADO);
         envio.setIdEnvio(2);

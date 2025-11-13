@@ -26,8 +26,8 @@ public class UsuarioTest {
     void setUp() {
         usuario = new Usuario("Juan Pérez", "123456", "juan@correo.com", "clave123", 314222333, 1);
 
-        direccion1 = new Direccion(1, "Calle 10 #15-23", 4.5342, -75.6721);
-        direccion2 = new Direccion(2, "Carrera 8 #20-45", 4.5400, -75.6750);
+        direccion1 = new Direccion(1, "Calle 10 #15-23", 4.5342, -75.6721,ZonaCobertura.NORTE);
+        direccion2 = new Direccion(2, "Carrera 8 #20-45", 4.5400, -75.6750,ZonaCobertura.SUR);
 
         paquete = new Paquete(15000, 2.5, 0.4);
 
@@ -76,7 +76,7 @@ public class UsuarioTest {
     @Test
     void testActualizarDireccion_Exitoso() {
         usuario.agregarDireccion(direccion1);
-        Direccion nueva = new Direccion(1, "Calle Nueva #5-50", 4.53, -75.67);
+        Direccion nueva = new Direccion(1, "Calle Nueva #5-50", 4.53, -75.67,ZonaCobertura.NORTE);
 
         boolean actualizado = usuario.actualizarDireccion(1, nueva);
         assertTrue(actualizado);

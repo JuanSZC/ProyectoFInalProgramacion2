@@ -13,6 +13,7 @@ public class Direccion {
     private String descripcion;
     private double latitud;
     private double longitud;
+    private ZonaCobertura zonaCobertura;
 
     /**
      * Constructor principal de la clase {Direccion}.
@@ -21,11 +22,12 @@ public class Direccion {
      * @param latitud     coordenada de latitud geográfica
      * @param longitud    coordenada de longitud geográfica
      */
-    public Direccion(int idDireccion, String descripcion, double latitud, double longitud) {
+    public Direccion(int idDireccion, String descripcion, double latitud, double longitud,  ZonaCobertura zonaCobertura) {
         this.idDireccion = idDireccion;
         this.descripcion = descripcion;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.zonaCobertura = zonaCobertura;
     }
     // =================== GETTERS Y SETTERS =================== //
 
@@ -59,5 +61,13 @@ public class Direccion {
 
     public void setLongitud(double longitud) {
         this.longitud = longitud;
+    }
+
+    public ZonaCobertura getZonaCobertura() {
+        return zonaCobertura;
+    }
+
+    public void setZonaCobertura(ZonaCobertura zonaCobertura) {
+        this.zonaCobertura = zonaCobertura;
     }
 }
