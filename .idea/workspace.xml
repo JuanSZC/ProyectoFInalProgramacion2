@@ -7,8 +7,9 @@
     <list default="true" id="94a076e9-b393-46ef-afe8-436b21357acf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/model/Envio.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/model/Envio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioPago.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioPago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioPago.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioPagoViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuarioPago.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuarioPago.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -9,71 +9,68 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="762.0" prefWidth="605.0" stylesheets="@../../../../../Styles/styleButton.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaUsuarioPago">
+<AnchorPane prefHeight="762.0" prefWidth="605.0" stylesheets="@../../../../../Styles/styleButton.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaUsuarioPagoViewController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66bfff" height="78.0" layoutX="-6.0" layoutY="-2.0" stroke="#66bfff" strokeType="INSIDE" styleClass="label" width="611.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66bfff" height="78.0" layoutX="3.0" layoutY="-3.0" stroke="#66bfff" strokeType="INSIDE" styleClass="label" width="611.0" />
       <Text fill="WHITE" layoutX="167.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de Pago">
          <font>
             <Font name="Segoe UI Bold Italic" size="45.0" />
          </font>
       </Text>
-      <Text layoutX="189.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona tu método de Pago:">
+      <Text layoutX="15.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona tu método de Pago:">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <Button layoutX="32.0" layoutY="594.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="133.0" styleClass="button-dark" text="Efectivo" />
-      <Button layoutX="233.0" layoutY="594.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="133.0" styleClass="button-dark" text="PSE" />
-      <Button layoutX="441.0" layoutY="594.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="133.0" styleClass="button-dark" text="Tarjeta" textAlignment="CENTER" textOverrun="CLIP" />
+      <Button layoutX="236.0" layoutY="627.0" mnemonicParsing="false" onAction="#hacerPago" prefHeight="78.0" prefWidth="133.0" styleClass="button-dark" text="Realizar Pago" />
       <Text layoutX="179.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <TableView fx:id="tbCarrito" layoutX="15.0" layoutY="84.0" prefHeight="174.0" prefWidth="575.0">
+      <TableView fx:id="tbCarritoPago" layoutX="15.0" layoutY="86.0" prefHeight="203.0" prefWidth="575.0">
          <columns>
-            <TableColumn fx:id="colCNombre" prefWidth="300.0" text="Nombre" />
-            <TableColumn fx:id="colCCantidad" minWidth="0.0" prefWidth="102.0" text="Cantidad" />
-            <TableColumn fx:id="colCSubTotal" prefWidth="167.0" text="SubTotal" />
+            <TableColumn fx:id="colCNombrePago" prefWidth="192.0" text="Nombre" />
+            <TableColumn fx:id="colCCantidadPago" minWidth="0.0" prefWidth="125.0" text="Cantidad" />
+            <TableColumn fx:id="colCSubTotalPago" prefWidth="252.0" text="SubTotal" />
          </columns>
       </TableView>
-      <Button layoutX="16.0" layoutY="714.0" mnemonicParsing="false" styleClass="button-danger" text="Volver" />
-      <Text layoutX="53.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Productos: ">
+      <Text layoutX="14.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal:">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="183.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="suma del total" textAlignment="RIGHT" wrappingWidth="406.111328125">
+      <Text fx:id="txProductos" layoutX="189.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="suma del total" textAlignment="RIGHT" wrappingWidth="406.111328125">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="53.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Envio:">
+      <Text layoutX="16.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Envio:">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="183.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="suma del envio" textAlignment="RIGHT" wrappingWidth="406.111328125">
+      <Text fx:id="txEnvio" layoutX="189.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="suma del envio" textAlignment="RIGHT" wrappingWidth="406.111328125">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="53.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio Adicional:">
+      <Text layoutX="8.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio Adicional:">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <ComboBox layoutX="441.0" layoutY="374.0" prefWidth="150.0" styleClass="button-primary" />
-      <Text layoutX="54.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:">
+      <ComboBox fx:id="cbServicio" layoutX="369.0" layoutY="405.0" prefHeight="44.0" prefWidth="230.0" styleClass="button-primary" />
+      <Text layoutX="17.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="107.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sumatoria final" textAlignment="RIGHT" wrappingWidth="483.2509765625">
+      <Text fx:id="txSuma" layoutX="107.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="---------------------" textAlignment="RIGHT" wrappingWidth="483.2509765625">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
+      <ComboBox fx:id="cbMetodo" layoutX="369.0" layoutY="526.0" prefHeight="44.0" prefWidth="230.0" styleClass="button-primary" />
    </children>
 </AnchorPane>

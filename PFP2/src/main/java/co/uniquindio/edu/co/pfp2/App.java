@@ -1,20 +1,16 @@
 package co.uniquindio.edu.co.pfp2;
 
-import co.uniquindio.edu.co.pfp2.Extra.*;
 import co.uniquindio.edu.co.pfp2.model.*;
 import co.uniquindio.edu.co.pfp2.viewController.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.lang.model.element.ModuleElement;
 import java.io.IOException;
 
 public class App extends Application {
@@ -138,7 +134,7 @@ public class App extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaUsuarioPago.fxml"));
             AnchorPane rootLayout = loader.load();
 
-            PantallaUsuarioPago controller = loader.getController();
+            PantallaUsuarioPagoViewController controller = loader.getController();
             controller.setApp(this);
 
             // Crear ventana modal correctamente sin tocar la principal
@@ -158,7 +154,7 @@ public class App extends Application {
         }
     }
 
-    private void cerrarVentanaModular() {
+    public void cerrarVentanaModular() {
         Stage stageActual = (Stage) this.stage.getScene().getWindow();
         stageActual.close();
     }

@@ -246,37 +246,6 @@ public class PantallaUsuarioViewController {
             DialogUtils.mostrarError("Debe tener por lo menos un producto para realizar el pedido.");
             return;
         }
-
-        double precio = 0;
-        double peso = 0;
-
-
-        for (Producto producto : usuarioSesion.getListCarritosUsuario()) {
-            precio += producto.getPrecio();
-            peso += producto.getPeso();
-        }
-
-
-        Paquete paquete = new Paquete(precio, peso, peso);
-        paquete.setProductos(new ArrayList<>(usuarioSesion.getListCarritosUsuario()));
-
-        usuarioSesion.getListCarritosUsuario().clear();
-        listarTablas();
-
-        List<Repartidor> repartidores = app.listGlobalRepartidores.stream()
-                .filter(r -> r.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE)
-                .toList();
-
-        if (repartidores.isEmpty()) {
-            DialogUtils.mostrarError("No hay repartidores disponibles para realizar el pedido.");
-            return;
-        }
-
-        Random random = new Random();
-        Repartidor repartidor = repartidores.get(random.nextInt(repartidores.size()));
-        repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
-
-        DialogUtils.mostrarMensaje("Pedido realizado con éxito. Repartidor asignado: " + repartidor.getNombreCompleto());
         app.openPantallaUsuarioPago();
     }
 

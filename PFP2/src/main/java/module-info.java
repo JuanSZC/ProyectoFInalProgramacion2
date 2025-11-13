@@ -7,6 +7,7 @@ module co.uniquindio.edu.co.pfp2 {
     requires java.compiler;
 
 
+
     opens co.uniquindio.edu.co.pfp2 to javafx.fxml;
     opens co.uniquindio.edu.co.pfp2.viewController to javafx.fxml;
 
