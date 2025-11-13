@@ -17,6 +17,7 @@ public class RepartidorTest {
     @BeforeEach
     void setUp() {
         repartidor = new Repartidor(
+                1111,
                 "Carlos Pérez",
                 "123456789",
                 "carlos@correo.com",

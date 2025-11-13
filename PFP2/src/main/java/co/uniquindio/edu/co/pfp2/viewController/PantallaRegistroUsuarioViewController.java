@@ -68,6 +68,7 @@ public class PantallaRegistroUsuarioViewController {
             txtCorreo.clear();
             txtTelefono.clear();
             txtContrasena.clear();
+            app.openPantallaSesionUsuario();
 
         } catch (Exception e) {
             e.printStackTrace();

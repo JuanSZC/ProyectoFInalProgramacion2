@@ -6,11 +6,13 @@ public class Repartidor  extends Persona {
     private ZonaCobertura zonaCobertura;
     private DisponibilidadRepartidor disponibilidadRepartidor = DisponibilidadRepartidor.DISPONIBLE;
 
-    public Repartidor(String nombreCompleto, String cedula, String correo, String contrasenia, int telefono,ZonaCobertura zonaCobertura, DisponibilidadRepartidor disponibilidadRepartidor) {
+
+    public Repartidor(int idRepartidor,String nombreCompleto, String cedula, String correo, String contrasenia, int telefono,ZonaCobertura zonaCobertura, DisponibilidadRepartidor disponibilidadRepartidor) {
         super(nombreCompleto, cedula, correo, contrasenia, telefono);
         this.idRepartidor = idRepartidor;
         this.zonaCobertura = zonaCobertura;
         this.disponibilidadRepartidor = disponibilidadRepartidor;
+
 
     }
 
@@ -43,4 +45,5 @@ public class Repartidor  extends Persona {
         }
         return true;
     }
+
 }

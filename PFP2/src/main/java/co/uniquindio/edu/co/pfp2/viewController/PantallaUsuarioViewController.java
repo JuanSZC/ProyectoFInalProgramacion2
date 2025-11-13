@@ -66,7 +66,7 @@ public class PantallaUsuarioViewController {
     }
 
     @FXML
-    Text tUsuario;
+    public Text tUsuario;
     @FXML
     ComboBox<Integer> cbUnidadesPedir;
 
@@ -110,7 +110,6 @@ public class PantallaUsuarioViewController {
 
     public void openPantallaUsuarioConfiguracion(){
         this.app.openPantallaUsuarioConfiguracion();
-        System.out.println("SI");
     }
     public void cerrarSesion(){
         app.openPantallaBienvenida();
@@ -149,9 +148,7 @@ public class PantallaUsuarioViewController {
         String cantidadTxt = txCantidadProducto.getText();
         String pesoTxt = txPesoProducto.getText();
 
-
-        if (nombre.isEmpty() || descripcion.isEmpty() ||
-                precioTxt.isEmpty() || cantidadTxt.isEmpty() || pesoTxt.isEmpty()) {
+        if (nombre.isEmpty() || descripcion.isEmpty() || precioTxt.isEmpty() || cantidadTxt.isEmpty() || pesoTxt.isEmpty()) {
             DialogUtils.mostrarError("Hay campos vacíos.");
             return;
         }
@@ -161,14 +158,34 @@ public class PantallaUsuarioViewController {
             int cantidad = Integer.parseInt(cantidadTxt);
             double peso = Double.parseDouble(pesoTxt);
 
-            if (precio <= 0 || cantidad < 0 || peso < 0) {
-                DialogUtils.mostrarError("Los valores numéricos deben ser mayores que cero.");
+            // Validar decimales (máximo 2)
+            if (Math.round(precio * 100) != precio * 100 || Math.round(peso * 100) != peso * 100) {
+                DialogUtils.mostrarError("No se permiten valores con más de 2 decimales.");
                 return;
             }
 
-            Producto nuevo = new Producto(app.idProducto,nombre, descripcion, precio, cantidad, peso);
-            app.idProducto ++;
+            if (precio <= 1 || cantidad < 0 || peso < 0) {
+                DialogUtils.mostrarError("Los valores numéricos deben ser mayores a 0.");
+                return;
+            }
 
+            if (precio > 10000000) {
+                DialogUtils.mostrarError("No se puede publicar un producto que supere los $10.000.000.");
+                return;
+            }
+
+            if (peso > 1000) {
+                DialogUtils.mostrarError("Trátame serio, contrate un avión mejor.");
+                return;
+            }
+
+            if (cantidad > 999) {
+                DialogUtils.mostrarError("Supera el límite de cantidad por producto.");
+                return;
+            }
+
+            Producto nuevo = new Producto(app.idProducto, nombre, descripcion, precio, cantidad, peso);
+            app.idProducto++;
 
             app.usuarioSesion.getListProductosUsuario().add(nuevo);
             app.listGlobalProductos.add(nuevo);
@@ -292,6 +309,10 @@ public class PantallaUsuarioViewController {
             DialogUtils.mostrarError("¿En serio? Es cancelar, no devolver.");
             return;
         }
+        if (estado == EstadoEnvio.CANCELADO) {
+            DialogUtils.mostrarError("No se puede cancelar un pedido que ya esta cancelado mi papacho.");
+        return;
+        }
 
         envio.setEstadoEnvio(EstadoEnvio.CANCELADO);
         DialogUtils.mostrarMensaje("Pedido cancelado correctamente.");
@@ -377,6 +398,17 @@ public class PantallaUsuarioViewController {
                 txPesoProducto.clear();
             }
         });
+        tUsuario.textProperty().addListener((observable, oldValue, newValue) -> {
+            String valorSesion = app.usuarioSesion.getNombreCompleto();
+            if (!newValue.equals(valorSesion)) {
+                tUsuario.setText(valorSesion);
+            }
+        });
+
+
+
+
+
 
 
 

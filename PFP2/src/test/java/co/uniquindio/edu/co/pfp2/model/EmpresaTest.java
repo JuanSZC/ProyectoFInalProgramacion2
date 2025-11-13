@@ -81,7 +81,7 @@ public class EmpresaTest {
     void testAgregarElementosAListas() {
         // Crear objetos simulados
         Usuario usuario = new Usuario("Juan Pérez", "123", "juan@correo.com", "1234", 312000000, 1);
-        Repartidor repartidor = new Repartidor("Carlos Ruiz", "987", "carlos@correo.com", "abcd", 312123123, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
+        Repartidor repartidor = new Repartidor(1111,"Carlos Ruiz", "987", "carlos@correo.com", "abcd", 312123123, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
         Envio envio = new Envio(1, null, null, null, null, EstadoEnvio.ASIGNADO, repartidor);
 
         // Agregar objetos a las listas

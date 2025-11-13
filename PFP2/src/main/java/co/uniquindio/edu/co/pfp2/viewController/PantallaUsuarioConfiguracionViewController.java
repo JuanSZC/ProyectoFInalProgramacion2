@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class PantallaUsuarioConfiguracionViewController {
@@ -33,6 +34,10 @@ public class PantallaUsuarioConfiguracionViewController {
     TableColumn<Direccion,String> colZona;
     @FXML
     Button btAr;
+    @FXML
+    Button btModi;
+
+
 
     public void setApp(App app) {
         this.app = app;
@@ -99,6 +104,9 @@ public class PantallaUsuarioConfiguracionViewController {
         app.usuarioSesion.setNombreCompleto(nombre);
         app.usuarioSesion.setCorreo(correo);
         app.usuarioSesion.setContrasenia(contrasenia);
+
         DialogUtils.mostrarMensaje("Datos modificados correctamente");
+
+        app.openPantallaUsuario();
     }
 }

@@ -26,7 +26,7 @@ public class EnvioTest {
         origen = new Direccion(1, "Calle 10 #15-23, Armenia", 4.5342, -75.6721,ZonaCobertura.NORTE);
         destino = new Direccion(2, "Carrera 20 #12-45, Pereira", 4.8132, -75.6984,ZonaCobertura.SUR);
         paquete = new Paquete(1, 3.5, 4);
-        repartidor = new Repartidor("Carlos Ruiz", "123", "carlos@correo.com", "1234", 312345678, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
+        repartidor = new Repartidor(1111,"Carlos Ruiz", "123", "carlos@correo.com", "1234", 312345678, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
         fecha = LocalDate.of(2025, 10, 10);
 
         envio = new Envio(1, origen, destino, paquete, fecha, EstadoEnvio.SOLICITADO, repartidor);

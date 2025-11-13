@@ -3,133 +3,119 @@ package co.uniquindio.edu.co.pfp2.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import java.util.List;
+import java.time.LocalDate;
 
-/**
- * Clase de pruebas unitarias para la clase {@link Administrador}.
- * Verifica las operaciones principales de gestión de usuarios, repartidores
- * y asignaciones de envíos.
- */
-public class AdministradorTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class AdministradorTest {
 
     private Administrador admin;
 
     @BeforeEach
     void setUp() {
-        // Reiniciar instancia Singleton antes de cada prueba
+        // Reinicia el singleton antes de cada test
         admin = Administrador.getInstance();
 
-        // Limpiar listas antes de cada test
+        // Limpia las listas para pruebas limpias
         admin.listarUsuarios().clear();
         admin.listarRepartidores().clear();
     }
 
-    // ===================== PRUEBAS DE SINGLETON =====================
-
+    // =================== PRUEBAS SINGLETON ===================
     @Test
-    void testSingletonDevuelveLaMismaInstancia() {
-        Administrador admin2 = Administrador.getInstance();
-        assertSame(admin, admin2, "Debe retornar siempre la misma instancia");
+    void testSingletonDevuelveMismaInstancia() {
+        Administrador otra = Administrador.getInstance();
+        assertSame(admin, otra, "Debe retornar la misma instancia siempre");
     }
 
-    // ===================== PRUEBAS DE USUARIOS =====================
-
+    // =================== PRUEBAS USUARIOS ===================
     @Test
     void testAgregarUsuario() {
-        Usuario usuario = new Usuario("Juan", "123", "juan@mail.com", "1234", 300000000, 1);
-        boolean agregado = admin.agregarUsuario(usuario);
-        assertTrue(agregado, "El usuario debería agregarse correctamente");
+        Usuario u = new Usuario("Juan", "123", "juan@mail.com", "pass", 3000000, 1);
+        boolean agregado = admin.agregarUsuario(u);
+        assertTrue(agregado, "Usuario debe agregarse");
         assertEquals(1, admin.listarUsuarios().size());
     }
 
     @Test
     void testAgregarUsuarioDuplicado() {
-        Usuario u1 = new Usuario("Ana", "111", "ana@mail.com", "abc", 310000000, 2);
-        Usuario u2 = new Usuario("Ana", "111", "ana@mail.com", "abc", 310000000, 2);
-
+        Usuario u1 = new Usuario("Ana", "111", "ana@mail.com", "abc", 1000, 2);
+        Usuario u2 = new Usuario("Ana", "111", "ana@mail.com", "abc", 1000, 2);
         admin.agregarUsuario(u1);
         boolean agregado = admin.agregarUsuario(u2);
-
-        assertFalse(agregado, "No debería agregar usuarios duplicados por ID");
+        assertFalse(agregado, "No debe agregar usuario duplicado");
     }
 
     @Test
     void testActualizarUsuario() {
-        Usuario u1 = new Usuario("Carlos", "222", "carlos@mail.com", "pass", 312345678, 3);
-        admin.agregarUsuario(u1);
+        Usuario u = new Usuario("Carlos", "222", "carlos@mail.com", "pwd", 2000, 3);
+        admin.agregarUsuario(u);
 
-        Usuario actualizado = new Usuario("Carlos A.", "222", "nuevo@mail.com", "newpass", 399999999, 3);
-        boolean resultado = admin.actualizarUsuario(3, actualizado);
+        Usuario actualizado = new Usuario("Carlos A.", "222", "nuevo@mail.com", "nueva", 3000, 3);
+        boolean res = admin.actualizarUsuario(3, actualizado);
 
-        assertTrue(resultado, "Debe permitir actualizar el usuario");
+        assertTrue(res);
         assertEquals("nuevo@mail.com", admin.listarUsuarios().get(0).getCorreo());
     }
 
     @Test
     void testEliminarUsuario() {
-        Usuario usuario = new Usuario("Laura", "333", "laura@mail.com", "pwd", 300123456, 4);
-        admin.agregarUsuario(usuario);
-
+        Usuario u = new Usuario("Laura", "333", "laura@mail.com", "pass", 1500, 4);
+        admin.agregarUsuario(u);
         boolean eliminado = admin.eliminarusuario(4);
-        assertTrue(eliminado, "Debe eliminar el usuario correctamente");
-        assertTrue(admin.listarUsuarios().isEmpty(), "La lista debería quedar vacía");
+        assertTrue(eliminado);
+        assertTrue(admin.listarUsuarios().isEmpty());
     }
 
-    // ===================== PRUEBAS DE REPARTIDORES =====================
-
+    // =================== PRUEBAS REPARTIDORES ===================
     @Test
     void testAgregarRepartidor() {
-        Repartidor repartidor = new Repartidor("Pedro", "555", "pedro@mail.com", "pass", 322222222, ZonaCobertura.SUR,  DisponibilidadRepartidor.DISPONIBLE);
-        boolean agregado = admin.agregarRepartidor(repartidor);
+        Repartidor r = new Repartidor(10, "Pedro", "555", "pedro@mail.com", "pass", 3000, ZonaCobertura.NORTE, DisponibilidadRepartidor.DISPONIBLE);
+        boolean agregado = admin.agregarRepartidor(r);
         assertTrue(agregado);
         assertEquals(1, admin.listarRepartidores().size());
     }
 
     @Test
     void testActualizarRepartidor() {
-        Repartidor rep = new Repartidor("Miguel", "444", "miguel@mail.com", "clave", 312000000, ZonaCobertura.NORTE,  DisponibilidadRepartidor.DISPONIBLE);
-        admin.agregarRepartidor(rep);
+        Repartidor r = new Repartidor(11, "Miguel", "444", "miguel@mail.com", "clave", 2500, ZonaCobertura.SUR, DisponibilidadRepartidor.DISPONIBLE);
+        admin.agregarRepartidor(r);
 
-        Repartidor actualizado = new Repartidor("Miguel A", "444", "miguelnuevo@mail.com", "nueva", 311111111, ZonaCobertura.CENTRO,  DisponibilidadRepartidor.EN_RUTA);
-        boolean modificado = admin.actualizarRepartidor(10, actualizado);
+        Repartidor actualizado = new Repartidor(11, "Miguel A", "444", "nuevo@mail.com", "newpass", 3000, ZonaCobertura.CENTRO, DisponibilidadRepartidor.EN_RUTA);
+        boolean modificado = admin.actualizarRepartidor(11, actualizado);
 
-        assertTrue(modificado, "Debe actualizar correctamente los datos del repartidor");
-        assertEquals("Sur", admin.listarRepartidores().get(0).getZonaCobertura());
+        assertTrue(modificado);
+        assertEquals(ZonaCobertura.CENTRO, admin.listarRepartidores().get(0).getZonaCobertura());
     }
 
     @Test
     void testEliminarRepartidor() {
-        Repartidor rep = new Repartidor("Lina", "888", "lina@mail.com", "pass", 320999999, ZonaCobertura.MUNICIPIO_CERCANO,  DisponibilidadRepartidor.DISPONIBLE);
-        admin.agregarRepartidor(rep);
-
-        boolean eliminado = admin.eliminarRepartidor(11);
-        assertTrue(eliminado, "Debe eliminar correctamente el repartidor");
+        Repartidor r = new Repartidor(12, "Lina", "888", "lina@mail.com", "pass", 2000, ZonaCobertura.MUNICIPIO_CERCANO, DisponibilidadRepartidor.DISPONIBLE);
+        admin.agregarRepartidor(r);
+        boolean eliminado = admin.eliminarRepartidor(12);
+        assertTrue(eliminado);
         assertTrue(admin.listarRepartidores().isEmpty());
     }
 
-    // ===================== PRUEBAS DE ASIGNACIÓN =====================
-
+    // =================== PRUEBAS ASIGNACIÓN ===================
     @Test
     void testAsignarRepartidorDisponible() {
-        Envio envio = new Envio(1, null, null, null, java.time.LocalDate.now(), EstadoEnvio.SOLICITADO, null);
-        Repartidor rep = new Repartidor("Andrés", "999", "andres@mail.com", "pass", 300000000, ZonaCobertura.CENTRO,  DisponibilidadRepartidor.DISPONIBLE);
+        Envio envio = new Envio(1, null, null, null, LocalDate.now(), EstadoEnvio.SOLICITADO, null);
+        Repartidor r = new Repartidor(13, "Andres", "999", "andres@mail.com", "pass", 1000, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
 
-        boolean asignado = admin.asignarRepartidor(envio, rep);
-
-        assertTrue(asignado, "Debe permitir asignar un repartidor disponible");
-        assertEquals(DisponibilidadRepartidor.EN_RUTA, rep.getDisponibilidadRepartidor());
+        boolean asignado = admin.asignarRepartidor(envio, r);
+        assertTrue(asignado);
+        assertEquals(DisponibilidadRepartidor.EN_RUTA, r.getDisponibilidadRepartidor());
         assertEquals(EstadoEnvio.ASIGNADO, envio.getEstadoEnvio());
     }
 
     @Test
     void testAsignarRepartidorNoDisponible() {
-        Envio envio = new Envio(2, null, null, null, java.time.LocalDate.now(), EstadoEnvio.SOLICITADO, null);
-        Repartidor rep = new Repartidor("Tania", "777", "tania@mail.com", "clave", 301000000, ZonaCobertura.CENTRO,  DisponibilidadRepartidor.EN_RUTA);
+        Envio envio = new Envio(2, null, null, null, LocalDate.now(), EstadoEnvio.SOLICITADO, null);
+        Repartidor r = new Repartidor(14, "Tania", "777", "tania@mail.com", "clave", 2000, ZonaCobertura.SUR, DisponibilidadRepartidor.EN_RUTA);
 
-        boolean asignado = admin.asignarRepartidor(envio, rep);
-
-        assertFalse(asignado, "No debe asignar repartidores no disponibles");
-        assertEquals(EstadoEnvio.SOLICITADO, envio.getEstadoEnvio(), "El envío debe mantener su estado original");
+        boolean asignado = admin.asignarRepartidor(envio, r);
+        assertFalse(asignado);
+        assertEquals(EstadoEnvio.SOLICITADO, envio.getEstadoEnvio());
     }
 }
