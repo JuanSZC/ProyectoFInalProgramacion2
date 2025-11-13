@@ -14,6 +14,7 @@ public class PantallaDireccionUsuarioViewController {
 
     App app;
 
+
     @FXML
     TextField tfDireccion;
     @FXML
@@ -54,13 +55,11 @@ public class PantallaDireccionUsuarioViewController {
             double latitud = Double.parseDouble(latTxt);
             double longitud = Double.parseDouble(lonTxt);
 
-            Direccion direccion = new Direccion(app.idDireccion, descripcion, latitud, longitud, zona);
-
+            Direccion direccion = new Direccion(app.idDireccion+1, descripcion, latitud, longitud, zona);
+            app.idDireccion += 1;
 
             app.usuarioSesion.getListDireccionesUsuario().add(direccion);
-
             DialogUtils.mostrarMensaje("Dirección agregada correctamente.");
-
 
             tfDireccion.clear();
             tfLatitud.clear();
@@ -70,6 +69,8 @@ public class PantallaDireccionUsuarioViewController {
         } catch (NumberFormatException e) {
             DialogUtils.mostrarError("Latitud y longitud deben ser números válidos.");
         }
+
+        app.openPantallaUsuarioConfiguracion();
         app.cerrarMod(btDir);
     }
 

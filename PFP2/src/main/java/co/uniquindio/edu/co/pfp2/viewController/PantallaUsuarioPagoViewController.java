@@ -2,20 +2,15 @@ package co.uniquindio.edu.co.pfp2.viewController;
 
 import co.uniquindio.edu.co.pfp2.App;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
-import co.uniquindio.edu.co.pfp2.model.DisponibilidadRepartidor;
-import co.uniquindio.edu.co.pfp2.model.Paquete;
-import co.uniquindio.edu.co.pfp2.model.Producto;
-import co.uniquindio.edu.co.pfp2.model.Repartidor;
+import co.uniquindio.edu.co.pfp2.model.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -41,9 +36,11 @@ public class PantallaUsuarioPagoViewController {
     private TableColumn<Producto, String> colCCantidadPago;
     @FXML
     private TableColumn<Producto, String> colCSubTotalPago;
-
+    @FXML
+    ComboBox<Direccion> cbDireccionesPago;
 
     private App app;
+    Paquete paquete;
 
 
     public void setApp(App app) {
@@ -94,9 +91,33 @@ public class PantallaUsuarioPagoViewController {
             precio += producto.getPrecio()*producto.getCantidad();
             peso += producto.getPeso()*producto.getCantidad();
         }
+        cbDireccionesPago.setCellFactory(param -> new ListCell<Direccion>() {
+            @Override
+            protected void updateItem(Direccion item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.getDescripcion());
+                }
+            }
+        });
+        cbDireccionesPago.setItems(FXCollections.observableList(app.usuarioSesion.getListDireccionesUsuario()));
 
+        cbDireccionesPago.setButtonCell(new ListCell<Direccion>() {
+            @Override
+            protected void updateItem(Direccion item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.getDescripcion());
+                }
+            }
+        });
         Paquete paquete = new Paquete(precio, peso, peso);
         paquete.setProductos(new ArrayList<>(app.usuarioSesion.getListCarritosUsuario()));
+        this.paquete = paquete;
         txProductos.setText(String.valueOf(paquete.getPrecio()));
         txEnvio.setText(String.valueOf(paquete.getPeso()*100));
         cbMetodo.getItems().setAll("PSE","Efectivo","Tarjeta");
@@ -106,20 +127,25 @@ public class PantallaUsuarioPagoViewController {
                 double valorSub = paquete.getPrecio()+(paquete.getPeso()*100);
                 if (cbServicio.getValue().equals("Envio Normal")) {
                      txSuma.setText(String.valueOf(String.valueOf(valorSub)));
+                     this.paquete.setPrecio(valorSub);
                 }
                 else if  (cbServicio.getValue().equals("Envio Urgente")) {
                     txSuma.setText(String.valueOf(String.valueOf(valorSub+ 5000)));
+                    this.paquete.setPrecio(valorSub+5000);
                 }
                 else if  (cbServicio.getValue().equals("Envio Fragil")) {
                     txSuma.setText(String.valueOf(String.valueOf(valorSub+5000)));
+                    this.paquete.setPrecio(valorSub+5000);
                 }
                 else if (cbServicio.getValue().equals("Envio Económico")) {
                     txSuma.setText(String.valueOf(String.valueOf(valorSub-5000)));
+                    this.paquete.setPrecio(valorSub-5000);
                 }
             } else {
                 txSuma.setText("---------------------");
             }
         });
+
 
 
 
@@ -136,11 +162,15 @@ public class PantallaUsuarioPagoViewController {
             DialogUtils.mostrarError("Debes Seleccionar un metodo de Pago.");
             return;
         }
+        if (cbDireccionesPago.getValue() == null){
+            DialogUtils.mostrarError("Debes Seleccionar un direccion.");
+            return;
+        }
 
 
 
         List<Repartidor> repartidores = app.listGlobalRepartidores.stream()
-                .filter(r -> r.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE)
+                .filter(r -> r.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE && r.getZonaCobertura().equals(cbDireccionesPago.getValue().getZonaCobertura()))
                 .toList();
 
         if (repartidores.isEmpty()) {
@@ -153,7 +183,11 @@ public class PantallaUsuarioPagoViewController {
         repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
         DialogUtils.mostrarMensaje("Pedido Realizado con éxito.\nEl Repartidor elegido fue: "+repartidor.getNombreCompleto()+".");
         app.usuarioSesion.getListCarritosUsuario().removeAll(app.usuarioSesion.getListCarritosUsuario());
-        
+
+        Envio envio = new Envio(app.idEnvio+1,cbDireccionesPago.getValue(),cbDireccionesPago.getValue(),this.paquete, LocalDate.now(),EstadoEnvio.ASIGNADO,repartidor);
+        app.usuarioSesion.getListEnviosUsuario().add(envio);
+
+
         app.cerrarVentanaModular();
         app.openPantallaUsuario();
     }

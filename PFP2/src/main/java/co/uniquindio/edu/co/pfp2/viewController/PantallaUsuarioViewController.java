@@ -10,10 +10,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class PantallaUsuarioViewController {
     App app;
@@ -50,6 +53,9 @@ public class PantallaUsuarioViewController {
     TableColumn<Producto,String> colCCantidad;
     @FXML
     TableColumn<Producto,String> colCSubTotal;
+    @FXML
+    Button btHP;
+
 
     public Text gettUsuario() {
         return tUsuario;
@@ -77,6 +83,18 @@ public class PantallaUsuarioViewController {
 
     @FXML
     Button btAM;
+
+    @FXML
+    TableView<Envio> tbEnviosUsuario;
+    @FXML
+    TableColumn<Envio,String> colFechaEnvio;
+    @FXML
+    TableColumn<Envio,String> colValorEnvio;
+    @FXML
+    TableColumn<Envio,String> colRepartidorEnvio;
+    @FXML
+    TableColumn<Envio,String> colEstadoEnvio;
+
 
     public Usuario getUsuarioSesion() {
         return usuarioSesion;
@@ -167,21 +185,23 @@ public class PantallaUsuarioViewController {
 
 
     public void listarTablas() {
-        if (this.app != null) {
-            ObservableList<Producto> obs = FXCollections.observableArrayList();
-            obs.setAll(app.listGlobalProductos);
-            obs.removeAll(app.usuarioSesion.getListProductosUsuario());
+        if (app == null || app.usuarioSesion == null) return;
 
+        FilteredList<Producto> filtrados = new FilteredList<>(app.listGlobalProductos);
+        filtrados.setPredicate(p -> p.getCantidad() > 0 &&
+                !app.usuarioSesion.getListProductosUsuario().contains(p));
 
-            FilteredList<Producto> filtrados = new FilteredList<>(obs);
-            filtrados.setPredicate(p -> p.getCantidad() > 0);
+        tbCatalogoDisponible.setItems(filtrados);
+        tbMiCatalogo.setItems(FXCollections.observableList(app.usuarioSesion.getListProductosUsuario()));
+        tbCarrito.setItems(FXCollections.observableList(app.usuarioSesion.getListCarritosUsuario()));
+        tbEnviosUsuario.setItems(FXCollections.observableList(app.usuarioSesion.getListEnviosUsuario()));
 
-            tbCatalogoDisponible.setItems(filtrados);
-
-            tbMiCatalogo.setItems(FXCollections.observableList(usuarioSesion.getListProductosUsuario()));
-            tbCarrito.setItems(FXCollections.observableList(usuarioSesion.getListCarritosUsuario()));
-        }
+        tbCatalogoDisponible.refresh();
+        tbMiCatalogo.refresh();
+        tbCarrito.refresh();
+        tbEnviosUsuario.refresh();
     }
+
     public void accionAgregarModificar() {
         Producto seleccionado = tbMiCatalogo.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
@@ -242,11 +262,57 @@ public class PantallaUsuarioViewController {
     }
 
     public void hacerPedido() {
+        if (usuarioSesion.getListDireccionesUsuario().size() == 0) {
+            DialogUtils.mostrarError("El usuario no posee direcciones activas por favor agrega una..");
+            app.openPantallaDireccionUsuario((Stage)btHP.getScene().getWindow() );
+        }
         if (usuarioSesion.getListCarritosUsuario().isEmpty()) {
             DialogUtils.mostrarError("Debe tener por lo menos un producto para realizar el pedido.");
             return;
         }
         app.openPantallaUsuarioPago();
+    }
+
+    public void cancelarPedido() {
+        Envio envio = tbEnviosUsuario.getSelectionModel().getSelectedItem();
+
+        if (envio == null) {
+            DialogUtils.mostrarError("Debe seleccionar un pedido para cancelar.");
+            return;
+        }
+
+        EstadoEnvio estado = envio.getEstadoEnvio();
+
+        if (estado == EstadoEnvio.EN_RUTA) {
+            DialogUtils.mostrarError("No se puede cancelar un pedido en ruta.");
+            return;
+        }
+
+        if (estado == EstadoEnvio.ENTREGADO) {
+            DialogUtils.mostrarError("¿En serio? Es cancelar, no devolver.");
+            return;
+        }
+
+        envio.setEstadoEnvio(EstadoEnvio.CANCELADO);
+        DialogUtils.mostrarMensaje("Pedido cancelado correctamente.");
+
+        if (envio.getRepartidor() != null) {
+            envio.getRepartidor().setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
+        }
+
+        if (envio.getPaquete() != null && envio.getPaquete().getProductos() != null) {
+            Map<Integer, Producto> mapaGlobal = app.listGlobalProductos.stream()
+                    .collect(Collectors.toMap(Producto::getIdProducto, p -> p));
+
+            for (Producto producto : envio.getPaquete().getProductos()) {
+                Producto pGlobal = mapaGlobal.get(producto.getIdProducto());
+                if (pGlobal != null) {
+                    pGlobal.setCantidad(pGlobal.getCantidad() + producto.getCantidad());
+                }
+            }
+        }
+
+        listarTablas();
     }
 
 
@@ -276,6 +342,12 @@ public class PantallaUsuarioViewController {
         colCDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescripcion()));
         colCCantidad.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCantidad())));
         colCSubTotal.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio()*cellData.getValue().getCantidad())));
+
+        colFechaEnvio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaCreacion().toString()));
+        colValorEnvio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPaquete().getPrecio())));
+        colRepartidorEnvio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getRepartidor().getNombreCompleto())));
+        colEstadoEnvio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getEstadoEnvio().toString())));
+
         listarTablas();
 
         tbCatalogoDisponible.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {

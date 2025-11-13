@@ -133,11 +133,34 @@
                                         <Font name="Segoe UI Bold Italic" size="25.0" />
                                     </font>
                                 </Text>
-                        <Button layoutX="1018.0" layoutY="486.0" mnemonicParsing="false" onAction="#hacerPedido" prefHeight="44.0" prefWidth="125.0" styleClass="button-primary" text="Hacer Pedido" />
+                        <Button fx:id="btHP" layoutX="1018.0" layoutY="486.0" mnemonicParsing="false" onAction="#hacerPedido" prefHeight="44.0" prefWidth="125.0" styleClass="button-primary" text="Hacer Pedido" />
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
+            <Tab text="🚚 Mis Envios">
+               <content>
+                  <AnchorPane prefHeight="600.0" prefWidth="1080.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f6faf" height="60.0" stroke="#2f6faf" strokeType="INSIDE" width="1210.0" />
+                        <TableView fx:id="tbEnviosUsuario" layoutY="60.0" prefHeight="478.0" prefWidth="948.0">
+                           <columns>
+                              <TableColumn fx:id="colFechaEnvio" prefWidth="224.0" text="Fecha" />
+                              <TableColumn fx:id="colRepartidorEnvio" prefWidth="287.0" text="Repartidor Asignado" />
+                              <TableColumn fx:id="colValorEnvio" prefWidth="256.0" text="Valor" />
+                              <TableColumn fx:id="colEstadoEnvio" prefWidth="171.0" text="Estado" />
+                           </columns>
+                        </TableView>
+                        <Text fill="white" layoutX="8.0" layoutY="40.0" text="Mis Envios" wrappingWidth="720.0">
+                           <font>
+                              <Font name="Segoe UI Bold Italic" size="25.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="1021.0" layoutY="504.0" mnemonicParsing="false" onAction="#cancelarPedido" styleClass="button-dark" text="Cancelar Pedido" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
             </tabs>
         </TabPane>
     </children>

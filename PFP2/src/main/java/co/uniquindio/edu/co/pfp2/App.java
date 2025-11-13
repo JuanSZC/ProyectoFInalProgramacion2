@@ -25,6 +25,7 @@ public class App extends Application {
     public int idUsuario = 1111;
     public int idProducto = 1111;
     public int idDireccion = 1111;
+    public int idEnvio = 1111;
 
     public Usuario usuarioSesion;
     public static void main(String[] args) {
@@ -113,6 +114,7 @@ public class App extends Application {
             // Controlador de la pantalla de configuración
             PantallaUsuarioConfiguracionViewController configController = loader.getController();
             configController.setApp(this);
+            configController.initialize();
 
             // Crear la ventana modal
             Stage ventanaConfig = new Stage();
