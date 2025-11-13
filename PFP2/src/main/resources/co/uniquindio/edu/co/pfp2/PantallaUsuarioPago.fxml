@@ -55,7 +55,7 @@
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="8.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio Adicional:">
+      <Text layoutX="16.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio Adicional:">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
@@ -71,7 +71,7 @@
             <Font name="Segoe UI Italic" size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cbMetodo" layoutX="369.0" layoutY="526.0" prefHeight="44.0" prefWidth="230.0" styleClass="button-primary" />
+      <ComboBox fx:id="cbMetodo" layoutX="369.0" layoutY="526.0" prefHeight="44.0" prefWidth="230.0" styleClass="button-danger" />
       <Text layoutX="15.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona una Dirección:">
          <font>
             <Font name="Segoe UI Italic" size="18.0" />

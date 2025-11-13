@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="94a076e9-b393-46ef-afe8-436b21357acf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaDireccionUsuarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaDireccionUsuarioViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioConfiguracionViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioConfiguracionViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioPagoViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioPagoViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuario.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuarioConfiguracion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuarioConfiguracion.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuarioPago.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuarioPago.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,26 +45,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "JUnit.DireccionTest.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "DevSebastianZambrano",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sebas/Documents/UQ/Programacion2/ProyectoFInalProgramacion2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DireccionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.co.uniquindio.edu.co.pfp2.model in PFP2.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;DevSebastianZambrano&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sebas/Documents/UQ/Programacion2/ProyectoFInalProgramacion2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.uniquindio.edu.co.pfp2.App" />
@@ -101,6 +95,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="co.uniquindio.edu.co.pfp2.model in PFP2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PFP2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.uniquindio.edu.co.pfp2.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.uniquindio.edu.co.pfp2.model" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -113,6 +121,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.co.uniquindio.edu.co.pfp2.model in PFP2" />
         <item itemvalue="JUnit.DireccionTest" />
       </list>
     </recent_temporary>
@@ -138,6 +147,7 @@
       <workItem from="1762888937877" duration="11322000" />
       <workItem from="1762902928336" duration="22000" />
       <workItem from="1762964081633" duration="1351000" />
+      <workItem from="1763042605179" duration="393000" />
     </task>
     <servers />
   </component>

@@ -70,7 +70,7 @@ public class PantallaDireccionUsuarioViewController {
             DialogUtils.mostrarError("Latitud y longitud deben ser números válidos.");
         }
 
-        app.openPantallaUsuarioConfiguracion();
+
         app.cerrarMod(btDir);
     }
 
