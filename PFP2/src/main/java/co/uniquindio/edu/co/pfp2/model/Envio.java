@@ -5,20 +5,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase que representa un Envío dentro del sistema.
- * Contiene información del paquete, direcciones, repartidor y estado del envío.
+ * Clase que representa un envío dentro del sistema de gestión de entregas.
+ * Un envío contiene información relacionada con:
+ *     El paquete a transportar.
+ *     La dirección de origen y destino.
+ *     El repartidor asignado.
+ *     El estado actual del envío.
+ *     La fecha de creación de la orden.
+ * Esta clase forma parte central del modelo, ya que describe la operación
+ * fundamental del sistema: la gestión de un envío desde su creación hasta su entrega.
  */
 public class Envio {
 
+    /** Identificador único del envío. */
     private int idEnvio;
+
+    /** Dirección de origen desde donde se recoge el paquete. */
     private Direccion origen;
+
+    /** Dirección de destino donde se entrega el paquete. */
     private Direccion destino;
+
+    /** Paquete asociado al envío, con peso, contenido y valor. */
     private Paquete paquete;
+
+    /** Estado actual del envío según el flujo de la operación. */
     private EstadoEnvio estadoEnvio;
+
+    /** Fecha en la que fue creado el envío. */
     private LocalDate fechaCreacion;
+
+    /** Repartidor asignado para realizar la entrega. */
     private Repartidor repartidor;
 
     // --- Constructor ---
+
+    /**
+     * Constructor principal que inicializa un objeto {@code Envio} con toda su información.
+     *
+     * @param idEnvio identificador del envío
+     * @param origen dirección de origen
+     * @param destino dirección de destino
+     * @param paquete paquete asociado al envío
+     * @param fechaCreacion fecha de creación del envío
+     * @param estadoEnvio estado actual del envío
+     * @param repartidor repartidor asignado
+     */
     public Envio(int idEnvio, Direccion origen, Direccion destino, Paquete paquete,
                  LocalDate fechaCreacion, EstadoEnvio estadoEnvio, Repartidor repartidor) {
         this.idEnvio = idEnvio;
@@ -31,6 +63,7 @@ public class Envio {
     }
 
     // --- Getters y Setters ---
+
     public int getIdEnvio() {
         return idEnvio;
     }
@@ -88,7 +121,8 @@ public class Envio {
     }
 
     /**
-     * Cambia el estado del envío.
+     * Cambia el estado del envío según el flujo del proceso.
+     *
      * @param nuevoEstado nuevo estado del envío
      */
     public void cambiarEstado(EstadoEnvio nuevoEstado) {
@@ -96,9 +130,11 @@ public class Envio {
     }
 
     /**
-     * Convierte este objeto Envio a un EnvioDTO (Data Transfer Object)
-     * para transferir solo los datos esenciales a otras capas del sistema.
-     * @return objeto EnvioDTO con los datos del envío
+     * Convierte este envío en un objeto {@link EnvioDTO}, útil para
+     * transferir datos hacia la interfaz o controladores sin exponer
+     * toda la estructura del modelo.
+     *
+     * @return instancia de {@code EnvioDTO} con los datos resumidos del envío
      */
     public EnvioDTO toDTO() {
         return new EnvioDTO(
@@ -112,7 +148,12 @@ public class Envio {
         );
     }
 
-
+    /**
+     * Retorna una representación en texto del envío completa,
+     * útil para depuración, logs o visualización rápida.
+     *
+     * @return cadena con los valores del envío
+     */
     @Override
     public String toString() {
         return "Envio{" +
@@ -127,8 +168,11 @@ public class Envio {
     }
 
     /**
-     * Metodo simulado que devuelve la lista de envíos.
-     * (En un caso real, se usaría un repositorio o servicio para esto).
+     * Metodo simulado que devolvería la lista de envíos existentes.
+     * <p>En un sistema real sería reemplazado por una consulta a una base de datos
+     * o un repositorio.</p>
+     *
+     * @return lista vacía de envíos
      */
     public static List<Envio> listarEnvios() {
         return new ArrayList<>();
