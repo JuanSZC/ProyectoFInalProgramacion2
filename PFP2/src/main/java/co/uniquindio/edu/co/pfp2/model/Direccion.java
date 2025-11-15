@@ -31,42 +31,82 @@ public class Direccion {
     }
     // =================== GETTERS Y SETTERS =================== //
 
+    /**
+     * Obtiene el identificador único de la dirección.
+     * @return ID de la dirección
+     */
     public int getIdDireccion() {
         return idDireccion;
     }
 
+    /**
+     * Establece el identificador único de la dirección.
+     * @param idDireccion nuevo ID de la dirección
+     */
     public void setIdDireccion(int idDireccion) {
         this.idDireccion = idDireccion;
     }
 
+    /**
+     * Obtiene la descripción textual de la dirección.
+     * @return descripción de la ubicación
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     * Establece la descripción textual de la dirección.
+     * @param descripcion nueva descripción
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+     * Obtiene la coordenada de latitud.
+     * @return latitud geográfica
+     */
     public double getLatitud() {
         return latitud;
     }
 
+    /**
+     * Establece la latitud de la dirección.
+     * @param latitud nueva coordenada de latitud
+     */
     public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
 
+    /**
+     * Obtiene la coordenada de longitud.
+     * @return longitud geográfica
+     */
     public double getLongitud() {
         return longitud;
     }
 
+    /**
+     * Establece la longitud de la dirección.
+     * @param longitud nueva coordenada de longitud
+     */
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
 
+    /**
+     * Obtiene la zona de cobertura asociada a esta dirección.
+     * @return zona de cobertura
+     */
     public ZonaCobertura getZonaCobertura() {
         return zonaCobertura;
     }
 
+    /**
+     * Establece la zona de cobertura para esta dirección.
+     * @param zonaCobertura nueva zona de cobertura
+     */
     public void setZonaCobertura(ZonaCobertura zonaCobertura) {
         this.zonaCobertura = zonaCobertura;
     }
