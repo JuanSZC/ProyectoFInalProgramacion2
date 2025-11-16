@@ -11,11 +11,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import reportesGenerador.PdfReporteEnvioUsuario;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class PantallaUsuarioViewController {
@@ -197,6 +197,34 @@ public class PantallaUsuarioViewController {
 
         } catch (NumberFormatException e) {
             DialogUtils.mostrarError("Precio, cantidad o peso inválidos.");
+        }
+    }
+    public void generarReporte() {
+
+        Usuario usuario = app.usuarioSesion; // ← usuario logueado
+        Envio envio = tbEnviosUsuario.getSelectionModel().getSelectedItem(); // ← envío seleccionado
+
+        if (envio != null) {
+            try {
+
+                String ruta = "reportesGenerador" + File.separator + "usuarios" + File.separator
+                        + "reporte_envio_" + envio.getIdEnvio() + ".pdf";
+
+                File file = new File(ruta);
+                file.getParentFile().mkdirs();
+
+                // Generación del PDF
+                PdfReporteEnvioUsuario pdf = new PdfReporteEnvioUsuario(usuario, envio);
+                pdf.generarPdf(ruta);
+
+                System.out.println("PDF generado correctamente: " + ruta);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            System.out.println("Debe seleccionar un envío.");
         }
     }
 

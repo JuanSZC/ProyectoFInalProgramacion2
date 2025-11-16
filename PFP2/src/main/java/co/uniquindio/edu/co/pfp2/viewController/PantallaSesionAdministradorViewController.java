@@ -50,7 +50,7 @@ public class PantallaSesionAdministradorViewController {
                 administrador.getClave() == contrasena) {
 
             DialogUtils.mostrarMensaje("¡Bienvenido, administrador!");
-            openPantallaBienvenida();
+            app.openPantallaAdministrador();
 
         } else {
             DialogUtils.mostrarError("Correo o Clave incorrectos.");

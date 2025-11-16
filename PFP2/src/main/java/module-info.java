@@ -6,7 +6,7 @@ module co.uniquindio.edu.co.pfp2 {
     requires javafx.base;
     requires java.compiler;
     requires java.desktop;
-
+    requires com.github.librepdf.openpdf;
 
 
     opens co.uniquindio.edu.co.pfp2 to javafx.fxml;

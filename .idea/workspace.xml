@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94a076e9-b393-46ef-afe8-436b21357acf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/PFP2/src/main/java/reportesGenerador/PdfReporteEnvioUsuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PFP2/src/main/java/reportesGenerador/PdfUsuarioReporte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaAdministradorViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaAdministradorViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaSesionAdministradorViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaSesionAdministradorViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/co/uniquindio/edu/co/pfp2/viewController/PantallaUsuarioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/resources/Styles/styleButton.css" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/resources/Styles/styleButton.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaAdministrador.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaAdministrador.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/PFP2/src/main/resources/co/uniquindio/edu/co/pfp2/PantallaUsuario.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +207,9 @@
       <workItem from="1763126208749" duration="347000" />
       <workItem from="1763129192698" duration="43000" />
       <workItem from="1763129249063" duration="5293000" />
-      <workItem from="1763234948742" duration="1875000" />
+      <workItem from="1763234948742" duration="10424000" />
+      <workItem from="1763248495344" duration="3361000" />
+      <workItem from="1763328760522" duration="1219000" />
     </task>
     <servers />
   </component>

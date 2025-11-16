@@ -29,6 +29,8 @@ public class App extends Application {
     public int idEnvio = 1111;
     public int idRepartidor = 1111;
 
+
+
     public Usuario usuarioSesion;
     public static void main(String[] args) {
         launch(args);
@@ -247,6 +249,28 @@ public class App extends Application {
             ex.printStackTrace();
         }
     }
+public void openPantallaAdministrador() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaAdministrador.fxml"));
+
+            AnchorPane rootLayout = loader.load();
+
+            PantallaAdministradorViewController controller = loader.getController();
+            controller.setApp(this);
+            controller.initialize();
+
+            Scene scene = new Scene(rootLayout);
+
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.centerOnScreen();
+
+            stage.show();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     public void openPantallaRegistroUsuario() {
 
         try {
@@ -329,7 +353,7 @@ public class App extends Application {
         // ==================== USUARIOS ====================
 
 // Usuario 0 (ya creado)
-        Usuario usuario = new Usuario("Juan Carlos Ceballos","123456789","jcarlosc@gmail.com","jcc",123456789,this.idUsuario+1);
+        Usuario usuario = new Usuario("Juan Carlos Ceballos","123456789","jcarlosc@gmail.com","jcc",123456789,this.idUsuario);
         listGlobalUsuarios.add(usuario);
         this.idUsuario ++;
         Direccion direccion = new Direccion(idDireccion,"Carrera 17 #7-21",4.620278,-75.635833,ZonaCobertura.MUNICIPIO_CERCANO);
@@ -337,12 +361,12 @@ public class App extends Application {
         usuario.getListDireccionesUsuario().add(direccion);
 
 // Usuario 1 (ya creado)
-        Usuario usuario1 = new Usuario("Diana Paola Rodriguez","1077865892","dpr@gmail.com","dpr",3789456,this.idUsuario+1);
+        Usuario usuario1 = new Usuario("Diana Paola Rodriguez","1077865892","dpr@gmail.com","dpr",3789456,this.idUsuario);
         listGlobalUsuarios.add(usuario1);
         this.idUsuario ++;
 
 // Usuario 2 (ya creado)
-        Usuario usuario2 = new Usuario("Juan Manuel Velásquez","115187043","vivamemento@si.com","hola",6745,this.idUsuario+1);
+        Usuario usuario2 = new Usuario("Juan Manuel Velásquez","115187043","vivamemento@si.com","hola",6745,this.idUsuario);
         listGlobalUsuarios.add(usuario2);
         this.idUsuario ++;
 
@@ -358,7 +382,7 @@ public class App extends Application {
 
 
 // Usuario 3
-        Usuario usuario3 = new Usuario("Andrea López","1023456789","andrea.lopez@gmail.com","andreaL",99887766,this.idUsuario+1);
+        Usuario usuario3 = new Usuario("Andrea López","1023456789","andrea.lopez@gmail.com","andreaL",99887766,this.idUsuario);
         listGlobalUsuarios.add(usuario3);
         this.idUsuario ++;
         Direccion direccion3 = new Direccion(idDireccion,"Calle 7 #6-20",4.618900,-75.637000,ZonaCobertura.SUR);
@@ -366,7 +390,7 @@ public class App extends Application {
         usuario3.getListDireccionesUsuario().add(direccion3);
 
 // Usuario 4
-        Usuario usuario4 = new Usuario("Carlos Ramírez","1102345698","carlosr@gmail.com","carlr",55667788,this.idUsuario+1);
+        Usuario usuario4 = new Usuario("Carlos Ramírez","1102345698","carlosr@gmail.com","carlr",55667788,this.idUsuario);
         listGlobalUsuarios.add(usuario4);
         this.idUsuario ++;
         Direccion direccion4 = new Direccion(idDireccion,"Carrera 12 #5-18",4.622800,-75.636200,ZonaCobertura.CENTRO);
@@ -374,7 +398,7 @@ public class App extends Application {
         usuario4.getListDireccionesUsuario().add(direccion4);
 
 // Usuario 5
-        Usuario usuario5 = new Usuario("María Fernanda Suárez","1098765432","mfsuarez@gmail.com","mfs",33445566,this.idUsuario+1);
+        Usuario usuario5 = new Usuario("María Fernanda Suárez","1098765432","mfsuarez@gmail.com","mfs",33445566,this.idUsuario);
         listGlobalUsuarios.add(usuario5);
         this.idUsuario ++;
         Direccion direccion5 = new Direccion(idDireccion,"Calle 15 #8-45",4.624500,-75.635000,ZonaCobertura.NORTE);
@@ -382,7 +406,7 @@ public class App extends Application {
         usuario5.getListDireccionesUsuario().add(direccion5);
 
 // Usuario 6
-        Usuario usuario6 = new Usuario("Andrés Felipe Torres","1087654321","aftorres@gmail.com","andresFT",22334455,this.idUsuario+1);
+        Usuario usuario6 = new Usuario("Andrés Felipe Torres","1087654321","aftorres@gmail.com","andresFT",22334455,this.idUsuario);
         listGlobalUsuarios.add(usuario6);
         this.idUsuario ++;
         Direccion direccion6 = new Direccion(idDireccion,"Carrera 20 #10-30",4.627800,-75.632500,ZonaCobertura.CENTRO);
@@ -390,7 +414,7 @@ public class App extends Application {
         usuario6.getListDireccionesUsuario().add(direccion6);
 
 // Usuario 7
-        Usuario usuario7 = new Usuario("Valentina Gómez","1076543210","valentinaG@gmail.com","valenG",11223344,this.idUsuario+1);
+        Usuario usuario7 = new Usuario("Valentina Gómez","1076543210","valentinaG@gmail.com","valenG",11223344,this.idUsuario);
         listGlobalUsuarios.add(usuario7);
         this.idUsuario ++;
         Direccion direccion7 = new Direccion(idDireccion,"Calle 5 #3-22",4.619500,-75.638500,ZonaCobertura.SUR);
@@ -398,7 +422,7 @@ public class App extends Application {
         usuario7.getListDireccionesUsuario().add(direccion7);
 
 // Usuario 8
-        Usuario usuario8 = new Usuario("Sebastián Martínez","1065432109","sebastianM@gmail.com","sebasM",66778899,this.idUsuario+1);
+        Usuario usuario8 = new Usuario("Sebastián Martínez","1065432109","sebastianM@gmail.com","sebasM",66778899,this.idUsuario);
         listGlobalUsuarios.add(usuario8);
         this.idUsuario ++;
         Direccion direccion8 = new Direccion(idDireccion,"Carrera 18 #9-12",4.623000,-75.634000,ZonaCobertura.NORTE);
@@ -406,13 +430,179 @@ public class App extends Application {
         usuario8.getListDireccionesUsuario().add(direccion8);
 
 // Usuario 9
-        Usuario usuario9 = new Usuario("Lorena Castillo","1054321098","lorenaC@gmail.com","lorenaC",44556677,this.idUsuario+1);
+        Usuario usuario9 = new Usuario("Lorena Castillo","1054321098","lorenaC@gmail.com","lorenaC",44556677,this.idUsuario);
         listGlobalUsuarios.add(usuario9);
         this.idUsuario ++;
         Direccion direccion9 = new Direccion(idDireccion,"Calle 11 #7-35",4.621500,-75.636500,ZonaCobertura.MUNICIPIO_CERCANO);
         idDireccion++;
         usuario9.getListDireccionesUsuario().add(direccion9);
+// Usuario 10
+        Usuario usuario10 = new Usuario("Carlos Gómez","1012345678","carlosG@gmail.com","carlosG",11223344,this.idUsuario);
+        listGlobalUsuarios.add(usuario10);
+        this.idUsuario++;
+        Direccion direccion10 = new Direccion(idDireccion,"Carrera 15 #8-45",4.625000,-75.635000,ZonaCobertura.SUR);
+        idDireccion++;
+        usuario10.getListDireccionesUsuario().add(direccion10);
 
+// Usuario 11
+        Usuario usuario11 = new Usuario("Ana Rodríguez","1023456789","anaR@gmail.com","anaR",22334455,this.idUsuario);
+        listGlobalUsuarios.add(usuario11);
+        this.idUsuario++;
+        Direccion direccion11 = new Direccion(idDireccion,"Calle 9 #5-20",4.622500,-75.637000,ZonaCobertura.NORTE);
+        idDireccion++;
+        usuario11.getListDireccionesUsuario().add(direccion11);
+
+// Usuario 12
+        Usuario usuario12 = new Usuario("Miguel Torres","1034567890","miguelT@gmail.com","miguelT",33445566,this.idUsuario);
+        listGlobalUsuarios.add(usuario12);
+        this.idUsuario++;
+        Direccion direccion12 = new Direccion(idDireccion,"Carrera 20 #10-15",4.624000,-75.633000,ZonaCobertura.MUNICIPIO_CERCANO);
+        idDireccion++;
+        usuario12.getListDireccionesUsuario().add(direccion12);
+
+// Usuario 13
+        Usuario usuario13 = new Usuario("Laura Pérez","1045678901","lauraP@gmail.com","lauraP",44556677,this.idUsuario);
+        listGlobalUsuarios.add(usuario13);
+        this.idUsuario++;
+        Direccion direccion13 = new Direccion(idDireccion,"Calle 12 #6-18",4.621800,-75.638000,ZonaCobertura.NORTE);
+        idDireccion++;
+        usuario13.getListDireccionesUsuario().add(direccion13);
+
+// Usuario 14
+        Usuario usuario14 = new Usuario("Diego Ramírez","1056789012","diegoR@gmail.com","diegoR",55667788,this.idUsuario);
+        listGlobalUsuarios.add(usuario14);
+        this.idUsuario++;
+        Direccion direccion14 = new Direccion(idDireccion,"Carrera 22 #11-25",4.626000,-75.632500,ZonaCobertura.SUR);
+        idDireccion++;
+        usuario14.getListDireccionesUsuario().add(direccion14);
+
+// Usuario 15
+        Usuario usuario15 = new Usuario("Sofía Martínez","1067890123","sofiaM@gmail.com","sofiaM",66778899,this.idUsuario);
+        listGlobalUsuarios.add(usuario15);
+        this.idUsuario++;
+        Direccion direccion15 = new Direccion(idDireccion,"Calle 14 #7-30",4.623500,-75.635500,ZonaCobertura.MUNICIPIO_CERCANO);
+        idDireccion++;
+        usuario15.getListDireccionesUsuario().add(direccion15);
+
+// Usuario 16
+        Usuario usuario16 = new Usuario("Andrés López","1078901234","andresL@gmail.com","andresL",77889900,this.idUsuario);
+        listGlobalUsuarios.add(usuario16);
+        this.idUsuario++;
+        Direccion direccion16 = new Direccion(idDireccion,"Carrera 17 #9-10",4.624500,-75.634500,ZonaCobertura.NORTE);
+        idDireccion++;
+        usuario16.getListDireccionesUsuario().add(direccion16);
+
+// Usuario 17
+        Usuario usuario17 = new Usuario("Camila Herrera","1089012345","camilaH@gmail.com","camilaH",88990011,this.idUsuario);
+        listGlobalUsuarios.add(usuario17);
+        this.idUsuario++;
+        Direccion direccion17 = new Direccion(idDireccion,"Calle 16 #8-12",4.622800,-75.636800,ZonaCobertura.SUR);
+        idDireccion++;
+        usuario17.getListDireccionesUsuario().add(direccion17);
+
+// Usuario 18
+        Usuario usuario18 = new Usuario("Fernando Ruiz","1090123456","fernandoR@gmail.com","fernandoR",99001122,this.idUsuario);
+        listGlobalUsuarios.add(usuario18);
+        this.idUsuario++;
+        Direccion direccion18 = new Direccion(idDireccion,"Carrera 19 #10-40",4.625500,-75.633500,ZonaCobertura.NORTE);
+        idDireccion++;
+        usuario18.getListDireccionesUsuario().add(direccion18);
+
+// Usuario 19
+        Usuario usuario19 = new Usuario("Isabella Jiménez","1101234567","isabellaJ@gmail.com","isabellaJ",10111213,this.idUsuario);
+        listGlobalUsuarios.add(usuario19);
+        this.idUsuario++;
+        Direccion direccion19 = new Direccion(idDireccion,"Calle 18 #9-15",4.623800,-75.634800,ZonaCobertura.MUNICIPIO_CERCANO);
+        idDireccion++;
+        usuario19.getListDireccionesUsuario().add(direccion19);
+
+// Usuario 20
+        Usuario usuario20 = new Usuario("Jorge Medina","1112345678","jorgeM@gmail.com","jorgeM",12131415,this.idUsuario);
+        listGlobalUsuarios.add(usuario20);
+        this.idUsuario++;
+        Direccion direccion20 = new Direccion(idDireccion,"Carrera 21 #12-20",4.626500,-75.632000,ZonaCobertura.SUR);
+        idDireccion++;
+        usuario20.getListDireccionesUsuario().add(direccion20);
+
+// Usuario 21
+        Usuario usuario21 = new Usuario("Valentina Castillo","1123456789","valentinaC@gmail.com","valentinaC",13141516,this.idUsuario);
+        listGlobalUsuarios.add(usuario21);
+        this.idUsuario++;
+        Direccion direccion21 = new Direccion(idDireccion,"Calle 20 #11-25",4.624200,-75.635200,ZonaCobertura.NORTE);
+        idDireccion++;
+        usuario21.getListDireccionesUsuario().add(direccion21);
+
+// Usuario 22
+        Usuario usuario22 = new Usuario("Ricardo Vargas","1134567890","ricardoV@gmail.com","ricardoV",14151617,this.idUsuario);
+        listGlobalUsuarios.add(usuario22);
+        this.idUsuario++;
+        Direccion direccion22 = new Direccion(idDireccion,"Carrera 23 #13-30",4.627000,-75.631500,ZonaCobertura.SUR);
+        idDireccion++;
+        usuario22.getListDireccionesUsuario().add(direccion22);
+
+// Usuario 23
+        Usuario usuario23 = new Usuario("Natalia Rojas","1145678901","nataliaR@gmail.com","nataliaR",15161718,this.idUsuario);
+        listGlobalUsuarios.add(usuario23);
+        this.idUsuario++;
+        Direccion direccion23 = new Direccion(idDireccion,"Calle 22 #12-18",4.625200,-75.634200,ZonaCobertura.MUNICIPIO_CERCANO);
+        idDireccion++;
+        usuario23.getListDireccionesUsuario().add(direccion23);
+
+// Usuario 24
+        Usuario usuario24 = new Usuario("Luis Fernández","1156789012","luisF@gmail.com","luisF",16171819,this.idUsuario);
+        listGlobalUsuarios.add(usuario24);
+        this.idUsuario++;
+        Direccion direccion24 = new Direccion(idDireccion,"Carrera 24 #14-25",4.628000,-75.630500,ZonaCobertura.SUR);
+        idDireccion++;
+        usuario24.getListDireccionesUsuario().add(direccion24);
+
+// Usuario 25
+        Usuario usuario25 = new Usuario("Daniela Morales","1167890123","danielaM@gmail.com","danielaM",17181920,this.idUsuario);
+        listGlobalUsuarios.add(usuario25);
+        this.idUsuario++;
+        Direccion direccion25 = new Direccion(idDireccion,"Calle 24 #15-30",4.626500,-75.633000,ZonaCobertura.NORTE);
+        idDireccion++;
+        usuario25.getListDireccionesUsuario().add(direccion25);
+
+// Usuario 26
+        Usuario usuario26 = new Usuario("Sebastián Torres","1178901234","sebastianT@gmail.com","sebastianT",18192021,this.idUsuario);
+        listGlobalUsuarios.add(usuario26);
+        this.idUsuario++;
+        Direccion direccion26 = new Direccion(idDireccion,"Carrera 25 #16-20",4.629000,-75.632500,ZonaCobertura.MUNICIPIO_CERCANO);
+        idDireccion++;
+        usuario26.getListDireccionesUsuario().add(direccion26);
+
+// Usuario 27
+        Usuario usuario27 = new Usuario("Mariana Salazar","1189012345","marianaS@gmail.com","marianaS",19202122,this.idUsuario);
+        listGlobalUsuarios.add(usuario27);
+        this.idUsuario++;
+        Direccion direccion27 = new Direccion(idDireccion,"Calle 26 #17-35",4.627500,-75.634500,ZonaCobertura.SUR);
+        idDireccion++;
+        usuario27.getListDireccionesUsuario().add(direccion27);
+
+// Usuario 28
+        Usuario usuario28 = new Usuario("Javier Herrera","1190123456","javierH@gmail.com","javierH",20212223,this.idUsuario);
+        listGlobalUsuarios.add(usuario28);
+        this.idUsuario++;
+        Direccion direccion28 = new Direccion(idDireccion,"Carrera 27 #18-10",4.630000,-75.631000,ZonaCobertura.NORTE);
+        idDireccion++;
+        usuario28.getListDireccionesUsuario().add(direccion28);
+
+// Usuario 29
+        Usuario usuario29 = new Usuario("Paula Vargas","1201234567","paulaV@gmail.com","paulaV",21222324,this.idUsuario);
+        listGlobalUsuarios.add(usuario29);
+        this.idUsuario++;
+        Direccion direccion29 = new Direccion(idDireccion,"Calle 28 #19-12",4.628200,-75.632800,ZonaCobertura.MUNICIPIO_CERCANO);
+        idDireccion++;
+        usuario29.getListDireccionesUsuario().add(direccion29);
+
+// Usuario 30
+        Usuario usuario30 = new Usuario("Andrés Morales","1212345678","andresM@gmail.com","andresM",22232425,this.idUsuario);
+        listGlobalUsuarios.add(usuario30);
+        this.idUsuario++;
+        Direccion direccion30 = new Direccion(idDireccion,"Carrera 29 #20-15",4.631000,-75.630500,ZonaCobertura.SUR);
+        idDireccion++;
+        usuario30.getListDireccionesUsuario().add(direccion30);
 
 
 

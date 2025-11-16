@@ -13,46 +13,23 @@
     -fx-font-family: "Segoe UI";
 }
 
-/* === BOTONES (base) === */
-.button-primary,
-.button-danger,
-.button-dark {
+/* === BOTONES === */
+.button-primary, .button-danger, .button-dark {
     -fx-text-fill: -fx-color-blanco;
     -fx-font-weight: bold;
     -fx-background-radius: 10;
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 3, 0, 0, 1);
-    -fx-padding: 8 16 8 16;
+    -fx-padding: 8 16;
     -fx-font-size: 14px;
     -fx-border-width: 0;
 }
-
-/* === BOTÓN AZUL CLARO === */
-.button-primary {
-    -fx-background-color: -fx-color-azul-medio;
-}
-.button-primary:hover {
-    -fx-background-color: #55ACEF; /* color fijo */
-    -fx-effect: none; /* evita el parpadeo por el blur */
-}
-
-/* === BOTÓN ROJO === */
-.button-danger {
-    -fx-background-color: -fx-color-rojo;
-}
-.button-danger:hover {
-    -fx-background-color: #E24A4A;
-    -fx-effect: none;
-}
-
-/* === BOTÓN AZUL OSCURO === */
-.button-dark {
-    -fx-background-color: -fx-color-azul-oscuro;
-}
-.button-dark:hover {
-    -fx-background-color: #275D93;
-    -fx-effect: none;
-}
+.button-primary { -fx-background-color: -fx-color-azul-medio; }
+.button-primary:hover { -fx-background-color: #55ACEF; -fx-effect: none; }
+.button-danger { -fx-background-color: -fx-color-rojo; }
+.button-danger:hover { -fx-background-color: #E24A4A; -fx-effect: none; }
+.button-dark { -fx-background-color: -fx-color-azul-oscuro; }
+.button-dark:hover { -fx-background-color: #275D93; -fx-effect: none; }
 
 /* === CAMPOS DE TEXTO === */
 .text-field {
@@ -65,14 +42,12 @@
     -fx-text-fill: -fx-color-azul-oscuro;
     -fx-effect: none;
 }
-
 .text-field:focused {
     -fx-border-color: -fx-color-azul-oscuro;
     -fx-background-color: derive(-fx-color-blanco, -5%);
 }
-/* === TABPANE (Pestañas) === */
 
-/* Contenedor general del TabPane */
+/* === TABPANE === */
 .tab-pane {
     -fx-background-color: -fx-color-azul-claro;
     -fx-border-color: -fx-color-azul-medio;
@@ -80,14 +55,10 @@
     -fx-background-radius: 10;
     -fx-padding: 5;
 }
-
-/* Área superior donde están las pestañas */
 .tab-pane > .tab-header-area {
     -fx-background-color: derive(-fx-color-azul-claro, -5%);
     -fx-border-color: transparent transparent -fx-color-azul-medio transparent;
 }
-
-/* Cada pestaña individual (no seleccionada) */
 .tab {
     -fx-background-color: derive(-fx-color-azul-claro, -10%);
     -fx-text-base-color: -fx-color-azul-oscuro;
@@ -95,25 +66,13 @@
     -fx-background-radius: 8 8 0 0;
     -fx-cursor: hand;
 }
-
-/* Pestaña al pasar el mouse */
-.tab:hover {
-    -fx-background-color: derive(-fx-color-azul-medio, 30%);
-}
-
-/* Pestaña seleccionada */
+.tab:hover { -fx-background-color: derive(-fx-color-azul-medio, 30%); }
 .tab:selected {
     -fx-background-color: -fx-color-azul-medio;
     -fx-text-base-color: -fx-color-blanco;
     -fx-font-weight: bold;
 }
-
-/* Texto del nombre de la pestaña */
-.tab-label {
-    -fx-font-size: 13px;
-}
-
-/* Área del contenido de cada pestaña */
+.tab-label { -fx-font-size: 13px; }
 .tab-content-area {
     -fx-background-color: -fx-color-blanco;
     -fx-background-radius: 0 0 10 10;
@@ -121,6 +80,7 @@
     -fx-border-radius: 0 0 10 10;
     -fx-padding: 10;
 }
+
 /* === BOTÓN DE CONFIGURACIÓN === */
 .button-settings {
     -fx-background-color: transparent;
@@ -129,138 +89,101 @@
     -fx-background-radius: 50%;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
 }
-
 .button-settings:hover {
     -fx-background-color: derive(-fx-color-azul-medio, -10%);
     -fx-effect: none;
 }
-
 .button-settings:pressed {
     -fx-background-color: derive(-fx-color-azul-oscuro, 40%);
 }
-/* === TABPANE VERTICAL === */
-.tab-pane:vertical {
-    -fx-background-color: -fx-color-azul-claro;
-    -fx-border-color: -fx-color-azul-medio;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-}
 
-/* Área donde están las pestañas a la izquierda */
-.tab-pane:vertical > .tab-header-area {
-    -fx-background-color: derive(-fx-color-azul-claro, -5%);
-    -fx-border-color: transparent -fx-color-azul-medio transparent transparent;
-}
-
-/* Cada pestaña lateral (no seleccionada) */
-.tab-pane:vertical .tab {
-    -fx-background-color: derive(-fx-color-azul-claro, -10%);
-    -fx-text-base-color: -fx-color-azul-oscuro;
-    -fx-padding: 10 8;
-    -fx-background-radius: 8 0 0 8;
-    -fx-cursor: hand;
-}
-
-/* Hover */
-.tab-pane:vertical .tab:hover {
-    -fx-background-color: derive(-fx-color-azul-medio, 30%);
-}
-
-/* Seleccionada */
-.tab-pane:vertical .tab:selected {
-    -fx-background-color: -fx-color-azul-medio;
-    -fx-text-base-color: -fx-color-blanco;
-    -fx-font-weight: bold;
-}
-
-/* Etiqueta (rotamos texto para que quede horizontal al lado) */
-.tab-pane:vertical .tab-label {
-    -fx-rotate: 0; /* lo dejamos horizontal */
-    -fx-font-size: 13px;
-}
-
-/* Área del contenido */
-.tab-pane:vertical .tab-content-area {
-    -fx-background-color: -fx-color-blanco;
-    -fx-background-radius: 0 10 10 0;
-    -fx-border-color: -fx-color-azul-medio;
-    -fx-border-radius: 0 10 10 0;
-    -fx-padding: 10;
-}
-/* === TABLEVIEW (Tablas) === */
+/* === TABLEVIEW NORMAL === */
 .table-view {
     -fx-background-color: -fx-color-blanco;
     -fx-border-color: -fx-color-azul-medio;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
-    -fx-padding: 5;
+    -fx-padding: 0;
     -fx-table-cell-border-color: transparent;
     -fx-control-inner-background: -fx-color-blanco;
     -fx-font-family: "Segoe UI";
     -fx-font-size: 14px;
 }
-
-/* === ENCABEZADOS DE COLUMNA === */
 .table-view .column-header-background {
     -fx-background-color: -fx-color-azul-medio;
     -fx-background-radius: 10 10 0 0;
 }
-
-.table-view .column-header,
-.table-view .filler {
-    -fx-background-color: transparent;
-}
-
-.table-view .column-header .label {
-    -fx-text-fill: -fx-color-blanco;
-    -fx-font-weight: bold;
-    -fx-alignment: CENTER;
-}
-
-/* === FILAS === */
+.table-view .column-header, .table-view .filler { -fx-background-color: transparent; }
+.table-view .column-header .label { -fx-text-fill: -fx-color-blanco; -fx-font-weight: bold; -fx-alignment: CENTER; }
 .table-row-cell {
     -fx-background-color: -fx-color-blanco;
-    -fx-border-color: transparent;
-    -fx-padding: 4;
-}
-
-.table-row-cell:odd {
-    -fx-background-color: derive(-fx-color-azul-claro, 40%);
-}
-
-.table-row-cell:hover {
-    -fx-background-color: derive(-fx-color-azul-medio, 60%);
-}
-
-.table-row-cell:selected {
-    -fx-background-color: -fx-color-azul-oscuro;
-    -fx-text-fill: -fx-color-blanco;
-}
-
-/* === CELDAS === */
-.table-cell {
-    -fx-text-fill: -fx-color-azul-oscuro;
-    -fx-alignment: CENTER-LEFT;
     -fx-border-width: 0;
-    -fx-padding: 6;
+    -fx-padding: 0;
+    -fx-cell-size: 30px;
+}
+.table-row-cell:odd { -fx-background-color: derive(-fx-color-azul-claro, 40%); }
+.table-row-cell:hover { -fx-background-color: derive(-fx-color-azul-medio, 60%); }
+.table-row-cell:selected { -fx-background-color: -fx-color-azul-oscuro; -fx-text-fill: -fx-color-blanco; }
+.table-cell { -fx-text-fill: -fx-color-azul-oscuro; -fx-alignment: CENTER-LEFT; -fx-border-width: 0; -fx-padding: 6; }
+.table-row-cell:selected .table-cell { -fx-text-fill: -fx-color-blanco; }
+
+/* === TABLEVIEW ROJA === */
+.table-view-roja {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FF5B5B;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 0;
+    -fx-table-cell-border-color: transparent;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+}
+.table-view-roja .column-header-background { -fx-background-color: #FF5B5B; -fx-background-radius: 10 10 0 0; }
+.table-view-roja .column-header, .table-view-roja .filler { -fx-background-color: transparent; }
+.table-view-roja .column-header .label { -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-alignment: CENTER; }
+.table-view-roja .table-row-cell { -fx-background-color: #FFFFFF; -fx-border-width: 0; -fx-padding: 0; -fx-cell-size: 30px; }
+.table-view-roja .table-row-cell:odd { -fx-background-color: #FFE5E5; }
+.table-view-roja .table-row-cell:hover { -fx-background-color: #FF8A8A; }
+.table-view-roja .table-row-cell:selected { -fx-background-color: #E24A4A; -fx-text-fill: #FFFFFF; }
+.table-view-roja .table-cell { -fx-text-fill: #8A0000; -fx-alignment: CENTER-LEFT; -fx-border-width: 0; -fx-padding: 6; }
+.table-view-roja .table-row-cell:selected .table-cell { -fx-text-fill: #FFFFFF; }
+
+/* === TABPANE ROJA === */
+.tab-pane-roja {
+    -fx-background-color: #FFE5E5;
+    -fx-border-color: #FF5B5B;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 5;
+}
+.tab-pane-roja > .tab-header-area { -fx-background-color: #FFD2D2; -fx-border-color: transparent transparent #FF5B5B transparent; }
+.tab-pane-roja .tab { -fx-background-color: #FFC4C4; -fx-text-base-color: #8A0000; -fx-padding: 6 12; -fx-background-radius: 8 8 0 0; -fx-cursor: hand; }
+.tab-pane-roja .tab:hover { -fx-background-color: #FF8A8A; }
+.tab-pane-roja .tab:selected { -fx-background-color: #FF5B5B; -fx-text-base-color: #FFFFFF; -fx-font-weight: bold; }
+.tab-pane-roja .tab-label { -fx-font-size: 13px; }
+.tab-pane-roja .tab-content-area { -fx-background-color: #FFFFFF; -fx-background-radius: 0 0 10 10; -fx-border-color: #FF5B5B; -fx-border-radius: 0 0 10 10; -fx-padding: 10; }
+
+/* === BOTÓN DANGER DARK CLARO === */
+.button-danger-dark {
+    -fx-background-color: #A22222; /* vinotinto más claro */
+    -fx-text-fill: #FFFF;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 3, 0, 0, 1);
+    -fx-padding: 8 16;
+    -fx-font-size: 14px;
+    -fx-border-width: 0;
 }
 
-.table-row-cell:selected .table-cell {
-    -fx-text-fill: -fx-color-blanco;
+.button-danger-dark:hover {
+    -fx-background-color: #B13333; /* ligeramente más claro al hover */
+    -fx-effect: none;
 }
 
-/* === SCROLLBARS (Barras de desplazamiento) === */
-.scroll-bar:vertical,
-.scroll-bar:horizontal {
-    -fx-background-color: transparent;
-}
-
-.scroll-bar .thumb {
-    -fx-background-color: derive(-fx-color-azul-medio, -10%);
-    -fx-background-radius: 5;
-}
-
-.scroll-bar .thumb:hover {
-    -fx-background-color: -fx-color-azul-oscuro;
+.button-danger-dark:pressed {
+    -fx-background-color: #891C1C; /* ligeramente más oscuro al presionar */
+    -fx-effect: none;
 }
 
