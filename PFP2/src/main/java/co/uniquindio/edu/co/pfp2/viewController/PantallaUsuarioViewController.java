@@ -444,4 +444,26 @@ public class PantallaUsuarioViewController {
 
     }
 
+    public void limpiarSeleccionCatalogoDisponible() {
+        tbCatalogoDisponible.getSelectionModel().clearSelection();
+        cbUnidadesPedir.setValue(null);
+    }
+
+    public void limpiarSeleccionMiCatalogo() {
+        tbMiCatalogo.getSelectionModel().clearSelection();
+        txNombreProducto.clear();
+        txDescripcionProducto.clear();
+        txPrecioProducto.clear();
+        txCantidadProducto.clear();
+        txPesoProducto.clear();
+    }
+
+    public void limpiarSeleccionCarrito() {
+        tbCarrito.getSelectionModel().clearSelection();
+    }
+
+    public void limpiarSeleccionEnvios() {
+        tbEnviosUsuario.getSelectionModel().clearSelection();
+    }
+
 }

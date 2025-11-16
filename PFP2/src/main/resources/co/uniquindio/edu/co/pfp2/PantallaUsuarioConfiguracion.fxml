@@ -43,7 +43,7 @@
                         <TextField fx:id="tfNombreDP" layoutX="284.0" layoutY="118.0" prefHeight="49.0" prefWidth="439.0" />
                         <TextField fx:id="tfCorreoDP" layoutX="284.0" layoutY="206.0" prefHeight="49.0" prefWidth="439.0" />
                         <TextField fx:id="tfConDP" layoutX="284.0" layoutY="293.0" prefHeight="49.0" prefWidth="439.0" />
-                        <Button fx:id="btModi" layoutX="336.0" layoutY="437.0" mnemonicParsing="false" onAction="#modificarDatos" styleClass="button-dark" text="Modificar Datos" />
+                        <Button fx:id="btModi" layoutX="336.0" layoutY="477.0" mnemonicParsing="false" onAction="#modificarDatos" styleClass="button-dark" text="Modificar Datos" />
                      </children>
                   </AnchorPane>
             </content>
@@ -58,7 +58,7 @@
                               <Font name="Segoe UI Bold Italic" size="30.0" />
                            </font>
                         </Text>
-                        <Button fx:id="btAr" layoutX="57.0" layoutY="433.0" mnemonicParsing="false" onAction="#agregarDireccion" styleClass="button-dark" text="Añadir Direccion" />
+                        <Button fx:id="btAr" layoutX="57.0" layoutY="473.0" mnemonicParsing="false" onAction="#agregarDireccion" styleClass="button-dark" text="Añadir Direccion" />
                         <TableView fx:id="tbDirecciones" layoutX="-12.0" layoutY="72.0" prefHeight="335.0" prefWidth="826.0">
                           <columns>
                             <TableColumn fx:id="colDireccion" prefWidth="415.0" text="Dirección" />
@@ -67,7 +67,7 @@
                               <TableColumn fx:id="colZona" prefWidth="132.0" text="Zona" />
                           </columns>
                         </TableView>
-                        <Button layoutX="693.0" layoutY="433.0" mnemonicParsing="false" onAction="#eliminarDireccion" styleClass="button-dark" text="Eliminar" />
+                        <Button layoutX="693.0" layoutY="473.0" mnemonicParsing="false" onAction="#eliminarDireccion" styleClass="button-dark" text="Eliminar" />
                      </children>
                   </AnchorPane>
                </content>

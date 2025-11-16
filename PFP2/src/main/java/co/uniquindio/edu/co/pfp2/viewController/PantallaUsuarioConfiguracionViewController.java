@@ -3,7 +3,6 @@ package co.uniquindio.edu.co.pfp2.viewController;
 import co.uniquindio.edu.co.pfp2.App;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.Direccion;
-import co.uniquindio.edu.co.pfp2.model.Usuario;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class PantallaUsuarioConfiguracionViewController {
@@ -108,5 +106,9 @@ public class PantallaUsuarioConfiguracionViewController {
         DialogUtils.mostrarMensaje("Datos modificados correctamente");
 
         app.openPantallaUsuario();
+    }
+
+    public void limpiarSeleccionDirecciones() {
+        tbDirecciones.getSelectionModel().clearSelection();
     }
 }

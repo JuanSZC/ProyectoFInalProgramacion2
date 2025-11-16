@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -77,11 +76,6 @@ public class PantallaUsuarioPagoViewController {
         ));
 
         // Ejemplo de textos (puedes adaptarlo según tu modelo)
-        double total = app.usuarioSesion.getListCarritosUsuario()
-                .stream()
-                .mapToDouble(p -> p.getPrecio() * p.getCantidad())
-                .sum();
-
 
         double precio = 0;
         double peso = 0;

@@ -12,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -271,6 +270,29 @@ public void openPantallaAdministrador() {
             ex.printStackTrace();
         }
     }
+
+        public void openPantallaRepartidor(Repartidor repartidor) {
+                try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaRepartidor.fxml"));
+
+                        AnchorPane rootLayout = loader.load();
+
+                        PantallaRepartidorViewController controller = loader.getController();
+                        controller.setApp(this);
+                        controller.setRepartidor(repartidor);
+
+                        Scene scene = new Scene(rootLayout);
+
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.centerOnScreen();
+
+                        stage.show();
+
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                }
+        }
     public void openPantallaRegistroUsuario() {
 
         try {

@@ -13,4 +13,5 @@ module co.uniquindio.edu.co.pfp2 {
     opens co.uniquindio.edu.co.pfp2.viewController to javafx.fxml;
 
     exports co.uniquindio.edu.co.pfp2;
+    exports co.uniquindio.edu.co.pfp2.model;
 }

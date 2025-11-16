@@ -2,7 +2,6 @@ package co.uniquindio.edu.co.pfp2.viewController;
 import co.uniquindio.edu.co.pfp2.*;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.Administrador;
-import co.uniquindio.edu.co.pfp2.model.Usuario;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 

@@ -33,7 +33,6 @@ public class PdfReporteEnvioUsuario {
             Font titulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, new Color(40, 40, 40));
             Font seccion = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14, new Color(60, 60, 60));
             Font texto = FontFactory.getFont(FontFactory.HELVETICA, 11, new Color(80, 80, 80));
-            Font textoBold = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 11);
 
             LineSeparator separator = new LineSeparator(0.5f, 100, new Color(210, 210, 210), Element.ALIGN_CENTER, -2);
 

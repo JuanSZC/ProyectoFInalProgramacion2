@@ -16,8 +16,6 @@ public final class Administrador {
     private String correo;
     private int clave;
 
-    private List<Envio> listPedidos = new ArrayList<>();
-    private List<Producto> listProductos = new ArrayList<>();
     private List<Usuario> listUsuarios = new ArrayList<>();
     private List<Repartidor> listRepartidors = new ArrayList<>();
 
@@ -49,17 +47,6 @@ public final class Administrador {
     }
 
     // =================== GESTIÓN DE USUARIOS =================== //
-    /**
-     * Busca un usuario por su correo electrónico.
-     * @param correo del usuario a buscar
-     * @return el usuario encontrado o {@code null} si no existe
-     */
-    private Usuario buscarUsuario(String correo) {
-        return listUsuarios.stream()
-                .filter(u -> u.getCorreo().equals(correo))
-                .findFirst()
-                .orElse(null);
-    }
     /**
      * Devuelve una lista con todos los usuarios registrados.
      * @return lista de usuarios

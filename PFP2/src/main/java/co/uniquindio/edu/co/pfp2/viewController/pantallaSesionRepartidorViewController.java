@@ -3,8 +3,6 @@ package co.uniquindio.edu.co.pfp2.viewController;
 import co.uniquindio.edu.co.pfp2.*;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.Repartidor;
-import co.uniquindio.edu.co.pfp2.model.Usuario;
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -49,7 +47,17 @@ public class pantallaSesionRepartidorViewController {
 
         if (repartidor != null) {
             DialogUtils.mostrarMensaje("¡Bienvenido " + repartidor.getNombreCompleto() + "!");
-            openPantallaBienvenida();
+            // Abrir la pantalla principal del repartidor al iniciar sesión
+            try {
+                if (this.app != null) {
+                    this.app.openPantallaRepartidor(repartidor);
+                } else {
+                    openPantallaBienvenida();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                DialogUtils.mostrarError("No fue posible abrir la pantalla del repartidor: " + ex.getMessage());
+            }
         } else {
             DialogUtils.mostrarMensaje("Correo o contraseña incorrectos. Intenta de nuevo.");
         }

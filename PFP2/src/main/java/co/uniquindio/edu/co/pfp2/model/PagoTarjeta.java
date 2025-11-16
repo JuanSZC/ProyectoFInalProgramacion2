@@ -13,9 +13,6 @@ public class PagoTarjeta implements IPago {
     /** Número de la tarjeta usada para realizar el pago. */
     private int numeroTarjeta;
 
-    /** Código de verificación (CVV) de la tarjeta. */
-    private int cvv;
-
     /**
      * Procesa el pago utilizando los datos de la tarjeta.
      *
