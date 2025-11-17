@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaReportesAdminViewController">
+<AnchorPane prefHeight="638.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaReportesAdminViewController">
    <children>
       <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reportes Administrador">
          <font>
@@ -26,7 +26,7 @@
           <NumberAxis fx:id="barNumeros" />
         </yAxis>
       </BarChart>
-      <LineChart fx:id="lineEnvios" layoutX="14.0" layoutY="290.0" prefHeight="260.0" prefWidth="776.0">
+      <LineChart fx:id="lineEnvios" layoutX="14.0" layoutY="320.0" prefHeight="260.0" prefWidth="776.0">
         <xAxis>
           <CategoryAxis fx:id="lineCategorias" />
         </xAxis>
@@ -34,6 +34,6 @@
           <NumberAxis fx:id="lineNumeros" />
         </yAxis>
       </LineChart>
-      <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#generarReportes" prefHeight="28.0" prefWidth="110.0" text="Generar" />
+      <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#generarReportes" prefHeight="28.0" prefWidth="110.0" text="Recargar" />
    </children>
 </AnchorPane>
