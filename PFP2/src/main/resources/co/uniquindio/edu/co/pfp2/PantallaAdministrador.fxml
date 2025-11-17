@@ -50,7 +50,7 @@
                         <Button fx:id="btAM" layoutX="1042.0" layoutY="471.0" mnemonicParsing="false" onAction="#accionAgregarModificarUsuario" prefHeight="34.0" prefWidth="142.0" styleClass="button-dark" text="Agregar Usuario" />
                         <Button fx:id="btEliminarUsuario" layoutX="1043.0" layoutY="529.0" mnemonicParsing="false" onAction="#eliminarUsuario" styleClass="button-danger" text="Eliminar Usuario" />
                         <Button layoutX="1039.0" layoutY="310.0" mnemonicParsing="false" onAction="#limpiarSeleccionUsuario" styleClass="button-primary" text="Limpiar Selección" />
-                        <Button fx:id="btAM1" layoutX="1042.0" layoutY="96.0" mnemonicParsing="false" onAction="#generarPDF" prefHeight="34.0" prefWidth="142.0" styleClass="button-dark" text="Generar PDF" />
+                        <Button fx:id="btAM1" layoutX="1042.0" layoutY="96.0" mnemonicParsing="false" onAction="#generarPDFUsuario" prefHeight="34.0" prefWidth="142.0" styleClass="button-dark" text="Generar PDF" />
                      </children>
                   </AnchorPane>
                </content>
@@ -78,7 +78,7 @@
                         <Button fx:id="btAMR" layoutX="1037.0" layoutY="470.0" mnemonicParsing="false" onAction="#accionAgregarModificarRepartidor" prefHeight="36.0" prefWidth="168.0" styleClass="button-danger" text="Agregar Repartidor" />
                         <Button fx:id="btEliminarRepartidor" layoutX="1041.0" layoutY="530.0" mnemonicParsing="false" onAction="#eliminarRepartidor" styleClass="button-danger" text="Eliminar Repartidor" />
                         <Button layoutX="1048.0" layoutY="309.0" mnemonicParsing="false" onAction="#limpiarSeleccionRepartidor" styleClass="button-dark" text="Limpiar Selección" />
-                        <Button fx:id="btAM11" layoutX="1050.0" layoutY="98.0" mnemonicParsing="false" onAction="#generarPDF" prefHeight="34.0" prefWidth="142.0" styleClass="button-danger" text="Generar PDF" />
+                        <Button fx:id="btAM11" layoutX="1050.0" layoutY="98.0" mnemonicParsing="false" onAction="#generarPDFRepartidor" prefHeight="34.0" prefWidth="142.0" styleClass="button-danger" text="Generar PDF" />
                      </children>
                   </AnchorPane>
                </content>

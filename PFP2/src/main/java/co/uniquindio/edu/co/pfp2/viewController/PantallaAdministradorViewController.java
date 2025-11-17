@@ -16,12 +16,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import reportesGenerador.PdfReporteEnvioRepartidor;
 import reportesGenerador.PdfReporteEnvioUsuario;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Platform;
 import javafx.scene.Parent;
+import reportesGenerador.PdfUsuarioReporte;
 
 public class PantallaAdministradorViewController {
 
@@ -103,7 +108,7 @@ public class PantallaAdministradorViewController {
             tbProductos.setItems(app.listGlobalProductos);
         }
     }
-    public void generarPDF() {
+    public void generarPDFUsuario() {
         Usuario usuario = tbUsuarios.getSelectionModel().getSelectedItem();
         if (usuario == null) {
             DialogUtils.mostrarError("No se seleccionó ningún usuario.");
@@ -111,27 +116,70 @@ public class PantallaAdministradorViewController {
         }
 
         try {
-            // Generar un PDF por cada envío del usuario usando el generador existente
-            if (usuario.getListEnviosUsuario().isEmpty()) {
+            List<Envio> envios = usuario.getListEnviosUsuario();
+            if (envios.isEmpty()) {
                 DialogUtils.mostrarError("El usuario no tiene envíos para generar reportes.");
                 return;
             }
 
-            for (Envio envio : usuario.getListEnviosUsuario()) {
-                String ruta = "ReportesPDF" + File.separator + "admin" + File.separator
-                        + "reporte_envio_" + envio.getIdEnvio() + "_usuario_" + usuario.getIdUsuario() + ".pdf";
-                File file = new File(ruta);
-                file.getParentFile().mkdirs();
+            // Crear la ruta del PDF único
+            String ruta = "ReportesPDF" + File.separator + "admin"  + File.separator +
+                    "reporte_envios_usuario_" + usuario.getIdUsuario() + ".pdf";
 
-                PdfReporteEnvioUsuario pdf = new PdfReporteEnvioUsuario(usuario, envio);
-                pdf.generarPdf(ruta);
-            }
+            File file = new File(ruta);
+            file.getParentFile().mkdirs();
 
-            DialogUtils.mostrarMensaje("PDF(s) generados correctamente para el usuario.");
+            // Generar el PDF usando la clase independiente
+            PdfUsuarioReporte pdf = new PdfUsuarioReporte(usuario);
+            pdf.generarPdf(ruta);
+
+            DialogUtils.mostrarMensaje("PDF generado correctamente para el usuario.");
 
         } catch (IOException ex) {
             ex.printStackTrace();
-            DialogUtils.mostrarError("No se pudo generar los PDF(s): " + ex.getMessage());
+            DialogUtils.mostrarError("No se pudo generar el PDF: " + ex.getMessage());
+        }
+    }
+
+    public void generarPDFRepartidor() {
+        Repartidor repartidor = tbRepartidores.getSelectionModel().getSelectedItem();
+        if (repartidor == null) {
+            DialogUtils.mostrarError("No se seleccionó ningún repartidor.");
+            return;
+        }
+
+        try {
+            // Crear lista de envíos asignados al repartidor
+            List<Envio> enviosAsignados = new ArrayList<>();
+
+            for (Usuario usuario : app.listGlobalUsuarios) {
+                for (Envio envio : usuario.getListEnviosUsuario()) {
+                    if (envio.getRepartidor() != null && envio.getRepartidor().equals(repartidor)) {
+                        enviosAsignados.add(envio);
+                    }
+                }
+            }
+
+            if (enviosAsignados.isEmpty()) {
+                DialogUtils.mostrarError("El repartidor no tiene envíos asignados.");
+                return;
+            }
+
+            // Crear ruta del PDF
+            String ruta = "ReportesPDF" + File.separator + "admin" + File.separator +
+                    File.separator + "reporte_envios_repartidor_" + repartidor.getIdRepartidor() + ".pdf";
+            File file = new File(ruta);
+            file.getParentFile().mkdirs();
+
+            // Generar PDF
+            PdfReporteEnvioRepartidor pdf = new PdfReporteEnvioRepartidor(repartidor, enviosAsignados);
+            pdf.generarPdf(ruta);
+
+            DialogUtils.mostrarMensaje("PDF generado correctamente para el repartidor.");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            DialogUtils.mostrarError("No se pudo generar el PDF: " + ex.getMessage());
         }
     }
 

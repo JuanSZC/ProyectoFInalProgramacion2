@@ -11,20 +11,17 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class PdfUsuarioReporte {
+public class PdfReporteEnvioRepartidor {
 
-    private final Usuario usuario;
+    private final Repartidor repartidor;
+    private final List<Envio> enviosAsignados;
 
-    public PdfUsuarioReporte(Usuario usuario) {
-        this.usuario = usuario;
+    public PdfReporteEnvioRepartidor(Repartidor repartidor, List<Envio> enviosAsignados) {
+        this.repartidor = repartidor;
+        this.enviosAsignados = enviosAsignados;
     }
 
     public void generarPdf(String rutaArchivo) throws IOException {
-        if (usuario == null) return;
-
-        List<Envio> envios = usuario.getListEnviosUsuario();
-        if (envios.isEmpty()) return; // No hay envíos, no genera PDF
-
         try {
             Document document = new Document(PageSize.A4, 50, 50, 60, 50);
             PdfWriter.getInstance(document, new FileOutputStream(rutaArchivo));
@@ -37,43 +34,46 @@ public class PdfUsuarioReporte {
             Font seccion = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14, new Color(60, 60, 60));
             Font texto = FontFactory.getFont(FontFactory.HELVETICA, 11, new Color(80, 80, 80));
 
-            LineSeparator separator = new LineSeparator(0.5f, 100, new Color(210, 210, 210), Element.ALIGN_CENTER, -2);
+            LineSeparator separator = new LineSeparator();
+            separator.setLineWidth(0.5f);
+            separator.setPercentage(100);
+            separator.setLineColor(new Color(210, 210, 210));
 
             // ===============================
             // ENCABEZADO
             // ===============================
-            document.add(new Paragraph("Reporte de Usuario", titulo));
+            document.add(new Paragraph("Reporte de Repartidor", titulo));
             document.add(new Paragraph("Fecha: " + java.time.LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), texto));
-            document.add(new Paragraph("\n"));
-            document.add(separator);
-            document.add(new Paragraph("\n"));
+            document.add(Chunk.NEWLINE);
+
+            // Corregido: añadir el separador correctamente
+            document.add(new Chunk(separator));
+            document.add(Chunk.NEWLINE);
 
             // ===============================
-            // DATOS DEL USUARIO
+            // DATOS REPARTIDOR
             // ===============================
-            document.add(new Paragraph("Usuario", seccion));
-            document.add(new Paragraph("\n"));
+            document.add(new Paragraph("Repartidor", seccion));
+            document.add(Chunk.NEWLINE);
 
-            PdfPTable tablaUsuario = crearTablaMinimal(2);
-            addLabel(tablaUsuario, "Nombre");
-            addValue(tablaUsuario, usuario.getNombreCompleto());
-            addLabel(tablaUsuario, "Correo");
-            addValue(tablaUsuario, usuario.getCorreo());
-            addLabel(tablaUsuario, "Teléfono");
-            addValue(tablaUsuario, usuario.getTelefono());
+            PdfPTable tablaRepartidor = crearTablaMinimal(2);
+            addLabel(tablaRepartidor, "Nombre");
+            addValue(tablaRepartidor, repartidor.getNombreCompleto());
+            addLabel(tablaRepartidor, "Correo");
+            addValue(tablaRepartidor, repartidor.getCorreo());
+            addLabel(tablaRepartidor, "Teléfono");
+            addValue(tablaRepartidor, repartidor.getTelefono());
 
-            document.add(tablaUsuario);
-            document.add(new Paragraph("\n"));
-            document.add(separator);
-            document.add(new Paragraph("\n"));
+            document.add(tablaRepartidor);
+            document.add(Chunk.NEWLINE);
 
             // ===============================
-            // ENVIOS DEL USUARIO
+            // ENVIOS ASIGNADOS
             // ===============================
-            document.add(new Paragraph("Envíos", seccion));
-            document.add(new Paragraph("\n"));
+            document.add(new Paragraph("Envíos Asignados", seccion));
+            document.add(Chunk.NEWLINE);
 
-            for (Envio envio : envios) {
+            for (Envio envio : enviosAsignados) {
                 PdfPTable tablaEnvio = crearTablaMinimal(2);
                 addLabel(tablaEnvio, "ID Envío");
                 addValue(tablaEnvio, envio.getIdEnvio());
@@ -83,11 +83,9 @@ public class PdfUsuarioReporte {
                 addValue(tablaEnvio, envio.getEstadoEnvio().name());
                 addLabel(tablaEnvio, "Fecha Creación");
                 addValue(tablaEnvio, envio.getFechaCreacion().toString());
-                addLabel(tablaEnvio, "Repartidor");
-                addValue(tablaEnvio, envio.getRepartidor() != null ? envio.getRepartidor().getNombreCompleto() : "Sin asignar");
 
                 document.add(tablaEnvio);
-                document.add(new Paragraph("\n"));
+                document.add(Chunk.NEWLINE);
 
                 // Paquete
                 Paquete p = envio.getPaquete();
@@ -101,7 +99,8 @@ public class PdfUsuarioReporte {
                     document.add(tablaPaquete);
 
                     // Productos
-                    document.add(new Paragraph("\nProductos", seccion));
+                    document.add(Chunk.NEWLINE);
+                    document.add(new Paragraph("Productos", seccion));
                     PdfPTable tablaProductos = new PdfPTable(4);
                     tablaProductos.setWidthPercentage(100);
 
@@ -120,21 +119,22 @@ public class PdfUsuarioReporte {
                     document.add(tablaProductos);
                 }
 
-                // Separador entre envíos
-                document.add(new Paragraph("\n"));
-                document.add(separator);
-                document.add(new Paragraph("\n"));
+                document.add(Chunk.NEWLINE);
+                document.add(new Chunk(separator));
+                document.add(Chunk.NEWLINE);
             }
 
             document.close();
+
         } catch (Exception e) {
             throw new IOException("Error creando PDF: " + e.getMessage(), e);
         }
     }
 
-    // ===============================
+    // ============================================
     // MÉTODOS AUXILIARES
-    // ===============================
+    // ============================================
+
     private PdfPTable crearTablaMinimal(int columnas) {
         PdfPTable tabla = new PdfPTable(columnas);
         tabla.setWidthPercentage(100);
