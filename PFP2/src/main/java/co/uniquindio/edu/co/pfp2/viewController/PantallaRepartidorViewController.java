@@ -323,7 +323,7 @@ public class PantallaRepartidorViewController {
 		}
 
 		try {
-			String ruta = "reporteReportesPDFsGenerador" + File.separator + "repartidores" + File.separator
+			String ruta = "ReportesPDF" + File.separator + "repartidores" + File.separator
 					+ "reporte_envio_" + seleccionado.getIdEnvio() + ".pdf";
 			File file = new File(ruta);
 			file.getParentFile().mkdirs();

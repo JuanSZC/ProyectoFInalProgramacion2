@@ -209,7 +209,7 @@ public class PantallaUsuarioViewController {
         if (envio != null) {
             try {
 
-                String ruta = "reportesGenerador" + File.separator + "usuarios" + File.separator
+                String ruta = "ReportesPDF" + File.separator + "usuarios" + File.separator
                         + "reporte_envio_" + envio.getIdEnvio() + ".pdf";
 
                 File file = new File(ruta);
