@@ -481,7 +481,7 @@ public class PantallaAdministradorViewController {
 
         boolean tieneEnviosPendientes = app.listGlobalUsuarios.stream()
                 .flatMap(usuario -> usuario.getListEnviosUsuario().stream())
-                .anyMatch(envio -> envio.getRepartidor() == repartidorSeleccionado && !envio.getEstadoEnvio().equals(EstadoEnvio.ENTREGADO));
+                .anyMatch(envio -> envio.getRepartidor() == repartidorSeleccionado && !envio.getEstadoEnvio().equals(EstadoEnvio.ENTREGADO) && !envio.getEstadoEnvio().equals(EstadoEnvio.CANCELADO));
 
         if (tieneEnviosPendientes) {
             DialogUtils.mostrarError("El repartidor tiene envíos pendientes y no se puede eliminar.");
