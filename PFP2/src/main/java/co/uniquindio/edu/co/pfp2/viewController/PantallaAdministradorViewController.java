@@ -4,6 +4,7 @@ import co.uniquindio.edu.co.pfp2.App;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.Repartidor;
 import co.uniquindio.edu.co.pfp2.model.Usuario;
+import co.uniquindio.edu.co.pfp2.model.Producto;
 import co.uniquindio.edu.co.pfp2.model.Envio;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -69,6 +70,25 @@ public class PantallaAdministradorViewController {
     Button btAMR;
 
     @FXML
+    TableView<Producto> tbProductos;
+    @FXML
+    TableColumn<Producto, String> colIdProducto;
+    @FXML
+    TableColumn<Producto, String> colNombreProducto;
+    @FXML
+    TableColumn<Producto, String> colDescripcionProducto;
+    @FXML
+    TableColumn<Producto, String> colPrecioProducto;
+    @FXML
+    TableColumn<Producto, String> colCantidadProducto;
+    @FXML
+    TableColumn<Producto, String> colPesoProducto;
+    @FXML
+    Button btAMP;
+    @FXML
+    Button btEliminarProducto;
+
+    @FXML
     Button btEliminarUsuario;
 
     @FXML
@@ -80,6 +100,7 @@ public class PantallaAdministradorViewController {
         if (app != null) {
             tbUsuarios.setItems(app.listGlobalUsuarios);
             tbRepartidores.setItems(app.listGlobalRepartidores);
+            tbProductos.setItems(app.listGlobalProductos);
         }
     }
     public void generarPDF() {
@@ -165,13 +186,21 @@ public class PantallaAdministradorViewController {
                 new SimpleStringProperty(cellData.getValue().getZonaCobertura().toString()));
         colDisponibilidadRepartidor.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDisponibilidadRepartidor().toString()));
-        // Aplicar paleta admin una vez la escena esté lista
-        Platform.runLater(() -> {
-            if (btAM != null && btAM.getScene() != null){
-                Parent root = btAM.getScene().getRoot();
-                VisualUtils.applyRoleStyles(root, "admin");
+        colNombreProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        colDescripcionProducto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescripcion()));
+        colCantidadProducto.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCantidad())));
+        colPrecioProducto.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio())));
+        colPesoProducto.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPeso())));
+        colIdProducto.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdProducto())));
+
+        tbProductos.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
+            if (newSel != null) {
+                btAMP.setText("Modificar Producto");
+            } else {
+                btAMP.setText("Añadir Producto");
             }
         });
+
     }
 
     @FXML
@@ -283,6 +312,85 @@ public class PantallaAdministradorViewController {
             e.printStackTrace();
             DialogUtils.mostrarError("Error al abrir la ventana de agregar repartidor: " + e.getMessage());
         }
+    }
+
+    public void accionAgregarModificarProducto() {
+        Producto productoSeleccionado = tbProductos.getSelectionModel().getSelectedItem();
+
+        if (productoSeleccionado == null) {
+            abrirPantallaAgregarProducto();
+        } else {
+            abrirPantallaModificarProducto(productoSeleccionado);
+        }
+    }
+
+    private void abrirPantallaAgregarProducto() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaAgregarProducto.fxml"));
+            AnchorPane rootLayout = loader.load();
+
+            PantallaAgregarProductoViewController controller = loader.getController();
+            controller.setApp(app);
+
+            Stage ventana = new Stage();
+            ventana.setTitle("Agregar Producto");
+            ventana.setScene(new Scene(rootLayout));
+            ventana.initModality(Modality.WINDOW_MODAL);
+            ventana.initOwner(tbProductos.getScene().getWindow());
+            ventana.setResizable(false);
+            ventana.centerOnScreen();
+            ventana.showAndWait();
+
+            tbProductos.refresh();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            DialogUtils.mostrarError("Error al abrir la ventana de agregar producto: " + e.getMessage());
+        }
+    }
+
+    private void abrirPantallaModificarProducto(Producto producto) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaModificarProducto.fxml"));
+            AnchorPane rootLayout = loader.load();
+
+            PantallaModificarProductoViewController controller = loader.getController();
+            controller.setProducto(producto);
+
+            Stage ventana = new Stage();
+            ventana.setTitle("Modificar Producto");
+            ventana.setScene(new Scene(rootLayout));
+            ventana.initModality(Modality.WINDOW_MODAL);
+            ventana.initOwner(tbProductos.getScene().getWindow());
+            ventana.setResizable(false);
+            ventana.centerOnScreen();
+            ventana.showAndWait();
+
+            tbProductos.refresh();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            DialogUtils.mostrarError("Error al abrir la ventana de modificar producto: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void eliminarProducto() {
+        Producto productoSeleccionado = tbProductos.getSelectionModel().getSelectedItem();
+
+        if (productoSeleccionado == null) {
+            DialogUtils.mostrarError("Seleccione un producto para eliminar.");
+            return;
+        }
+
+        app.listGlobalProductos.remove(productoSeleccionado);
+        tbProductos.refresh();
+        DialogUtils.mostrarMensaje("Producto eliminado correctamente.");
+    }
+
+    @FXML
+    private void limpiarSeleccionProducto() {
+        tbProductos.getSelectionModel().clearSelection();
     }
 
     private void abrirPantallaModificarRepartidor(Repartidor repartidor) {

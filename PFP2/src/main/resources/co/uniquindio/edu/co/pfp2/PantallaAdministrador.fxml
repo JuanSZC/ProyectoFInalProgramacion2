@@ -12,45 +12,45 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panelPrincipal" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaAdministradorViewController">
+<AnchorPane fx:id="panelPrincipal" prefHeight="800.0" prefWidth="1080.0" stylesheets="@../../../../../styles/paletaRoja.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaAdministradorViewController">
    <children>
-      <Rectangle styleClass="top-bar" height="120.0" width="1280.0" />
-      <Text fill="white" layoutX="14.0" layoutY="63.0" text="¡Bienvenido!" wrappingWidth="720.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b71c1c" height="122.0" strokeType="INSIDE" styleClass="card-header" width="1280.0" />
+      <Text fill="WHITE" layoutX="14.0" layoutY="63.0" text="¡Bienvenido!" wrappingWidth="720.0">
          <font>
             <Font name="Segoe UI Bold Italic" size="45.0" />
          </font>
       </Text>
-      <Text fill="white" layoutX="14.0" layoutY="101.0" text="Administrador" wrappingWidth="720.0">
+      <Text fill="WHITE" layoutX="14.0" layoutY="101.0" text="Administrador" wrappingWidth="720.0">
          <font>
             <Font name="Segoe UI Italic" size="25.0" />
          </font>
       </Text>
-      <TabPane layoutY="120.0" prefHeight="660.0" prefWidth="1280.0" side="LEFT" styleClass="tab-pane-roja" stylesheets="@../../../../../Styles/styleButton.css" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="120.0" prefHeight="660.0" prefWidth="1280.0" side="LEFT" styleClass="tabpane-red" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab text="👤 Gestión de Usuarios">
                <content>
                   <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" strokeType="INSIDE" width="1210.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b71c1c" height="60.0" strokeType="INSIDE" styleClass="card-header" width="1210.0" />
                         <Text fill="white" layoutX="8.0" layoutY="40.0" text="Gestión de usuarios" wrappingWidth="720.0">
                            <font>
                               <Font name="Segoe UI Bold Italic" size="25.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="tbUsuarios" layoutY="60.0" prefHeight="478.0" prefWidth="1065.0" styleClass="table-view-roja" stylesheets="@../../../../../Styles/styleButton.css">
+                        <TableView fx:id="tbUsuarios" layoutY="60.0" prefHeight="594.0" prefWidth="1024.0">
                            <columns>
                               <TableColumn fx:id="colIdUsuario" prefWidth="88.0" text="ID" />
                               <TableColumn fx:id="colNombreUsuario" prefWidth="269.0" text="Nombre" />
                               <TableColumn fx:id="colCedulaUsuario" prefWidth="158.0" text="Cédula" />
                               <TableColumn fx:id="colTelefonoUsuario" prefWidth="148.0" text="Teléfono" />
                               <TableColumn fx:id="colCorreoUsuario" prefWidth="242.0" text="Correo" />
-                              <TableColumn fx:id="colContrasenaUsuario" prefWidth="152.0" text="Contraseña" />
+                              <TableColumn fx:id="colContrasenaUsuario" prefWidth="99.0" text="Contraseña" />
                            </columns>
                         </TableView>
-                        <Button fx:id="btAM" layoutX="1070.0" layoutY="470.0" mnemonicParsing="false" onAction="#accionAgregarModificarUsuario" prefHeight="34.0" prefWidth="142.0" styleClass="button-danger" text="Agregar Usuario" />
-                        <Button fx:id="btEliminarUsuario" layoutX="1070.0" layoutY="530.0" mnemonicParsing="false" onAction="#eliminarUsuario" styleClass="button-danger" text="Eliminar Usuario" />
-                        <Button layoutX="1070.0" layoutY="590.0" mnemonicParsing="false" onAction="#limpiarSeleccionUsuario" styleClass="button-dark" text="Limpiar Selección" />
-                        <Button fx:id="btAM1" layoutX="1070.0" layoutY="97.0" mnemonicParsing="false" onAction="#generarPDF" prefHeight="34.0" prefWidth="142.0" styleClass="button-danger" text="Generar PDF" />
+                        <Button fx:id="btAM" layoutX="1042.0" layoutY="471.0" mnemonicParsing="false" onAction="#accionAgregarModificarUsuario" prefHeight="34.0" prefWidth="142.0" styleClass="button-dark" text="Agregar Usuario" />
+                        <Button fx:id="btEliminarUsuario" layoutX="1043.0" layoutY="529.0" mnemonicParsing="false" onAction="#eliminarUsuario" styleClass="button-danger" text="Eliminar Usuario" />
+                        <Button layoutX="1039.0" layoutY="310.0" mnemonicParsing="false" onAction="#limpiarSeleccionUsuario" styleClass="button-primary" text="Limpiar Selección" />
+                        <Button fx:id="btAM1" layoutX="1042.0" layoutY="96.0" mnemonicParsing="false" onAction="#generarPDF" prefHeight="34.0" prefWidth="142.0" styleClass="button-dark" text="Generar PDF" />
                      </children>
                   </AnchorPane>
                </content>
@@ -59,51 +59,78 @@
                <content>
                   <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" strokeType="INSIDE" width="1210.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b71c1c" height="60.0" strokeType="INSIDE" styleClass="card-header" width="1210.0" />
                         <Text fill="white" layoutX="8.0" layoutY="40.0" text="Gestión de Repartidores" wrappingWidth="720.0">
                            <font>
                               <Font name="Segoe UI Bold Italic" size="25.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="tbRepartidores" layoutX="3.0" layoutY="60.0" prefHeight="478.0" prefWidth="1026.0" styleClass="table-view-roja" stylesheets="@../../../../../Styles/styleButton.css">
+                        <TableView fx:id="tbRepartidores" layoutX="3.0" layoutY="60.0" prefHeight="565.0" prefWidth="1026.0">
                            <columns>
                               <TableColumn fx:id="colIdRepartidor" prefWidth="75.0" text="ID" />
                               <TableColumn fx:id="colNombreRepartidor" prefWidth="262.0" text="Nombre" />
                               <TableColumn fx:id="colCedulaRepartidor" prefWidth="178.0" text="Cédula" />
                               <TableColumn fx:id="colCorreoRepartidor" prefWidth="148.0" text="Correo" />
                               <TableColumn fx:id="colZonaRepartidor" prefWidth="242.0" text="Zona de Cobertura" />
-                              <TableColumn fx:id="colDisponibilidadRepartidor" prefWidth="131.0" text="Disponibilidad" />
+                              <TableColumn fx:id="colDisponibilidadRepartidor" prefWidth="111.0" text="Disponibilidad" />
                            </columns>
                         </TableView>
                         <Button fx:id="btAMR" layoutX="1037.0" layoutY="470.0" mnemonicParsing="false" onAction="#accionAgregarModificarRepartidor" prefHeight="36.0" prefWidth="168.0" styleClass="button-danger" text="Agregar Repartidor" />
                         <Button fx:id="btEliminarRepartidor" layoutX="1041.0" layoutY="530.0" mnemonicParsing="false" onAction="#eliminarRepartidor" styleClass="button-danger" text="Eliminar Repartidor" />
-                        <Button layoutX="1051.0" layoutY="590.0" mnemonicParsing="false" onAction="#limpiarSeleccionRepartidor" styleClass="button-dark" text="Limpiar Selección" />
+                        <Button layoutX="1048.0" layoutY="309.0" mnemonicParsing="false" onAction="#limpiarSeleccionRepartidor" styleClass="button-dark" text="Limpiar Selección" />
                         <Button fx:id="btAM11" layoutX="1050.0" layoutY="98.0" mnemonicParsing="false" onAction="#generarPDF" prefHeight="34.0" prefWidth="142.0" styleClass="button-danger" text="Generar PDF" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
+               <Tab text="🛒 Gestión de Productos">
+                  <content>
+                     <AnchorPane prefHeight="600.0" prefWidth="1080.0">
+                        <children>
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b71c1c" height="60.0" strokeType="INSIDE" styleClass="card-header" width="1210.0" />
+                           <Text fill="white" layoutX="8.0" layoutY="40.0" text="Gestión de Productos" wrappingWidth="720.0">
+                              <font>
+                                 <Font name="Segoe UI Bold Italic" size="25.0" />
+                              </font>
+                           </Text>
+                           <TableView fx:id="tbProductos" layoutX="3.0" layoutY="60.0" prefHeight="558.0" prefWidth="1026.0">
+                              <columns>
+                                 <TableColumn fx:id="colIdProducto" prefWidth="75.0" text="ID" />
+                                 <TableColumn fx:id="colNombreProducto" prefWidth="262.0" text="Nombre" />
+                                 <TableColumn fx:id="colDescripcionProducto" prefWidth="178.0" text="Descripción" />
+                                 <TableColumn fx:id="colPrecioProducto" prefWidth="148.0" text="Precio" />
+                                 <TableColumn fx:id="colCantidadProducto" prefWidth="132.0" text="Cantidad" />
+                                 <TableColumn fx:id="colPesoProducto" prefWidth="227.0" text="Peso" />
+                              </columns>
+                           </TableView>
+                           <Button fx:id="btAMP" layoutX="1037.0" layoutY="470.0" mnemonicParsing="false" onAction="#accionAgregarModificarProducto" prefHeight="36.0" prefWidth="168.0" styleClass="button-danger" text="Agregar Producto" />
+                           <Button fx:id="btEliminarProducto" layoutX="1046.0" layoutY="530.0" mnemonicParsing="false" onAction="#eliminarProducto" styleClass="button-danger" text="Eliminar Producto" />
+                           <Button layoutX="1043.0" layoutY="262.0" mnemonicParsing="false" onAction="#limpiarSeleccionProducto" styleClass="button-dark" text="Limpiar Selección" />
+                        </children>
+                     </AnchorPane>
+                  </content>
+               </Tab>
             <Tab text="📊 Reportes">
                <content>
                   <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" strokeType="INSIDE" width="1210.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b71c1c" height="60.0" strokeType="INSIDE" styleClass="card-header" width="1210.0" />
                         <Text fill="white" layoutX="8.0" layoutY="40.0" text="Reportes y Estadísticas" wrappingWidth="720.0">
                            <font>
                               <Font name="Segoe UI Bold Italic" size="25.0" />
                            </font>
                         </Text>
-                        <Button layoutX="1070.0" layoutY="100.0" mnemonicParsing="false" onAction="#abrirPantallaReportesAdmin" prefHeight="36.0" prefWidth="142.0" styleClass="button-danger" text="Abrir Reportes" />
+                        <Button layoutX="421.0" layoutY="198.0" mnemonicParsing="false" onAction="#abrirPantallaReportesAdmin" prefHeight="231.0" prefWidth="369.0" styleClass="button-danger" text="Abrir Reportes" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
          </tabs>
       </TabPane>
-      <MenuButton fx:id="menuAjustes" layoutX="1148.0" layoutY="14.0" mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="button-danger-dark" stylesheets="@../../../../../Styles/styleButton.css" text="Ajustes" textFill="WHITE">
+      <MenuButton fx:id="menuAjustes" layoutX="1145.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="121.0" styleClass="button-primary" text="Ajustes" textFill="WHITE">
          <items>
-            <MenuItem mnemonicParsing="false" text="👤 Ajustes del Admin" onAction="#openAjustesAdmin"/>
-            <MenuItem mnemonicParsing="false" text="🚪 Cerrar Sesión" onAction="#cerrarSesionAdmin"/>
+            <MenuItem mnemonicParsing="false" onAction="#openAjustesAdmin" text="👤 Ajustes del Admin" />
+            <MenuItem mnemonicParsing="false" onAction="#cerrarSesionAdmin" text="🚪 Cerrar Sesión" />
          </items>
       </MenuButton>
    </children>

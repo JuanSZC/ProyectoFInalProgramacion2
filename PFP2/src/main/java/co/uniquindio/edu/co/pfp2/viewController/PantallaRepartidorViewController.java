@@ -83,15 +83,7 @@ public class PantallaRepartidorViewController {
 		this.app = app;
 	}
 
-	public void initialize(){
-		// Aplicar paleta repartidor al terminar de cargar la escena
-		Platform.runLater(() -> {
-			if (tbEnvios != null && tbEnvios.getScene() != null){
-				Parent root = tbEnvios.getScene().getRoot();
-				VisualUtils.applyRoleStyles(root, "repartidor");
-			}
-		});
-	}
+
 
 	public void setRepartidor(Repartidor repartidor) {
 		this.repartidor = repartidor;

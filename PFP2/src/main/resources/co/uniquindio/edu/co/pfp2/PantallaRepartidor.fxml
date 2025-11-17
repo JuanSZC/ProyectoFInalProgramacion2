@@ -12,10 +12,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../../../Styles/styleButton.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaRepartidorViewController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../../../styles/paletaVerde.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaRepartidorViewController">
     <children>
-        <Rectangle styleClass="top-bar" height="120.0" width="1280.0" />
-        <Text styleClass="heading-text" layoutX="14.0" layoutY="63.0" text="Bienvenido al Panel Repartidor" wrappingWidth="720.0">
+        <Rectangle fill="#1b5e20" height="120.0" styleClass="top-bar" width="1280.0" />
+        <Text fill="WHITE" layoutX="14.0" layoutY="63.0" styleClass="heading-text" text="Bienvenido al Panel Repartidor" wrappingWidth="720.0">
             <font>
                 <Font name="Segoe UI Bold Italic" size="45.0" />
             </font>
@@ -25,7 +25,7 @@
                 <Font name="Segoe UI Italic" size="25.0" />
             </font>
         </Text>
-        <MenuButton layoutX="1148.0" layoutY="14.0" mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="button-dark" text="Ajustes" textFill="WHITE">
+        <MenuButton layoutX="1148.0" layoutY="14.0" mnemonicParsing="false" styleClass="button-primary" text="Ajustes" textFill="WHITE">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#openAjustesRepartidor" text="👤 Ajustes" />
                 <MenuItem mnemonicParsing="false" onAction="#cerrarSesionRepartidor" text="🚪 Cerrar Sesión" />
@@ -37,7 +37,7 @@
                     <content>
                         <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                             <children>
-                                <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" width="1210.0" />
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b5e20" height="60.0" styleClass="card-header" width="1210.0" />
                                 <Text fill="white" layoutX="8.0" layoutY="40.0" text="Historial de Envíos" wrappingWidth="720.0">
                                     <font>
                                         <Font name="Segoe UI Bold Italic" size="25.0" />
@@ -63,24 +63,24 @@
                     <content>
                         <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                             <children>
-                                <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" width="1210.0" />
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b5e20" height="60.0" styleClass="card-header" width="1210.0" />
                                 <Text fill="white" layoutX="8.0" layoutY="40.0" text="Envíos Asignados / En Ruta" wrappingWidth="720.0">
                                     <font>
                                         <Font name="Segoe UI Bold Italic" size="25.0" />
                                     </font>
                                 </Text>
-                                <TableView fx:id="tbEnCurso" layoutY="60.0" prefHeight="480.0" prefWidth="1065.0" styleClass="table-view">
+                                <TableView fx:id="tbEnCurso" layoutY="60.0" prefHeight="480.0" prefWidth="1039.0" styleClass="table-view">
                                     <columns>
                                         <TableColumn fx:id="colId2" prefWidth="80.0" text="ID" />
                                         <TableColumn fx:id="colFecha2" prefWidth="140.0" text="Fecha" />
                                         <TableColumn fx:id="colUsuario2" prefWidth="260.0" text="Usuario Receptor" />
-                                        <TableColumn fx:id="colDireccion2" prefWidth="300.0" text="Dirección Destino" />
-                                        <TableColumn fx:id="colCosto2" prefWidth="120.0" text="Costo" />
-                                        <TableColumn fx:id="colEstado2" prefWidth="160.0" text="Estado" />
+                                        <TableColumn fx:id="colDireccion2" prefWidth="265.0" text="Dirección Destino" />
+                                        <TableColumn fx:id="colCosto2" prefWidth="110.0" text="Costo" />
+                                        <TableColumn fx:id="colEstado2" prefWidth="164.0" text="Estado" />
                                     </columns>
                                 </TableView>
                                 <Button layoutX="1079.0" layoutY="105.0" mnemonicParsing="false" onAction="#proximoEstado" styleClass="button-dark" text="▶ Siguiente Estado" />
-                                <Button layoutX="1063.0" layoutY="162.0" mnemonicParsing="false" onAction="#cancelarYReasignar" styleClass="button-danger" text="❌ Cancelar / Reasignar" />
+                                <Button layoutX="1063.0" layoutY="162.0" mnemonicParsing="false" onAction="#cancelarYReasignar" styleClass="button-danger" stylesheets="@../../../../../styles/paletaRoja.css" text="❌ Cancelar / Reasignar" />
                                 <Button layoutX="1098.0" layoutY="213.0" mnemonicParsing="false" onAction="#generarPdfEnCurso" styleClass="button-dark" text="📄 Generar PDF" />
                             </children>
                         </AnchorPane>

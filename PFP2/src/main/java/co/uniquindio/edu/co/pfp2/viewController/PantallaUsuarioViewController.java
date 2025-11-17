@@ -436,16 +436,6 @@ public class PantallaUsuarioViewController {
             }
         });
 
-        // Aplicar estilos por rol después de que la escena esté lista
-        Platform.runLater(() -> {
-            if (btAM != null && btAM.getScene() != null){
-                Parent root = btAM.getScene().getRoot();
-                VisualUtils.applyRoleStyles(root, "user");
-            }
-        });
-
-
-
 
 
 

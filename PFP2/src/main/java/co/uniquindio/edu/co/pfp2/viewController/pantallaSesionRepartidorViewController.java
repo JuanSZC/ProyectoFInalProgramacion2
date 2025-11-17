@@ -65,12 +65,5 @@ public class pantallaSesionRepartidorViewController {
         }
     }
 
-    public void initialize(){
-        Platform.runLater(() -> {
-            if (txtCorreo != null && txtCorreo.getScene() != null){
-                Parent root = txtCorreo.getScene().getRoot();
-                VisualUtils.applyRoleStyles(root, "repartidor");
-            }
-        });
-    }
+
 }

@@ -15,22 +15,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panelPrincipal" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../../../Styles/styleButton.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaUsuarioViewController">
+<AnchorPane fx:id="panelPrincipal" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../../../styles/paletaAzul.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaUsuarioViewController">
 
     <children>
         <!-- Barra superior -->
-        <Rectangle styleClass="top-bar" height="120.0" width="1280.0" />
-        <Text styleClass="heading-text" layoutX="14.0" layoutY="63.0" text="¡Bienvenido de Vuelta!" wrappingWidth="720.0">
+        <Rectangle fill="#1a4e8c" height="120.0" styleClass="top-bar" width="1280.0" />
+        <Text fill="WHITE" layoutX="14.0" layoutY="63.0" styleClass="heading-text" text="¡Bienvenido de Vuelta!" wrappingWidth="720.0">
             <font>
                 <Font name="Segoe UI Bold Italic" size="45.0" />
             </font>
         </Text>
-        <Text fx:id="tUsuario" styleClass="subheading-text" layoutX="14.0" layoutY="101.0" text="[Nombre Completo del Usuario]" wrappingWidth="720.0">
+        <Text fx:id="tUsuario" fill="WHITE" layoutX="14.0" layoutY="101.0" styleClass="subheading-text" text="[Nombre Completo del Usuario]" wrappingWidth="720.0">
             <font>
                 <Font name="Segoe UI Italic" size="25.0" />
             </font>
         </Text>
-        <MenuButton layoutX="1148.0" layoutY="19.0" mnemonicParsing="false" styleClass="button-danger" text="Ajustes"> <items> <MenuItem mnemonicParsing="false" onAction="#openPantallaUsuarioConfiguracion" text="👤 Mi cuenta" /> <MenuItem mnemonicParsing="false" onAction="#cerrarSesion" text="🚪 Cerrar Sesión" /> </items> </MenuButton>
+        <MenuButton layoutX="1148.0" layoutY="19.0" mnemonicParsing="false" styleClass="button-primary" text="Ajustes"> <items> <MenuItem mnemonicParsing="false" onAction="#openPantallaUsuarioConfiguracion" text="👤 Mi cuenta" /> <MenuItem mnemonicParsing="false" onAction="#cerrarSesion" text="🚪 Cerrar Sesión" /> </items> </MenuButton>
         <!-- TabPane vertical -->
         <TabPane layoutY="120.0" prefHeight="660.0" prefWidth="1280.0" side="LEFT" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
             <tabs>
@@ -38,8 +38,8 @@
                     <content>
                         <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                             <children>
-                                <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" strokeType="INSIDE" width="1210.0" />
-                                <TableView fx:id="tbCatalogoDisponible" layoutY="60.0" prefHeight="478.0" prefWidth="948.0">
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a4e8c" height="60.0" strokeType="INSIDE" styleClass="card-header" width="1210.0" />
+                                <TableView fx:id="tbCatalogoDisponible" layoutY="60.0" prefHeight="571.0" prefWidth="948.0">
                                     <columns>
                                         <TableColumn fx:id="tbCDNombre" prefWidth="224.0" text="Nombre" />
                                         <TableColumn fx:id="tbCDDescripcion" prefWidth="361.0" text="Descripción" />
@@ -66,8 +66,8 @@
                     <content>
                         <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                             <children>
-                                <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" strokeType="INSIDE" width="1210.0" />
-                                <TableView fx:id="tbMiCatalogo" layoutX="-6.0" layoutY="60.0" prefHeight="478.0" prefWidth="948.0">
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a4e8c" height="60.0" strokeType="INSIDE" styleClass="card-header" width="1210.0" />
+                                <TableView fx:id="tbMiCatalogo" layoutX="-6.0" layoutY="60.0" prefHeight="571.0" prefWidth="948.0">
                                     <columns>
                                         <TableColumn fx:id="colMCNombre" prefWidth="224.0" text="Nombre" />
                                         <TableColumn fx:id="colMCDescripcion" prefWidth="361.0" text="Descripción" />
@@ -119,8 +119,8 @@
                     <content>
                         <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                             <children>
-                                <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" strokeType="INSIDE" width="1210.0" />
-                                <TableView fx:id="tbCarrito" layoutY="60.0" prefHeight="478.0" prefWidth="948.0">
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a4e8c" height="60.0" strokeType="INSIDE" styleClass="card-header" width="1210.0" />
+                                <TableView fx:id="tbCarrito" layoutY="60.0" prefHeight="582.0" prefWidth="948.0">
                                     <columns>
                                         <TableColumn fx:id="colCNombre" prefWidth="224.0" text="Nombre" />
                                         <TableColumn fx:id="colCDescripcion" prefWidth="361.0" text="Descripción" />
@@ -142,8 +142,8 @@
                <content>
                   <AnchorPane prefHeight="600.0" prefWidth="1080.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="60.0" strokeType="INSIDE" width="1210.0" />
-                        <TableView fx:id="tbEnviosUsuario" layoutY="60.0" prefHeight="478.0" prefWidth="948.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a4e8c" height="60.0" strokeType="INSIDE" styleClass="card-header" width="1210.0" />
+                        <TableView fx:id="tbEnviosUsuario" layoutY="60.0" prefHeight="579.0" prefWidth="948.0">
                            <columns>
                               <TableColumn fx:id="colFechaEnvio" prefWidth="224.0" text="Fecha" />
                               <TableColumn fx:id="colRepartidorEnvio" prefWidth="287.0" text="Repartidor Asignado" />

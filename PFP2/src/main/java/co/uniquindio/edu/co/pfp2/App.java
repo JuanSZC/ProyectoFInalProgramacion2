@@ -56,9 +56,6 @@ public class App extends Application {
             pantallaBienvenidaViewController.setApp(this);
 
             Scene scene = new Scene(rootLayout);
-            // Aplicar hoja de estilos global y clase neutra para bienvenida
-            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-neutral");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -83,8 +80,6 @@ public class App extends Application {
             pantallaSesionUsuarioViewController.setListGlobalUsuarios(listGlobalUsuarios);
 
             Scene scene = new Scene(rootLayout);
-            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-user");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -109,8 +104,6 @@ public class App extends Application {
             }
             pantallaUsuarioViewController.initialize();
             Scene scene = new Scene(rootLayout);
-            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-user");
             stage.setScene(scene); stage.setResizable(false);
             stage.centerOnScreen(); stage.show();
                 } catch (IOException ex) {
@@ -125,24 +118,19 @@ public class App extends Application {
             );
             AnchorPane rootLayout = loader.load();
 
-            // Controlador de la pantalla de configuración
             PantallaUsuarioConfiguracionViewController configController = loader.getController();
             configController.setApp(this);
             configController.initialize();
 
-            // Crear la ventana modal
             Stage ventanaConfig = new Stage();
             ventanaConfig.setTitle("Configuración");
             Scene sc = new Scene(rootLayout);
-            sc.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-user");
             ventanaConfig.setScene(sc);
             ventanaConfig.initModality(Modality.WINDOW_MODAL);
             ventanaConfig.initOwner(stage); // el dueño es la ventana principal
             ventanaConfig.setResizable(false);
             ventanaConfig.centerOnScreen();
 
-            // Mostrar la ventana y esperar a que se cierre
             ventanaConfig.showAndWait();
 
                 } catch (IOException e) {
@@ -161,19 +149,15 @@ public class App extends Application {
             PantallaUsuarioPagoViewController controller = loader.getController();
             controller.setApp(this);
 
-            // Crear ventana modal correctamente sin tocar la principal
             Stage ventanaPago = new Stage();
             ventanaPago.setTitle("Pago");
             Scene sc = new Scene(rootLayout);
-            sc.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-user");
             ventanaPago.setScene(sc);
             ventanaPago.initModality(Modality.WINDOW_MODAL);
             ventanaPago.initOwner(stage); // dueño = principal
             ventanaPago.setResizable(false);
             ventanaPago.centerOnScreen();
 
-            // Mostrar sin cerrar la ventana principal
             ventanaPago.showAndWait();
 
                 } catch (IOException e) {
@@ -195,8 +179,6 @@ public class App extends Application {
             Stage ventanaDireccion = new Stage();
             ventanaDireccion.setTitle("Dirección");
             Scene sc = new Scene(rootLayout);
-            sc.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-user");
             ventanaDireccion.setScene(sc);
             ventanaDireccion.initModality(Modality.WINDOW_MODAL);
             ventanaDireccion.initOwner(ownerStage); // la ventana que la llamó
@@ -237,8 +219,6 @@ public class App extends Application {
             pantallaSesionRepartidorViewController.setListGlobalRepartidores(listGlobalRepartidores);
 
             Scene scene = new Scene(rootLayout);
-            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-repartidor");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -263,8 +243,6 @@ public class App extends Application {
             pantallaSesionAdministradorViewController.setAdministrador(admin);
 
             Scene scene = new Scene(rootLayout);
-            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-admin");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -288,8 +266,6 @@ public void openPantallaAdministrador() {
             controller.initialize();
 
             Scene scene = new Scene(rootLayout);
-            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-admin");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -314,8 +290,7 @@ public void openPantallaAdministrador() {
                         controller.setRepartidor(repartidor);
 
                         Scene scene = new Scene(rootLayout);
-                        scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-                        rootLayout.getStyleClass().add("role-repartidor");
+                        scene.getStylesheets().add(getClass().getResource("/styles/paletaRoja.css").toExternalForm());
 
                         stage.setScene(scene);
                         stage.setResizable(false);
@@ -340,8 +315,7 @@ public void openPantallaAdministrador() {
             pantallaRegistroUsuarioViewController.usuarios = listGlobalUsuarios;
 
             Scene scene = new Scene(rootLayout);
-            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
-            rootLayout.getStyleClass().add("role-user");
+            scene.getStylesheets().add(getClass().getResource("/styles/paletaRoja.css").toExternalForm());
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -362,480 +336,413 @@ public void openPantallaAdministrador() {
         admin.setClave(1234);
         this.admin = admin;
 
-        // ==================== REPARTIDORES ====================
-
-// Repartidor 1
-        Repartidor repartidor = new Repartidor(idRepartidor,"Manuel Perez","123456789","mp@hotmail.com","mprep",987654321, ZonaCobertura.NORTE, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor);
-        idRepartidor++;
-
-// Repartidor 2
-        Repartidor repartidor1 = new Repartidor(idRepartidor,"Andrea Camargo","113412121","AC@gmail.com","rep321",123121212, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor1);
-        idRepartidor++;
-
-// Repartidor 3
-        Repartidor repartidor2 = new Repartidor(idRepartidor,"Juan Pablo Ramirez","123421234","JpRamirez@hotmail.com","jprPass",121212121, ZonaCobertura.SUR, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor2);
-        idRepartidor++;
-
-// Repartidor 4
-        Repartidor repartidor3 = new Repartidor(idRepartidor,"Felipe felipe felipe","12121212","CSCol@outlook.es","ccsgo",98787898, ZonaCobertura.MUNICIPIO_CERCANO, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor3);
-        idRepartidor++;
-
-// Repartidor 5
-        Repartidor repartidor4 = new Repartidor(idRepartidor,"Sofía Morales","112233445","sofia.m@gmail.com","sofiapass",123456780, ZonaCobertura.NORTE, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor4);
-        idRepartidor++;
-
-// Repartidor 6
-        Repartidor repartidor5 = new Repartidor(idRepartidor,"Felipe Torres","109876543","ftorres@gmail.com","felipet",987654320, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor5);
-        idRepartidor++;
-
-// Repartidor 7
-        Repartidor repartidor6 = new Repartidor(idRepartidor,"Laura Sofia Sanchez","101234567","laura.j@gmail.com","lajim",1123581321, ZonaCobertura.SUR, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor6);
-        idRepartidor++;
-
-// Repartidor 8
-        Repartidor repartidor7 = new Repartidor(idRepartidor,"Camilo Camilo Camilo","102345678","andres.g@gmail.com","andresG",22334455, ZonaCobertura.MUNICIPIO_CERCANO, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor7);
-        idRepartidor++;
-// Repartidor 9
-
-        Repartidor repartidor8 = new Repartidor(idRepartidor,"Andres Felipe Hernandez","103456789","valentina.r@gmail.com","valenR",33445566, ZonaCobertura.NORTE, DisponibilidadRepartidor.DISPONIBLE);
-        listGlobalRepartidores.add(repartidor8);
-        idRepartidor++;
-
-
-        // ==================== USUARIOS ====================
-
-// Usuario 0 (ya creado)
-        Usuario usuario = new Usuario("Juan Carlos Ceballos","123456789","jcarlosc@gmail.com","jcc",123456789,this.idUsuario);
-        listGlobalUsuarios.add(usuario);
-        this.idUsuario ++;
-        Direccion direccion = new Direccion(idDireccion,"Carrera 17 #7-21",4.620278,-75.635833,ZonaCobertura.MUNICIPIO_CERCANO);
-        idDireccion++;
-        usuario.getListDireccionesUsuario().add(direccion);
-
-// Usuario 1 (ya creado)
-        Usuario usuario1 = new Usuario("Diana Paola Rodriguez","1077865892","dpr@gmail.com","dpr",3789456,this.idUsuario);
-        listGlobalUsuarios.add(usuario1);
-        this.idUsuario ++;
-
-// Usuario 2 (ya creado)
-        Usuario usuario2 = new Usuario("Juan Manuel Velásquez","115187043","vivamemento@si.com","hola",6745,this.idUsuario);
-        listGlobalUsuarios.add(usuario2);
-        this.idUsuario ++;
-
-        // Usuario 1 (ya creado) - agregando dirección
-        Direccion direccion1 = new Direccion(idDireccion, "Calle 10 #5-22", 4.621500, -75.634200, ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario1.getListDireccionesUsuario().add(direccion1);
-
-// Usuario 2 (ya creado) - agregando dirección
-        Direccion direccion2 = new Direccion(idDireccion, "Carrera 15 #7-30", 4.619800, -75.636500, ZonaCobertura.CENTRO);
-        idDireccion++;
-        usuario2.getListDireccionesUsuario().add(direccion2);
-
-
-// Usuario 3
-        Usuario usuario3 = new Usuario("Andrea López","1023456789","andrea.lopez@gmail.com","andreaL",99887766,this.idUsuario);
-        listGlobalUsuarios.add(usuario3);
-        this.idUsuario ++;
-        Direccion direccion3 = new Direccion(idDireccion,"Calle 7 #6-20",4.618900,-75.637000,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario3.getListDireccionesUsuario().add(direccion3);
-
-// Usuario 4
-        Usuario usuario4 = new Usuario("Carlos Ramírez","1102345698","carlosr@gmail.com","carlr",55667788,this.idUsuario);
-        listGlobalUsuarios.add(usuario4);
-        this.idUsuario ++;
-        Direccion direccion4 = new Direccion(idDireccion,"Carrera 12 #5-18",4.622800,-75.636200,ZonaCobertura.CENTRO);
-        idDireccion++;
-        usuario4.getListDireccionesUsuario().add(direccion4);
-
-// Usuario 5
-        Usuario usuario5 = new Usuario("María Fernanda Suárez","1098765432","mfsuarez@gmail.com","mfs",33445566,this.idUsuario);
-        listGlobalUsuarios.add(usuario5);
-        this.idUsuario ++;
-        Direccion direccion5 = new Direccion(idDireccion,"Calle 15 #8-45",4.624500,-75.635000,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario5.getListDireccionesUsuario().add(direccion5);
-
-// Usuario 6
-        Usuario usuario6 = new Usuario("Andrés Felipe Torres","1087654321","aftorres@gmail.com","andresFT",22334455,this.idUsuario);
-        listGlobalUsuarios.add(usuario6);
-        this.idUsuario ++;
-        Direccion direccion6 = new Direccion(idDireccion,"Carrera 20 #10-30",4.627800,-75.632500,ZonaCobertura.CENTRO);
-        idDireccion++;
-        usuario6.getListDireccionesUsuario().add(direccion6);
-
-// Usuario 7
-        Usuario usuario7 = new Usuario("Valentina Gómez","1076543210","valentinaG@gmail.com","valenG",11223344,this.idUsuario);
-        listGlobalUsuarios.add(usuario7);
-        this.idUsuario ++;
-        Direccion direccion7 = new Direccion(idDireccion,"Calle 5 #3-22",4.619500,-75.638500,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario7.getListDireccionesUsuario().add(direccion7);
-
-// Usuario 8
-        Usuario usuario8 = new Usuario("Sebastián Martínez","1065432109","sebastianM@gmail.com","sebasM",66778899,this.idUsuario);
-        listGlobalUsuarios.add(usuario8);
-        this.idUsuario ++;
-        Direccion direccion8 = new Direccion(idDireccion,"Carrera 18 #9-12",4.623000,-75.634000,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario8.getListDireccionesUsuario().add(direccion8);
-
-// Usuario 9
-        Usuario usuario9 = new Usuario("Lorena Castillo","1054321098","lorenaC@gmail.com","lorenaC",44556677,this.idUsuario);
-        listGlobalUsuarios.add(usuario9);
-        this.idUsuario ++;
-        Direccion direccion9 = new Direccion(idDireccion,"Calle 11 #7-35",4.621500,-75.636500,ZonaCobertura.MUNICIPIO_CERCANO);
-        idDireccion++;
-        usuario9.getListDireccionesUsuario().add(direccion9);
-// Usuario 10
-        Usuario usuario10 = new Usuario("Carlos Gómez","1012345678","carlosG@gmail.com","carlosG",11223344,this.idUsuario);
-        listGlobalUsuarios.add(usuario10);
-        this.idUsuario++;
-        Direccion direccion10 = new Direccion(idDireccion,"Carrera 15 #8-45",4.625000,-75.635000,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario10.getListDireccionesUsuario().add(direccion10);
-
-// Usuario 11
-        Usuario usuario11 = new Usuario("Ana Rodríguez","1023456789","anaR@gmail.com","anaR",22334455,this.idUsuario);
-        listGlobalUsuarios.add(usuario11);
-        this.idUsuario++;
-        Direccion direccion11 = new Direccion(idDireccion,"Calle 9 #5-20",4.622500,-75.637000,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario11.getListDireccionesUsuario().add(direccion11);
-
-// Usuario 12
-        Usuario usuario12 = new Usuario("Miguel Torres","1034567890","miguelT@gmail.com","miguelT",33445566,this.idUsuario);
-        listGlobalUsuarios.add(usuario12);
-        this.idUsuario++;
-        Direccion direccion12 = new Direccion(idDireccion,"Carrera 20 #10-15",4.624000,-75.633000,ZonaCobertura.MUNICIPIO_CERCANO);
-        idDireccion++;
-        usuario12.getListDireccionesUsuario().add(direccion12);
-
-// Usuario 13
-        Usuario usuario13 = new Usuario("Laura Pérez","1045678901","lauraP@gmail.com","lauraP",44556677,this.idUsuario);
-        listGlobalUsuarios.add(usuario13);
-        this.idUsuario++;
-        Direccion direccion13 = new Direccion(idDireccion,"Calle 12 #6-18",4.621800,-75.638000,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario13.getListDireccionesUsuario().add(direccion13);
-
-// Usuario 14
-        Usuario usuario14 = new Usuario("Diego Ramírez","1056789012","diegoR@gmail.com","diegoR",55667788,this.idUsuario);
-        listGlobalUsuarios.add(usuario14);
-        this.idUsuario++;
-        Direccion direccion14 = new Direccion(idDireccion,"Carrera 22 #11-25",4.626000,-75.632500,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario14.getListDireccionesUsuario().add(direccion14);
-
-// Usuario 15
-        Usuario usuario15 = new Usuario("Sofía Martínez","1067890123","sofiaM@gmail.com","sofiaM",66778899,this.idUsuario);
-        listGlobalUsuarios.add(usuario15);
-        this.idUsuario++;
-        Direccion direccion15 = new Direccion(idDireccion,"Calle 14 #7-30",4.623500,-75.635500,ZonaCobertura.MUNICIPIO_CERCANO);
-        idDireccion++;
-        usuario15.getListDireccionesUsuario().add(direccion15);
-
-// Usuario 16
-        Usuario usuario16 = new Usuario("Andrés López","1078901234","andresL@gmail.com","andresL",77889900,this.idUsuario);
-        listGlobalUsuarios.add(usuario16);
-        this.idUsuario++;
-        Direccion direccion16 = new Direccion(idDireccion,"Carrera 17 #9-10",4.624500,-75.634500,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario16.getListDireccionesUsuario().add(direccion16);
-
-// Usuario 17
-        Usuario usuario17 = new Usuario("Camila Herrera","1089012345","camilaH@gmail.com","camilaH",88990011,this.idUsuario);
-        listGlobalUsuarios.add(usuario17);
-        this.idUsuario++;
-        Direccion direccion17 = new Direccion(idDireccion,"Calle 16 #8-12",4.622800,-75.636800,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario17.getListDireccionesUsuario().add(direccion17);
-
-// Usuario 18
-        Usuario usuario18 = new Usuario("Fernando Ruiz","1090123456","fernandoR@gmail.com","fernandoR",99001122,this.idUsuario);
-        listGlobalUsuarios.add(usuario18);
-        this.idUsuario++;
-        Direccion direccion18 = new Direccion(idDireccion,"Carrera 19 #10-40",4.625500,-75.633500,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario18.getListDireccionesUsuario().add(direccion18);
-
-// Usuario 19
-        Usuario usuario19 = new Usuario("Isabella Jiménez","1101234567","isabellaJ@gmail.com","isabellaJ",10111213,this.idUsuario);
-        listGlobalUsuarios.add(usuario19);
-        this.idUsuario++;
-        Direccion direccion19 = new Direccion(idDireccion,"Calle 18 #9-15",4.623800,-75.634800,ZonaCobertura.MUNICIPIO_CERCANO);
-        idDireccion++;
-        usuario19.getListDireccionesUsuario().add(direccion19);
-
-// Usuario 20
-        Usuario usuario20 = new Usuario("Jorge Medina","1112345678","jorgeM@gmail.com","jorgeM",12131415,this.idUsuario);
-        listGlobalUsuarios.add(usuario20);
-        this.idUsuario++;
-        Direccion direccion20 = new Direccion(idDireccion,"Carrera 21 #12-20",4.626500,-75.632000,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario20.getListDireccionesUsuario().add(direccion20);
-
-// Usuario 21
-        Usuario usuario21 = new Usuario("Valentina Castillo","1123456789","valentinaC@gmail.com","valentinaC",13141516,this.idUsuario);
-        listGlobalUsuarios.add(usuario21);
-        this.idUsuario++;
-        Direccion direccion21 = new Direccion(idDireccion,"Calle 20 #11-25",4.624200,-75.635200,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario21.getListDireccionesUsuario().add(direccion21);
-
-// Usuario 22
-        Usuario usuario22 = new Usuario("Ricardo Vargas","1134567890","ricardoV@gmail.com","ricardoV",14151617,this.idUsuario);
-        listGlobalUsuarios.add(usuario22);
-        this.idUsuario++;
-        Direccion direccion22 = new Direccion(idDireccion,"Carrera 23 #13-30",4.627000,-75.631500,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario22.getListDireccionesUsuario().add(direccion22);
-
-// Usuario 23
-        Usuario usuario23 = new Usuario("Natalia Rojas","1145678901","nataliaR@gmail.com","nataliaR",15161718,this.idUsuario);
-        listGlobalUsuarios.add(usuario23);
-        this.idUsuario++;
-        Direccion direccion23 = new Direccion(idDireccion,"Calle 22 #12-18",4.625200,-75.634200,ZonaCobertura.MUNICIPIO_CERCANO);
-        idDireccion++;
-        usuario23.getListDireccionesUsuario().add(direccion23);
-
-// Usuario 24
-        Usuario usuario24 = new Usuario("Luis Fernández","1156789012","luisF@gmail.com","luisF",16171819,this.idUsuario);
-        listGlobalUsuarios.add(usuario24);
-        this.idUsuario++;
-        Direccion direccion24 = new Direccion(idDireccion,"Carrera 24 #14-25",4.628000,-75.630500,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario24.getListDireccionesUsuario().add(direccion24);
-
-// Usuario 25
-        Usuario usuario25 = new Usuario("Daniela Morales","1167890123","danielaM@gmail.com","danielaM",17181920,this.idUsuario);
-        listGlobalUsuarios.add(usuario25);
-        this.idUsuario++;
-        Direccion direccion25 = new Direccion(idDireccion,"Calle 24 #15-30",4.626500,-75.633000,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario25.getListDireccionesUsuario().add(direccion25);
-
-// Usuario 26
-        Usuario usuario26 = new Usuario("Sebastián Torres","1178901234","sebastianT@gmail.com","sebastianT",18192021,this.idUsuario);
-        listGlobalUsuarios.add(usuario26);
-        this.idUsuario++;
-        Direccion direccion26 = new Direccion(idDireccion,"Carrera 25 #16-20",4.629000,-75.632500,ZonaCobertura.MUNICIPIO_CERCANO);
-        idDireccion++;
-        usuario26.getListDireccionesUsuario().add(direccion26);
-
-// Usuario 27
-        Usuario usuario27 = new Usuario("Mariana Salazar","1189012345","marianaS@gmail.com","marianaS",19202122,this.idUsuario);
-        listGlobalUsuarios.add(usuario27);
-        this.idUsuario++;
-        Direccion direccion27 = new Direccion(idDireccion,"Calle 26 #17-35",4.627500,-75.634500,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario27.getListDireccionesUsuario().add(direccion27);
-
-// Usuario 28
-        Usuario usuario28 = new Usuario("Javier Herrera","1190123456","javierH@gmail.com","javierH",20212223,this.idUsuario);
-        listGlobalUsuarios.add(usuario28);
-        this.idUsuario++;
-        Direccion direccion28 = new Direccion(idDireccion,"Carrera 27 #18-10",4.630000,-75.631000,ZonaCobertura.NORTE);
-        idDireccion++;
-        usuario28.getListDireccionesUsuario().add(direccion28);
-
-// Usuario 29
-        Usuario usuario29 = new Usuario("Paula Vargas","1201234567","paulaV@gmail.com","paulaV",21222324,this.idUsuario);
-        listGlobalUsuarios.add(usuario29);
-        this.idUsuario++;
-        Direccion direccion29 = new Direccion(idDireccion,"Calle 28 #19-12",4.628200,-75.632800,ZonaCobertura.MUNICIPIO_CERCANO);
-        idDireccion++;
-        usuario29.getListDireccionesUsuario().add(direccion29);
-
-// Usuario 30
-        Usuario usuario30 = new Usuario("Andrés Morales","1212345678","andresM@gmail.com","andresM",22232425,this.idUsuario);
-        listGlobalUsuarios.add(usuario30);
-        this.idUsuario++;
-        Direccion direccion30 = new Direccion(idDireccion,"Carrera 29 #20-15",4.631000,-75.630500,ZonaCobertura.SUR);
-        idDireccion++;
-        usuario30.getListDireccionesUsuario().add(direccion30);
-
-
-
-// Productos iniciales
-        Producto producto = new Producto(this.idProducto, "Mouse", "Para jugar mucho.", 140000, 10, 60);
-        listGlobalProductos.add(producto);
-        usuario.getListProductosUsuario().add(producto);
-        this.idProducto++;
-
-        Producto producto1 = new Producto(this.idProducto, "Audífonos", "Inalámbricos con cancelación de ruido.", 60000, 5, 6);
-        listGlobalProductos.add(producto1);
-        usuario.getListProductosUsuario().add(producto1);
-        this.idProducto++;
-
-// 10 productos más
-        Producto producto2 = new Producto(this.idProducto, "Teclado mecánico", "Retroiluminado RGB.", 180000, 7, 15);
-        listGlobalProductos.add(producto2);
-        usuario1.getListProductosUsuario().add(producto2);
-        this.idProducto++;
-
-        Producto producto3 = new Producto(this.idProducto, "Monitor 24\"", "Full HD 144Hz para gaming.", 650000, 4, 8);
-        listGlobalProductos.add(producto3);
-        usuario1.getListProductosUsuario().add(producto3);
-        this.idProducto++;
-
-        Producto producto4 = new Producto(this.idProducto, "Silla gamer", "Ergonómica con soporte lumbar.", 480000, 3, 5);
-        listGlobalProductos.add(producto4);
-        usuario1.getListProductosUsuario().add(producto4);
-        this.idProducto++;
-
-        Producto producto5 = new Producto(this.idProducto, "Disco SSD 1TB", "Alta velocidad NVMe.", 350000, 12, 25);
-        listGlobalProductos.add(producto5);
-        usuario2.getListProductosUsuario().add(producto5);
-        this.idProducto++;
-
-        Producto producto6 = new Producto(this.idProducto, "Memoria RAM 16GB", "DDR4 3200MHz.", 250000, 10, 30);
-        listGlobalProductos.add(producto6);
-        usuario2.getListProductosUsuario().add(producto6);
-        this.idProducto++;
-
-        Producto producto7 = new Producto(this.idProducto, "Fuente de poder 650W", "Certificación 80+ Bronze.", 220000, 6, 9);
-        listGlobalProductos.add(producto7);
-        usuario2.getListProductosUsuario().add(producto7);
-        this.idProducto++;
-
-        Producto producto8 = new Producto(this.idProducto, "Tarjeta madre", "Compatibilidad Intel 12va Gen.", 500000, 5, 10);
-        listGlobalProductos.add(producto8);
-        usuario3.getListProductosUsuario().add(producto8);
-        this.idProducto++;
-
-        Producto producto9 = new Producto(this.idProducto, "Cámara web HD", "Ideal para videollamadas y streaming.", 90000, 8, 14);
-        listGlobalProductos.add(producto9);
-        usuario3.getListProductosUsuario().add(producto9);
-        this.idProducto++;
-
-        Producto producto10 = new Producto(this.idProducto, "Micrófono USB", "Calidad de estudio para grabación.", 160000, 6, 12);
-        listGlobalProductos.add(producto10);
-        usuario3.getListProductosUsuario().add(producto10);
-        this.idProducto++;
-
-        Producto producto11 = new Producto(this.idProducto, "Mousepad XL", "Antideslizante y de superficie suave.", 40000, 15, 50);
-        listGlobalProductos.add(producto11);
-        usuario4.getListProductosUsuario().add(producto11);
-        this.idProducto++;
-
-        // Producto 12
-        Producto producto12 = new Producto(this.idProducto, "Auriculares Gaming RGB", "Con micrófono ajustable.", 75000, 6, 7);
-        listGlobalProductos.add(producto12);
-        usuario4.getListProductosUsuario().add(producto12);
-        this.idProducto++;
-
-// Producto 13
-        Producto producto13 = new Producto(this.idProducto, "Teclado inalámbrico", "Compacto y silencioso.", 120000, 8, 12);
-        listGlobalProductos.add(producto13);
-        usuario4.getListProductosUsuario().add(producto13);
-        this.idProducto++;
-
-// Producto 14
-        Producto producto14 = new Producto(this.idProducto, "Silla de oficina", "Ergonómica con soporte lumbar.", 300000, 4, 10);
-        listGlobalProductos.add(producto14);
-        usuario5.getListProductosUsuario().add(producto14);
-        this.idProducto++;
-
-// Producto 15
-        Producto producto15 = new Producto(this.idProducto, "Monitor 27\" 4K", "Alta resolución para diseño.", 950000, 3, 10);
-        listGlobalProductos.add(producto15);
-        usuario5.getListProductosUsuario().add(producto15);
-        this.idProducto++;
-
-// Producto 16
-        Producto producto16 = new Producto(this.idProducto, "SSD 512GB", "Alta velocidad NVMe.", 220000, 10, 20);
-        listGlobalProductos.add(producto16);
-        usuario5.getListProductosUsuario().add(producto16);
-        this.idProducto++;
-
-// Producto 17
-        Producto producto17 = new Producto(this.idProducto, "Memoria RAM 8GB", "DDR4 3200MHz.", 140000, 12, 25);
-        listGlobalProductos.add(producto17);
-        usuario6.getListProductosUsuario().add(producto17);
-        this.idProducto++;
-
-// Producto 18
-        Producto producto18 = new Producto(this.idProducto, "Fuente de poder 500W", "Certificación 80+ Bronze.", 180000, 5, 8);
-        listGlobalProductos.add(producto18);
-        usuario6.getListProductosUsuario().add(producto18);
-        this.idProducto++;
-
-// Producto 19
-        Producto producto19 = new Producto(this.idProducto, "Tarjeta madre Mini-ITX", "Compatibilidad Intel y AMD.", 420000, 4, 8);
-        listGlobalProductos.add(producto19);
-        usuario6.getListProductosUsuario().add(producto19);
-        this.idProducto++;
-
-// Producto 20
-        Producto producto20 = new Producto(this.idProducto, "Webcam 1080p", "Para videollamadas y streaming.", 85000, 6, 10);
-        listGlobalProductos.add(producto20);
-        usuario7.getListProductosUsuario().add(producto20);
-        this.idProducto++;
-
-// Producto 21
-        Producto producto21 = new Producto(this.idProducto, "Micrófono condensador", "Calidad profesional.", 180000, 5, 9);
-        listGlobalProductos.add(producto21);
-        usuario7.getListProductosUsuario().add(producto21);
-        this.idProducto++;
-
-// Producto 22
-        Producto producto22 = new Producto(this.idProducto, "Mousepad XL Gaming", "Superficie suave y antideslizante.", 50000, 10, 40);
-        listGlobalProductos.add(producto22);
-        usuario7.getListProductosUsuario().add(producto22);
-        this.idProducto++;
-
-// Producto 23
-        Producto producto23 = new Producto(this.idProducto, "Auriculares Bluetooth", "Ligero y portátil.", 70000, 8, 5);
-        listGlobalProductos.add(producto23);
-        usuario8.getListProductosUsuario().add(producto23);
-        this.idProducto++;
-
-// Producto 24
-        Producto producto24 = new Producto(this.idProducto, "Teclado mecánico compacto", "Switches silenciosos.", 160000, 6, 10);
-        listGlobalProductos.add(producto24);
-        usuario8.getListProductosUsuario().add(producto24);
-        this.idProducto++;
-
-// Producto 25
-        Producto producto25 = new Producto(this.idProducto, "Monitor ultrawide 29\"", "Curvo, 75Hz.", 750000, 3, 9);
-        listGlobalProductos.add(producto25);
-        usuario8.getListProductosUsuario().add(producto25);
-        this.idProducto++;
-
-// Producto 26
-        Producto producto26 = new Producto(this.idProducto, "Disco duro 2TB", "Almacenamiento adicional.", 300000, 12, 30);
-        listGlobalProductos.add(producto26);
-        usuario9.getListProductosUsuario().add(producto26);
-        this.idProducto++;
-
-// Producto 27
-        Producto producto27 = new Producto(this.idProducto, "Memoria RAM 32GB", "DDR4 3600MHz.", 450000, 6, 35);
-        listGlobalProductos.add(producto27);
-        usuario9.getListProductosUsuario().add(producto27);
-        this.idProducto++;
-
-// Producto 28
-        Producto producto28 = new Producto(this.idProducto, "Fuente de poder 750W", "Certificación 80+ Gold.", 350000, 4, 10);
-        listGlobalProductos.add(producto28);
-        usuario9.getListProductosUsuario().add(producto28);
-        this.idProducto++;
-
-// Producto 29
-        Producto producto29 = new Producto(this.idProducto, "Tarjeta de video GTX 1660", "6GB GDDR5 para gaming.", 1200000, 2, 8);
-        listGlobalProductos.add(producto29);
-        usuario1.getListProductosUsuario().add(producto29);
-        this.idProducto++;
 
+       Repartidor repartidor = new Repartidor(idRepartidor,"Manuel Perez","123456789","mp@hotmail.com","mprep",987654321, ZonaCobertura.NORTE, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor);
+       idRepartidor++;
+
+       Repartidor repartidor1 = new Repartidor(idRepartidor,"Andrea Camargo","113412121","AC@gmail.com","rep321",123121212, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor1);
+       idRepartidor++;
+
+       Repartidor repartidor2 = new Repartidor(idRepartidor,"Juan Pablo Ramirez","123421234","JpRamirez@hotmail.com","jprPass",121212121, ZonaCobertura.SUR, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor2);
+       idRepartidor++;
+
+       Repartidor repartidor3 = new Repartidor(idRepartidor,"Felipe felipe felipe","12121212","CSCol@outlook.es","ccsgo",98787898, ZonaCobertura.MUNICIPIO_CERCANO, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor3);
+       idRepartidor++;
+
+       Repartidor repartidor4 = new Repartidor(idRepartidor,"Sofía Morales","112233445","sofia.m@gmail.com","sofiapass",123456780, ZonaCobertura.NORTE, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor4);
+       idRepartidor++;
+
+       Repartidor repartidor5 = new Repartidor(idRepartidor,"Felipe Torres","109876543","ftorres@gmail.com","felipet",987654320, ZonaCobertura.CENTRO, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor5);
+       idRepartidor++;
+
+       Repartidor repartidor6 = new Repartidor(idRepartidor,"Laura Sofia Sanchez","101234567","laura.j@gmail.com","lajim",1123581321, ZonaCobertura.SUR, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor6);
+       idRepartidor++;
+
+       Repartidor repartidor7 = new Repartidor(idRepartidor,"Camilo Camilo Camilo","102345678","andres.g@gmail.com","andresG",22334455, ZonaCobertura.MUNICIPIO_CERCANO, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor7);
+       idRepartidor++;
+
+       Repartidor repartidor8 = new Repartidor(idRepartidor,"Andres Felipe Hernandez","103456789","valentina.r@gmail.com","valenR",33445566, ZonaCobertura.NORTE, DisponibilidadRepartidor.DISPONIBLE);
+       listGlobalRepartidores.add(repartidor8);
+       idRepartidor++;
+
+
+       Usuario usuario = new Usuario("Juan Carlos Ceballos","123456789","jcarlosc@gmail.com","jcc",123456789,this.idUsuario);
+       listGlobalUsuarios.add(usuario);
+       this.idUsuario ++;
+       Direccion direccion = new Direccion(idDireccion,"Carrera 17 #7-21",4.620278,-75.635833,ZonaCobertura.MUNICIPIO_CERCANO);
+       idDireccion++;
+       usuario.getListDireccionesUsuario().add(direccion);
+
+       Usuario usuario1 = new Usuario("Diana Paola Rodriguez","1077865892","dpr@gmail.com","dpr",3789456,this.idUsuario);
+       listGlobalUsuarios.add(usuario1);
+       this.idUsuario ++;
+
+       Usuario usuario2 = new Usuario("Juan Manuel Velásquez","115187043","vivamemento@si.com","hola",6745,this.idUsuario);
+       listGlobalUsuarios.add(usuario2);
+       this.idUsuario ++;
+
+       Direccion direccion1 = new Direccion(idDireccion, "Calle 10 #5-22", 4.621500, -75.634200, ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario1.getListDireccionesUsuario().add(direccion1);
+
+       Direccion direccion2 = new Direccion(idDireccion, "Carrera 15 #7-30", 4.619800, -75.636500, ZonaCobertura.CENTRO);
+       idDireccion++;
+       usuario2.getListDireccionesUsuario().add(direccion2);
+
+       Usuario usuario3 = new Usuario("Andrea López","1023456789","andrea.lopez@gmail.com","andreaL",99887766,this.idUsuario);
+       listGlobalUsuarios.add(usuario3);
+       this.idUsuario ++;
+       Direccion direccion3 = new Direccion(idDireccion,"Calle 7 #6-20",4.618900,-75.637000,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario3.getListDireccionesUsuario().add(direccion3);
+
+       Usuario usuario4 = new Usuario("Carlos Ramírez","1102345698","carlosr@gmail.com","carlr",55667788,this.idUsuario);
+       listGlobalUsuarios.add(usuario4);
+       this.idUsuario ++;
+       Direccion direccion4 = new Direccion(idDireccion,"Carrera 12 #5-18",4.622800,-75.636200,ZonaCobertura.CENTRO);
+       idDireccion++;
+       usuario4.getListDireccionesUsuario().add(direccion4);
+
+       Usuario usuario5 = new Usuario("María Fernanda Suárez","1098765432","mfsuarez@gmail.com","mfs",33445566,this.idUsuario);
+       listGlobalUsuarios.add(usuario5);
+       this.idUsuario ++;
+       Direccion direccion5 = new Direccion(idDireccion,"Calle 15 #8-45",4.624500,-75.635000,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario5.getListDireccionesUsuario().add(direccion5);
+
+       Usuario usuario6 = new Usuario("Andrés Felipe Torres","1087654321","aftorres@gmail.com","andresFT",22334455,this.idUsuario);
+       listGlobalUsuarios.add(usuario6);
+       this.idUsuario ++;
+       Direccion direccion6 = new Direccion(idDireccion,"Carrera 20 #10-30",4.627800,-75.632500,ZonaCobertura.CENTRO);
+       idDireccion++;
+       usuario6.getListDireccionesUsuario().add(direccion6);
+
+       Usuario usuario7 = new Usuario("Valentina Gómez","1076543210","valentinaG@gmail.com","valenG",11223344,this.idUsuario);
+       listGlobalUsuarios.add(usuario7);
+       this.idUsuario ++;
+       Direccion direccion7 = new Direccion(idDireccion,"Calle 5 #3-22",4.619500,-75.638500,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario7.getListDireccionesUsuario().add(direccion7);
+
+       Usuario usuario8 = new Usuario("Sebastián Martínez","1065432109","sebastianM@gmail.com","sebasM",66778899,this.idUsuario);
+       listGlobalUsuarios.add(usuario8);
+       this.idUsuario ++;
+       Direccion direccion8 = new Direccion(idDireccion,"Carrera 18 #9-12",4.623000,-75.634000,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario8.getListDireccionesUsuario().add(direccion8);
+
+       Usuario usuario9 = new Usuario("Lorena Castillo","1054321098","lorenaC@gmail.com","lorenaC",44556677,this.idUsuario);
+       listGlobalUsuarios.add(usuario9);
+       this.idUsuario ++;
+       Direccion direccion9 = new Direccion(idDireccion,"Calle 11 #7-35",4.621500,-75.636500,ZonaCobertura.MUNICIPIO_CERCANO);
+       idDireccion++;
+       usuario9.getListDireccionesUsuario().add(direccion9);
+       Usuario usuario10 = new Usuario("Carlos Gómez","1012345678","carlosG@gmail.com","carlosG",11223344,this.idUsuario);
+       listGlobalUsuarios.add(usuario10);
+       this.idUsuario++;
+       Direccion direccion10 = new Direccion(idDireccion,"Carrera 15 #8-45",4.625000,-75.635000,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario10.getListDireccionesUsuario().add(direccion10);
+
+       Usuario usuario11 = new Usuario("Ana Rodríguez","1023456789","anaR@gmail.com","anaR",22334455,this.idUsuario);
+       listGlobalUsuarios.add(usuario11);
+       this.idUsuario++;
+       Direccion direccion11 = new Direccion(idDireccion,"Calle 9 #5-20",4.622500,-75.637000,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario11.getListDireccionesUsuario().add(direccion11);
+
+       Usuario usuario12 = new Usuario("Miguel Torres","1034567890","miguelT@gmail.com","miguelT",33445566,this.idUsuario);
+       listGlobalUsuarios.add(usuario12);
+       this.idUsuario++;
+       Direccion direccion12 = new Direccion(idDireccion,"Carrera 20 #10-15",4.624000,-75.633000,ZonaCobertura.MUNICIPIO_CERCANO);
+       idDireccion++;
+       usuario12.getListDireccionesUsuario().add(direccion12);
+
+       Usuario usuario13 = new Usuario("Laura Pérez","1045678901","lauraP@gmail.com","lauraP",44556677,this.idUsuario);
+       listGlobalUsuarios.add(usuario13);
+       this.idUsuario++;
+       Direccion direccion13 = new Direccion(idDireccion,"Calle 12 #6-18",4.621800,-75.638000,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario13.getListDireccionesUsuario().add(direccion13);
+
+       Usuario usuario14 = new Usuario("Diego Ramírez","1056789012","diegoR@gmail.com","diegoR",55667788,this.idUsuario);
+       listGlobalUsuarios.add(usuario14);
+       this.idUsuario++;
+       Direccion direccion14 = new Direccion(idDireccion,"Carrera 22 #11-25",4.626000,-75.632500,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario14.getListDireccionesUsuario().add(direccion14);
+
+       Usuario usuario15 = new Usuario("Sofía Martínez","1067890123","sofiaM@gmail.com","sofiaM",66778899,this.idUsuario);
+       listGlobalUsuarios.add(usuario15);
+       this.idUsuario++;
+       Direccion direccion15 = new Direccion(idDireccion,"Calle 14 #7-30",4.623500,-75.635500,ZonaCobertura.MUNICIPIO_CERCANO);
+       idDireccion++;
+       usuario15.getListDireccionesUsuario().add(direccion15);
+
+       Usuario usuario16 = new Usuario("Andrés López","1078901234","andresL@gmail.com","andresL",77889900,this.idUsuario);
+       listGlobalUsuarios.add(usuario16);
+       this.idUsuario++;
+       Direccion direccion16 = new Direccion(idDireccion,"Carrera 17 #9-10",4.624500,-75.634500,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario16.getListDireccionesUsuario().add(direccion16);
+
+       Usuario usuario17 = new Usuario("Camila Herrera","1089012345","camilaH@gmail.com","camilaH",88990011,this.idUsuario);
+       listGlobalUsuarios.add(usuario17);
+       this.idUsuario++;
+       Direccion direccion17 = new Direccion(idDireccion,"Calle 16 #8-12",4.622800,-75.636800,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario17.getListDireccionesUsuario().add(direccion17);
+
+       Usuario usuario18 = new Usuario("Fernando Ruiz","1090123456","fernandoR@gmail.com","fernandoR",99001122,this.idUsuario);
+       listGlobalUsuarios.add(usuario18);
+       this.idUsuario++;
+       Direccion direccion18 = new Direccion(idDireccion,"Carrera 19 #10-40",4.625500,-75.633500,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario18.getListDireccionesUsuario().add(direccion18);
+
+       Usuario usuario19 = new Usuario("Isabella Jiménez","1101234567","isabellaJ@gmail.com","isabellaJ",10111213,this.idUsuario);
+       listGlobalUsuarios.add(usuario19);
+       this.idUsuario++;
+       Direccion direccion19 = new Direccion(idDireccion,"Calle 18 #9-15",4.623800,-75.634800,ZonaCobertura.MUNICIPIO_CERCANO);
+       idDireccion++;
+       usuario19.getListDireccionesUsuario().add(direccion19);
+
+       Usuario usuario20 = new Usuario("Jorge Medina","1112345678","jorgeM@gmail.com","jorgeM",12131415,this.idUsuario);
+       listGlobalUsuarios.add(usuario20);
+       this.idUsuario++;
+       Direccion direccion20 = new Direccion(idDireccion,"Carrera 21 #12-20",4.626500,-75.632000,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario20.getListDireccionesUsuario().add(direccion20);
+
+       Usuario usuario21 = new Usuario("Valentina Castillo","1123456789","valentinaC@gmail.com","valentinaC",13141516,this.idUsuario);
+       listGlobalUsuarios.add(usuario21);
+       this.idUsuario++;
+       Direccion direccion21 = new Direccion(idDireccion,"Calle 20 #11-25",4.624200,-75.635200,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario21.getListDireccionesUsuario().add(direccion21);
+
+       Usuario usuario22 = new Usuario("Ricardo Vargas","1134567890","ricardoV@gmail.com","ricardoV",14151617,this.idUsuario);
+       listGlobalUsuarios.add(usuario22);
+       this.idUsuario++;
+       Direccion direccion22 = new Direccion(idDireccion,"Carrera 23 #13-30",4.627000,-75.631500,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario22.getListDireccionesUsuario().add(direccion22);
+
+       Usuario usuario23 = new Usuario("Natalia Rojas","1145678901","nataliaR@gmail.com","nataliaR",15161718,this.idUsuario);
+       listGlobalUsuarios.add(usuario23);
+       this.idUsuario++;
+       Direccion direccion23 = new Direccion(idDireccion,"Calle 22 #12-18",4.625200,-75.634200,ZonaCobertura.MUNICIPIO_CERCANO);
+       idDireccion++;
+       usuario23.getListDireccionesUsuario().add(direccion23);
+
+       Usuario usuario24 = new Usuario("Luis Fernández","1156789012","luisF@gmail.com","luisF",16171819,this.idUsuario);
+       listGlobalUsuarios.add(usuario24);
+       this.idUsuario++;
+       Direccion direccion24 = new Direccion(idDireccion,"Carrera 24 #14-25",4.628000,-75.630500,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario24.getListDireccionesUsuario().add(direccion24);
+
+       Usuario usuario25 = new Usuario("Daniela Morales","1167890123","danielaM@gmail.com","danielaM",17181920,this.idUsuario);
+       listGlobalUsuarios.add(usuario25);
+       this.idUsuario++;
+       Direccion direccion25 = new Direccion(idDireccion,"Calle 24 #15-30",4.626500,-75.633000,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario25.getListDireccionesUsuario().add(direccion25);
+
+       Usuario usuario26 = new Usuario("Sebastián Torres","1178901234","sebastianT@gmail.com","sebastianT",18192021,this.idUsuario);
+       listGlobalUsuarios.add(usuario26);
+       this.idUsuario++;
+       Direccion direccion26 = new Direccion(idDireccion,"Carrera 25 #16-20",4.629000,-75.632500,ZonaCobertura.MUNICIPIO_CERCANO);
+       idDireccion++;
+       usuario26.getListDireccionesUsuario().add(direccion26);
+
+       Usuario usuario27 = new Usuario("Mariana Salazar","1189012345","marianaS@gmail.com","marianaS",19202122,this.idUsuario);
+       listGlobalUsuarios.add(usuario27);
+       this.idUsuario++;
+       Direccion direccion27 = new Direccion(idDireccion,"Calle 26 #17-35",4.627500,-75.634500,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario27.getListDireccionesUsuario().add(direccion27);
+
+       Usuario usuario28 = new Usuario("Javier Herrera","1190123456","javierH@gmail.com","javierH",20212223,this.idUsuario);
+       listGlobalUsuarios.add(usuario28);
+       this.idUsuario++;
+       Direccion direccion28 = new Direccion(idDireccion,"Carrera 27 #18-10",4.630000,-75.631000,ZonaCobertura.NORTE);
+       idDireccion++;
+       usuario28.getListDireccionesUsuario().add(direccion28);
+
+       Usuario usuario29 = new Usuario("Paula Vargas","1201234567","paulaV@gmail.com","paulaV",21222324,this.idUsuario);
+       listGlobalUsuarios.add(usuario29);
+       this.idUsuario++;
+       Direccion direccion29 = new Direccion(idDireccion,"Calle 28 #19-12",4.628200,-75.632800,ZonaCobertura.MUNICIPIO_CERCANO);
+       idDireccion++;
+       usuario29.getListDireccionesUsuario().add(direccion29);
+
+       Usuario usuario30 = new Usuario("Andrés Morales","1212345678","andresM@gmail.com","andresM",22232425,this.idUsuario);
+       listGlobalUsuarios.add(usuario30);
+       this.idUsuario++;
+       Direccion direccion30 = new Direccion(idDireccion,"Carrera 29 #20-15",4.631000,-75.630500,ZonaCobertura.SUR);
+       idDireccion++;
+       usuario30.getListDireccionesUsuario().add(direccion30);
+
+
+
+       Producto producto = new Producto(this.idProducto, "Mouse", "Para jugar mucho.", 140000, 10, 60);
+       listGlobalProductos.add(producto);
+       usuario.getListProductosUsuario().add(producto);
+       this.idProducto++;
+
+       Producto producto1 = new Producto(this.idProducto, "Audífonos", "Inalámbricos con cancelación de ruido.", 60000, 5, 6);
+       listGlobalProductos.add(producto1);
+       usuario.getListProductosUsuario().add(producto1);
+       this.idProducto++;
+
+       Producto producto2 = new Producto(this.idProducto, "Teclado mecánico", "Retroiluminado RGB.", 180000, 7, 15);
+       listGlobalProductos.add(producto2);
+       usuario1.getListProductosUsuario().add(producto2);
+       this.idProducto++;
+
+       Producto producto3 = new Producto(this.idProducto, "Monitor 24\"", "Full HD 144Hz para gaming.", 650000, 4, 8);
+       listGlobalProductos.add(producto3);
+       usuario1.getListProductosUsuario().add(producto3);
+       this.idProducto++;
+
+       Producto producto4 = new Producto(this.idProducto, "Silla gamer", "Ergonómica con soporte lumbar.", 480000, 3, 5);
+       listGlobalProductos.add(producto4);
+       usuario1.getListProductosUsuario().add(producto4);
+       this.idProducto++;
+
+       Producto producto5 = new Producto(this.idProducto, "Disco SSD 1TB", "Alta velocidad NVMe.", 350000, 12, 25);
+       listGlobalProductos.add(producto5);
+       usuario2.getListProductosUsuario().add(producto5);
+       this.idProducto++;
+
+       Producto producto6 = new Producto(this.idProducto, "Memoria RAM 16GB", "DDR4 3200MHz.", 250000, 10, 30);
+       listGlobalProductos.add(producto6);
+       usuario2.getListProductosUsuario().add(producto6);
+       this.idProducto++;
+
+       Producto producto7 = new Producto(this.idProducto, "Fuente de poder 650W", "Certificación 80+ Bronze.", 220000, 6, 9);
+       listGlobalProductos.add(producto7);
+       usuario2.getListProductosUsuario().add(producto7);
+       this.idProducto++;
+
+       Producto producto8 = new Producto(this.idProducto, "Tarjeta madre", "Compatibilidad Intel 12va Gen.", 500000, 5, 10);
+       listGlobalProductos.add(producto8);
+       usuario3.getListProductosUsuario().add(producto8);
+       this.idProducto++;
+
+       Producto producto9 = new Producto(this.idProducto, "Cámara web HD", "Ideal para videollamadas y streaming.", 90000, 8, 14);
+       listGlobalProductos.add(producto9);
+       usuario3.getListProductosUsuario().add(producto9);
+       this.idProducto++;
+
+       Producto producto10 = new Producto(this.idProducto, "Micrófono USB", "Calidad de estudio para grabación.", 160000, 6, 12);
+       listGlobalProductos.add(producto10);
+       usuario3.getListProductosUsuario().add(producto10);
+       this.idProducto++;
+
+       Producto producto11 = new Producto(this.idProducto, "Mousepad XL", "Antideslizante y de superficie suave.", 40000, 15, 50);
+       listGlobalProductos.add(producto11);
+       usuario4.getListProductosUsuario().add(producto11);
+       this.idProducto++;
+
+       Producto producto12 = new Producto(this.idProducto, "Auriculares Gaming RGB", "Con micrófono ajustable.", 75000, 6, 7);
+       listGlobalProductos.add(producto12);
+       usuario4.getListProductosUsuario().add(producto12);
+       this.idProducto++;
+
+       Producto producto13 = new Producto(this.idProducto, "Teclado inalámbrico", "Compacto y silencioso.", 120000, 8, 12);
+       listGlobalProductos.add(producto13);
+       usuario4.getListProductosUsuario().add(producto13);
+       this.idProducto++;
+
+       Producto producto14 = new Producto(this.idProducto, "Silla de oficina", "Ergonómica con soporte lumbar.", 300000, 4, 10);
+       listGlobalProductos.add(producto14);
+       usuario5.getListProductosUsuario().add(producto14);
+       this.idProducto++;
+
+       Producto producto15 = new Producto(this.idProducto, "Monitor 27\" 4K", "Alta resolución para diseño.", 950000, 3, 10);
+       listGlobalProductos.add(producto15);
+       usuario5.getListProductosUsuario().add(producto15);
+       this.idProducto++;
+
+       Producto producto16 = new Producto(this.idProducto, "SSD 512GB", "Alta velocidad NVMe.", 220000, 10, 20);
+       listGlobalProductos.add(producto16);
+       usuario5.getListProductosUsuario().add(producto16);
+       this.idProducto++;
+
+       Producto producto17 = new Producto(this.idProducto, "Memoria RAM 8GB", "DDR4 3200MHz.", 140000, 12, 25);
+       listGlobalProductos.add(producto17);
+       usuario6.getListProductosUsuario().add(producto17);
+       this.idProducto++;
+
+       Producto producto18 = new Producto(this.idProducto, "Fuente de poder 500W", "Certificación 80+ Bronze.", 180000, 5, 8);
+       listGlobalProductos.add(producto18);
+       usuario6.getListProductosUsuario().add(producto18);
+       this.idProducto++;
+
+       Producto producto19 = new Producto(this.idProducto, "Tarjeta madre Mini-ITX", "Compatibilidad Intel y AMD.", 420000, 4, 8);
+       listGlobalProductos.add(producto19);
+       usuario6.getListProductosUsuario().add(producto19);
+       this.idProducto++;
+
+       Producto producto20 = new Producto(this.idProducto, "Webcam 1080p", "Para videollamadas y streaming.", 85000, 6, 10);
+       listGlobalProductos.add(producto20);
+       usuario7.getListProductosUsuario().add(producto20);
+       this.idProducto++;
+
+       Producto producto21 = new Producto(this.idProducto, "Micrófono condensador", "Calidad profesional.", 180000, 5, 9);
+       listGlobalProductos.add(producto21);
+       usuario7.getListProductosUsuario().add(producto21);
+       this.idProducto++;
+
+       Producto producto22 = new Producto(this.idProducto, "Mousepad XL Gaming", "Superficie suave y antideslizante.", 50000, 10, 40);
+       listGlobalProductos.add(producto22);
+       usuario7.getListProductosUsuario().add(producto22);
+       this.idProducto++;
+
+       Producto producto23 = new Producto(this.idProducto, "Auriculares Bluetooth", "Ligero y portátil.", 70000, 8, 5);
+       listGlobalProductos.add(producto23);
+       usuario8.getListProductosUsuario().add(producto23);
+       this.idProducto++;
+
+       Producto producto24 = new Producto(this.idProducto, "Teclado mecánico compacto", "Switches silenciosos.", 160000, 6, 10);
+       listGlobalProductos.add(producto24);
+       usuario8.getListProductosUsuario().add(producto24);
+       this.idProducto++;
+
+       Producto producto25 = new Producto(this.idProducto, "Monitor ultrawide 29\"", "Curvo, 75Hz.", 750000, 3, 9);
+       listGlobalProductos.add(producto25);
+       usuario8.getListProductosUsuario().add(producto25);
+       this.idProducto++;
+
+       Producto producto26 = new Producto(this.idProducto, "Disco duro 2TB", "Almacenamiento adicional.", 300000, 12, 30);
+       listGlobalProductos.add(producto26);
+       usuario9.getListProductosUsuario().add(producto26);
+       this.idProducto++;
+
+       Producto producto27 = new Producto(this.idProducto, "Memoria RAM 32GB", "DDR4 3600MHz.", 450000, 6, 35);
+       listGlobalProductos.add(producto27);
+       usuario9.getListProductosUsuario().add(producto27);
+       this.idProducto++;
+
+       Producto producto28 = new Producto(this.idProducto, "Fuente de poder 750W", "Certificación 80+ Gold.", 350000, 4, 10);
+       listGlobalProductos.add(producto28);
+       usuario9.getListProductosUsuario().add(producto28);
+       this.idProducto++;
+
+       Producto producto29 = new Producto(this.idProducto, "Tarjeta de video GTX 1660", "6GB GDDR5 para gaming.", 1200000, 2, 8);
+       listGlobalProductos.add(producto29);
+       usuario1.getListProductosUsuario().add(producto29);
+       this.idProducto++;
 
 
 // =================== ENVIOS PARA usuario (usuario) ===================
