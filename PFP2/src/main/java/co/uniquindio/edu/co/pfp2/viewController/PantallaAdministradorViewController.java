@@ -118,7 +118,7 @@ public class PantallaAdministradorViewController {
             }
 
             for (Envio envio : usuario.getListEnviosUsuario()) {
-                String ruta = "reportesGenerador" + File.separator + "usuarios" + File.separator
+                String ruta = "ReportesPDF" + File.separator + "admin" + File.separator
                         + "reporte_envio_" + envio.getIdEnvio() + "_usuario_" + usuario.getIdUsuario() + ".pdf";
                 File file = new File(ruta);
                 file.getParentFile().mkdirs();
