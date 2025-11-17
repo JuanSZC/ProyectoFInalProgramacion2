@@ -21,7 +21,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import reportesGenerador.PdfReporteEnvioUsuario;
+import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import java.util.List;
 
 public class PantallaRepartidorViewController {
@@ -130,6 +133,7 @@ public class PantallaRepartidorViewController {
 	private void proximoEstado() {
 		Envio seleccionado = tbEnCurso.getSelectionModel().getSelectedItem();
 		if (seleccionado == null) {
+			DialogUtils.mostrarError("Seleccione un envío.");
 			return;
 		}
 
@@ -168,7 +172,10 @@ public class PantallaRepartidorViewController {
 	@FXML
 	private void cancelarYReasignar() {
 		Envio seleccionado = tbEnCurso.getSelectionModel().getSelectedItem();
-		if (seleccionado == null) return;
+		if (seleccionado == null) {
+			DialogUtils.mostrarError("Seleccione un envío.");
+			return;
+		}
 
 		// Buscar otro repartidor disponible en la MISMA ZONA de cobertura del destino
 		Repartidor nuevoRepartidor = null;
@@ -177,8 +184,8 @@ public class PantallaRepartidorViewController {
 			for (Repartidor r : app.listGlobalRepartidores) {
 				// Buscar: distinto del actual, misma zona, disponible
 				if (r.getIdRepartidor() != repartidor.getIdRepartidor() &&
-					r.getZonaCobertura() == zonaDestino &&
-					r.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE) {
+						r.getZonaCobertura() == zonaDestino &&
+						r.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE) {
 					nuevoRepartidor = r;
 					break;
 				}
@@ -264,6 +271,81 @@ public class PantallaRepartidorViewController {
 		colDireccion.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getDestino() != null ? c.getValue().getDestino().getDescripcion() : "-"));
 		colCosto.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPaquete() != null ? String.format("$%.2f", c.getValue().getPaquete().getPrecio()) : "$0.00"));
 		colEstado.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getEstadoEnvio() != null ? c.getValue().getEstadoEnvio().name() : "-"));
+	}
+
+	/** Genera PDF para el envío seleccionado en el historial */
+	@FXML
+	private void generarPdfHistorial() {
+		Envio seleccionado = tbEnvios.getSelectionModel().getSelectedItem();
+		if (seleccionado == null) {
+			DialogUtils.mostrarError("Seleccione un envío del historial para generar el PDF.");
+			return;
+		}
+
+		Usuario usuario = findUsuarioByEnvio(seleccionado);
+		if (usuario == null) {
+			DialogUtils.mostrarError("No se encontró el usuario receptor del envío seleccionado.");
+			return;
+		}
+
+		try {
+			String ruta = "reportesGenerador" + File.separator + "repartidores" + File.separator
+					+ "reporte_envio_" + seleccionado.getIdEnvio() + ".pdf";
+			File file = new File(ruta);
+			file.getParentFile().mkdirs();
+
+			PdfReporteEnvioUsuario pdf = new PdfReporteEnvioUsuario(usuario, seleccionado);
+			pdf.generarPdf(ruta);
+			DialogUtils.mostrarMensaje("PDF generado correctamente en: " + ruta);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			DialogUtils.mostrarError("No se pudo generar el PDF: " + ex.getMessage());
+		}
+	}
+
+	/** Genera PDF para el envío seleccionado en la pestaña 'En Curso' */
+	@FXML
+	private void generarPdfEnCurso() {
+		Envio seleccionado = tbEnCurso.getSelectionModel().getSelectedItem();
+		if (seleccionado == null) {
+			DialogUtils.mostrarError("Seleccione un envío en curso para generar el PDF.");
+			return;
+		}
+
+		Usuario usuario = findUsuarioByEnvio(seleccionado);
+		if (usuario == null) {
+			DialogUtils.mostrarError("No se encontró el usuario receptor del envío seleccionado.");
+			return;
+		}
+
+		try {
+			String ruta = "reportesGenerador" + File.separator + "repartidores" + File.separator
+					+ "reporte_envio_" + seleccionado.getIdEnvio() + ".pdf";
+			File file = new File(ruta);
+			file.getParentFile().mkdirs();
+
+			PdfReporteEnvioUsuario pdf = new PdfReporteEnvioUsuario(usuario, seleccionado);
+			pdf.generarPdf(ruta);
+			DialogUtils.mostrarMensaje("PDF generado correctamente en: " + ruta);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			DialogUtils.mostrarError("No se pudo generar el PDF: " + ex.getMessage());
+		}
+	}
+
+	/** Busca el usuario receptor correspondiente a un envio (por destino). */
+	private Usuario findUsuarioByEnvio(Envio envio) {
+		if (envio == null || envio.getDestino() == null) return null;
+		for (Usuario u : app.listGlobalUsuarios) {
+			if (u.getListDireccionesUsuario() != null) {
+				for (Direccion d : u.getListDireccionesUsuario()) {
+					if (envio.getDestino().getIdDireccion() == d.getIdDireccion()) {
+						return u;
+					}
+				}
+			}
+		}
+		return null;
 	}
 
 	@FXML

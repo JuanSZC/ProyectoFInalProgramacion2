@@ -4,8 +4,8 @@ import co.uniquindio.edu.co.pfp2.App;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.Repartidor;
 import co.uniquindio.edu.co.pfp2.model.Usuario;
+import co.uniquindio.edu.co.pfp2.model.Envio;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,7 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import reportesGenerador.PdfUsuarioReporte;
+import reportesGenerador.PdfReporteEnvioUsuario;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,30 +76,39 @@ public class PantallaAdministradorViewController {
         this.app = app;
 
         if (app != null) {
-            tbUsuarios.setItems(FXCollections.observableArrayList(app.listGlobalUsuarios));
+            tbUsuarios.setItems(app.listGlobalUsuarios);
             tbRepartidores.setItems(app.listGlobalRepartidores);
         }
     }
     public void generarPDF() {
         Usuario usuario = tbUsuarios.getSelectionModel().getSelectedItem();
-        if (usuario != null) {
-            try {
+        if (usuario == null) {
+            DialogUtils.mostrarError("No se seleccionó ningún usuario.");
+            return;
+        }
 
+        try {
+            // Generar un PDF por cada envío del usuario usando el generador existente
+            if (usuario.getListEnviosUsuario().isEmpty()) {
+                DialogUtils.mostrarError("El usuario no tiene envíos para generar reportes.");
+                return;
+            }
+
+            for (Envio envio : usuario.getListEnviosUsuario()) {
                 String ruta = "reportesGenerador" + File.separator + "usuarios" + File.separator
-                        + "reporte_usuario_" + usuario.getIdUsuario() + ".pdf";
+                        + "reporte_envio_" + envio.getIdEnvio() + "_usuario_" + usuario.getIdUsuario() + ".pdf";
                 File file = new File(ruta);
                 file.getParentFile().mkdirs();
 
-
-                PdfUsuarioReporte pdfUsuarioReporte = new PdfUsuarioReporte(usuario);
-                pdfUsuarioReporte.generarPdf(ruta);
-
-            } catch (IOException ex) {
-                ex.printStackTrace();
-               
+                PdfReporteEnvioUsuario pdf = new PdfReporteEnvioUsuario(usuario, envio);
+                pdf.generarPdf(ruta);
             }
-        } else {
-            System.out.println("No se seleccionó ningún usuario.");
+
+            DialogUtils.mostrarMensaje("PDF(s) generados correctamente para el usuario.");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            DialogUtils.mostrarError("No se pudo generar los PDF(s): " + ex.getMessage());
         }
     }
 
@@ -176,7 +185,7 @@ public class PantallaAdministradorViewController {
             controller.setApp(app);
 
             Stage ventana = new Stage();
-            ventana.setTitle("Add User");
+            ventana.setTitle("Agregar Usuario");
             ventana.setScene(new Scene(rootLayout));
             ventana.initModality(Modality.WINDOW_MODAL);
             ventana.initOwner(tbUsuarios.getScene().getWindow());
@@ -188,6 +197,7 @@ public class PantallaAdministradorViewController {
 
         } catch (IOException e) {
             e.printStackTrace();
+            DialogUtils.mostrarError("Error al abrir la ventana de agregar usuario: " + e.getMessage());
         }
     }
 
@@ -200,7 +210,7 @@ public class PantallaAdministradorViewController {
             controller.setUsuario(usuario);
 
             Stage ventana = new Stage();
-            ventana.setTitle("Edit User");
+            ventana.setTitle("Modificar Usuario");
             ventana.setScene(new Scene(rootLayout));
             ventana.initModality(Modality.WINDOW_MODAL);
             ventana.initOwner(tbUsuarios.getScene().getWindow());
@@ -212,6 +222,7 @@ public class PantallaAdministradorViewController {
 
         } catch (IOException e) {
             e.printStackTrace();
+            DialogUtils.mostrarError("Error al abrir la ventana de modificar usuario: " + e.getMessage());
         }
     }
 
@@ -220,13 +231,13 @@ public class PantallaAdministradorViewController {
         Usuario usuarioSeleccionado = tbUsuarios.getSelectionModel().getSelectedItem();
 
         if (usuarioSeleccionado == null) {
-            DialogUtils.mostrarError("Select a user to delete.");
+            DialogUtils.mostrarError("Seleccione un usuario para eliminar.");
             return;
         }
 
         app.listGlobalUsuarios.remove(usuarioSeleccionado);
         tbUsuarios.refresh();
-        DialogUtils.mostrarMensaje("User deleted successfully.");
+        DialogUtils.mostrarMensaje("Usuario eliminado correctamente.");
     }
 
     @FXML
@@ -249,7 +260,7 @@ public class PantallaAdministradorViewController {
             controller.setApp(app);
 
             Stage ventana = new Stage();
-            ventana.setTitle("Add Repartidor");
+            ventana.setTitle("Agregar Repartidor");
             ventana.setScene(new Scene(rootLayout));
             ventana.initModality(Modality.WINDOW_MODAL);
             ventana.initOwner(tbRepartidores.getScene().getWindow());
@@ -261,6 +272,7 @@ public class PantallaAdministradorViewController {
 
         } catch (IOException e) {
             e.printStackTrace();
+            DialogUtils.mostrarError("Error al abrir la ventana de agregar repartidor: " + e.getMessage());
         }
     }
 
@@ -273,7 +285,7 @@ public class PantallaAdministradorViewController {
             controller.setRepartidor(repartidor);
 
             Stage ventana = new Stage();
-            ventana.setTitle("Edit Repartidor");
+            ventana.setTitle("Modificar Repartidor");
             ventana.setScene(new Scene(rootLayout));
             ventana.initModality(Modality.WINDOW_MODAL);
             ventana.initOwner(tbRepartidores.getScene().getWindow());
@@ -285,6 +297,7 @@ public class PantallaAdministradorViewController {
 
         } catch (IOException e) {
             e.printStackTrace();
+            DialogUtils.mostrarError("Error al abrir la ventana de modificar repartidor: " + e.getMessage());
         }
     }
 
@@ -293,13 +306,13 @@ public class PantallaAdministradorViewController {
         Repartidor repartidorSeleccionado = tbRepartidores.getSelectionModel().getSelectedItem();
 
         if (repartidorSeleccionado == null) {
-            DialogUtils.mostrarError("Select a repartidor to delete.");
+            DialogUtils.mostrarError("Seleccione un repartidor para eliminar.");
             return;
         }
 
         app.listGlobalRepartidores.remove(repartidorSeleccionado);
         tbRepartidores.refresh();
-        DialogUtils.mostrarMensaje("Repartidor deleted successfully.");
+        DialogUtils.mostrarMensaje("Repartidor eliminado correctamente.");
     }
 
     @FXML
@@ -321,7 +334,7 @@ public class PantallaAdministradorViewController {
             ctrl.setApp(this.app);
 
             Stage ventana = new Stage();
-            ventana.setTitle("Ajustes Admin");
+            ventana.setTitle("Ajustes Administrador");
             ventana.setScene(new Scene(root));
             ventana.initModality(Modality.WINDOW_MODAL);
             ventana.initOwner(btAM.getScene().getWindow());
@@ -330,6 +343,30 @@ public class PantallaAdministradorViewController {
             ventana.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
+            DialogUtils.mostrarError("Error al abrir ajustes de administrador: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void abrirPantallaReportesAdmin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/edu/co/pfp2/PantallaReportesAdmin.fxml"));
+            AnchorPane root = loader.load();
+            PantallaReportesAdminViewController ctrl = loader.getController();
+            ctrl.setApp(this.app);
+
+            Stage ventana = new Stage();
+            ventana.setTitle("Reportes Administrador");
+            ventana.setScene(new Scene(root));
+            ventana.initModality(Modality.WINDOW_MODAL);
+            ventana.initOwner(btAM.getScene().getWindow());
+            ventana.setResizable(false);
+            ventana.centerOnScreen();
+            ventana.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            DialogUtils.mostrarError("Error al abrir la ventana de reportes: " + e.getMessage());
         }
     }
 

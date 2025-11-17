@@ -2,6 +2,7 @@ package co.uniquindio.edu.co.pfp2;
 
 import co.uniquindio.edu.co.pfp2.model.*;
 import co.uniquindio.edu.co.pfp2.viewController.*;
+import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,9 +63,10 @@ public class App extends Application {
 
             stage.show();
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la pantalla de bienvenida: " + ex.getMessage());
+                }
     }
     public void openPantallaSesionUsuario() {
 
@@ -85,9 +87,10 @@ public class App extends Application {
 
             stage.show();
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la pantalla de sesión de usuario: " + ex.getMessage());
+                }
     }
     public void openPantallaUsuario() {
         try {
@@ -103,9 +106,10 @@ public class App extends Application {
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene); stage.setResizable(false);
             stage.centerOnScreen(); stage.show();
-        } catch (IOException ex)
-        { ex.printStackTrace();
-        }
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la pantalla de usuario: " + ex.getMessage());
+                }
     }
     public void openPantallaUsuarioConfiguracion() {
         try {
@@ -131,9 +135,10 @@ public class App extends Application {
             // Mostrar la ventana y esperar a que se cierre
             ventanaConfig.showAndWait();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la configuración de usuario: " + e.getMessage());
+                }
     }
 
 
@@ -158,9 +163,10 @@ public class App extends Application {
             // Mostrar sin cerrar la ventana principal
             ventanaPago.showAndWait();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la ventana de pago: " + e.getMessage());
+                }
     }
 
     public void openPantallaDireccionUsuario(Stage ownerStage) {
@@ -183,9 +189,10 @@ public class App extends Application {
 
             ventanaDireccion.showAndWait();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la ventana de dirección: " + e.getMessage());
+                }
     }
 
 
@@ -221,9 +228,10 @@ public class App extends Application {
 
             stage.show();
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la sesión de repartidor: " + ex.getMessage());
+                }
     }
     public void openPantallaSesionAdministrador() {
 
@@ -244,9 +252,10 @@ public class App extends Application {
 
             stage.show();
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la sesión de administrador: " + ex.getMessage());
+                }
     }
 public void openPantallaAdministrador() {
         try {
@@ -266,9 +275,10 @@ public void openPantallaAdministrador() {
 
             stage.show();
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la pantalla de administrador: " + ex.getMessage());
+                }
     }
 
         public void openPantallaRepartidor(Repartidor repartidor) {
@@ -291,6 +301,7 @@ public void openPantallaAdministrador() {
 
                 } catch (IOException ex) {
                         ex.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la pantalla repartidor: " + ex.getMessage());
                 }
         }
     public void openPantallaRegistroUsuario() {
@@ -312,9 +323,10 @@ public void openPantallaAdministrador() {
 
             stage.show();
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+                } catch (IOException ex) {
+                        ex.printStackTrace();
+                        DialogUtils.mostrarError("Error al abrir la pantalla de registro: " + ex.getMessage());
+                }
     }
 
     public void inicializarData(){

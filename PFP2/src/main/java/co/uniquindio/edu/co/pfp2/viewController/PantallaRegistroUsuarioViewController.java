@@ -72,9 +72,9 @@ public class PantallaRegistroUsuarioViewController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            DialogUtils.mostrarError("Algo explotó en registrarUsuario(): " + e.getMessage());
+            DialogUtils.mostrarError("Error al registrar el usuario: " + e.getMessage());
         }
-        System.out.println(app.listGlobalUsuarios);
+        DialogUtils.mostrarMensaje("Usuarios totales: " + app.listGlobalUsuarios.size());
     }
 
 }

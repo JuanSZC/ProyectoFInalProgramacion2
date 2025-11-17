@@ -37,7 +37,7 @@ public class PantallaAgregarUsuarioViewController {
 
             if (nombre.isEmpty() || cedula.isEmpty() || correo.isEmpty() ||
                     telefonoStr.isEmpty() || contrasena.isEmpty()) {
-                DialogUtils.mostrarError("All fields are required.");
+                DialogUtils.mostrarError("Todos los campos son obligatorios.");
                 return;
             }
 
@@ -45,12 +45,12 @@ public class PantallaAgregarUsuarioViewController {
             try {
                 telefono = Integer.parseInt(telefonoStr);
             } catch (NumberFormatException e) {
-                DialogUtils.mostrarError("Phone must be a number.");
+                DialogUtils.mostrarError("El teléfono debe ser un número.");
                 return;
             }
 
             if (!correo.contains("@") || !correo.contains(".")) {
-                DialogUtils.mostrarError("Invalid email format.");
+                DialogUtils.mostrarError("Formato de correo inválido.");
                 return;
             }
 
@@ -59,12 +59,12 @@ public class PantallaAgregarUsuarioViewController {
             Usuario nuevo = new Usuario(nombre, cedula, correo, contrasena, telefono, id);
             app.listGlobalUsuarios.add(nuevo);
 
-            DialogUtils.mostrarMensaje("User added successfully.");
+            DialogUtils.mostrarMensaje("Usuario agregado correctamente.");
             cancelar();
 
         } catch (Exception e) {
             e.printStackTrace();
-            DialogUtils.mostrarError("Error adding user: " + e.getMessage());
+            DialogUtils.mostrarError("Error al agregar el usuario: " + e.getMessage());
         }
     }
 

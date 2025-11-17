@@ -4,7 +4,6 @@ import co.uniquindio.edu.co.pfp2.App;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.Direccion;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -60,7 +59,7 @@ public class PantallaUsuarioConfiguracionViewController {
             tfCorreoDP.setText(app.usuarioSesion.getCorreo());
             tfConDP.setText(app.usuarioSesion.getContrasenia());
 
-            tbDirecciones.setItems(FXCollections.observableList(app.usuarioSesion.getListDireccionesUsuario()));
+            tbDirecciones.setItems(app.usuarioSesion.getListDireccionesUsuario());
 
             colDireccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescripcion()));
             colLon.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getLongitud())));

@@ -217,14 +217,15 @@ public class PantallaUsuarioViewController {
                 PdfReporteEnvioUsuario pdf = new PdfReporteEnvioUsuario(usuario, envio);
                 pdf.generarPdf(ruta);
 
-                System.out.println("PDF generado correctamente: " + ruta);
+                DialogUtils.mostrarMensaje("PDF generado correctamente en: " + ruta);
 
             } catch (IOException e) {
                 e.printStackTrace();
+                DialogUtils.mostrarError("No se pudo generar el PDF: " + e.getMessage());
             }
 
         } else {
-            System.out.println("Debe seleccionar un envío.");
+            DialogUtils.mostrarError("Debe seleccionar un envío.");
         }
     }
 
@@ -237,9 +238,9 @@ public class PantallaUsuarioViewController {
                 !app.usuarioSesion.getListProductosUsuario().contains(p));
 
         tbCatalogoDisponible.setItems(filtrados);
-        tbMiCatalogo.setItems(FXCollections.observableList(app.usuarioSesion.getListProductosUsuario()));
-        tbCarrito.setItems(FXCollections.observableList(app.usuarioSesion.getListCarritosUsuario()));
-        tbEnviosUsuario.setItems(FXCollections.observableList(app.usuarioSesion.getListEnviosUsuario()));
+        tbMiCatalogo.setItems(app.usuarioSesion.getListProductosUsuario());
+        tbCarrito.setItems(app.usuarioSesion.getListCarritosUsuario());
+        tbEnviosUsuario.setItems(app.usuarioSesion.getListEnviosUsuario());
 
         tbCatalogoDisponible.refresh();
         tbMiCatalogo.refresh();

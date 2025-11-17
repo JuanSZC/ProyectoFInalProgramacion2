@@ -4,7 +4,6 @@ import co.uniquindio.edu.co.pfp2.App;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.*;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -71,9 +70,7 @@ public class PantallaUsuarioPagoViewController {
             return;
         }
 
-        tbCarritoPago.setItems(FXCollections.observableList(
-                app.usuarioSesion.getListCarritosUsuario()
-        ));
+        tbCarritoPago.setItems(app.usuarioSesion.getListCarritosUsuario());
 
         // Ejemplo de textos (puedes adaptarlo según tu modelo)
 
@@ -96,7 +93,7 @@ public class PantallaUsuarioPagoViewController {
                 }
             }
         });
-        cbDireccionesPago.setItems(FXCollections.observableList(app.usuarioSesion.getListDireccionesUsuario()));
+        cbDireccionesPago.setItems(app.usuarioSesion.getListDireccionesUsuario());
 
         cbDireccionesPago.setButtonCell(new ListCell<Direccion>() {
             @Override

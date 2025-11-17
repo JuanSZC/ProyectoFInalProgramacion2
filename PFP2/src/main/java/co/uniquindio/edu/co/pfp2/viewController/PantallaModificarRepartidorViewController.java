@@ -55,7 +55,7 @@ public class PantallaModificarRepartidorViewController {
 
             if (nombre.isEmpty() || correo.isEmpty() || telefonoStr.isEmpty() || 
                     contrasena.isEmpty() || zona == null) {
-                DialogUtils.mostrarError("All fields are required.");
+                DialogUtils.mostrarError("Todos los campos son obligatorios.");
                 return;
             }
 
@@ -63,12 +63,12 @@ public class PantallaModificarRepartidorViewController {
             try {
                 telefono = Integer.parseInt(telefonoStr);
             } catch (NumberFormatException e) {
-                DialogUtils.mostrarError("Phone must be a number.");
+                DialogUtils.mostrarError("El teléfono debe ser un número.");
                 return;
             }
 
             if (!correo.contains("@") || !correo.contains(".")) {
-                DialogUtils.mostrarError("Invalid email format.");
+                DialogUtils.mostrarError("Formato de correo inválido.");
                 return;
             }
 
@@ -78,12 +78,12 @@ public class PantallaModificarRepartidorViewController {
             repartidorAModificar.setContrasenia(contrasena);
             repartidorAModificar.setZonaCobertura(zona);
 
-            DialogUtils.mostrarMensaje("Repartidor updated successfully.");
+            DialogUtils.mostrarMensaje("Repartidor actualizado correctamente.");
             cancelar();
 
         } catch (Exception e) {
             e.printStackTrace();
-            DialogUtils.mostrarError("Error updating repartidor: " + e.getMessage());
+            DialogUtils.mostrarError("Error al actualizar el repartidor: " + e.getMessage());
         }
     }
 

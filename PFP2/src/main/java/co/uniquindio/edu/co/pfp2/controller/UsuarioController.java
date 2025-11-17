@@ -68,7 +68,8 @@ public class UsuarioController {
 
     public void generarReporte(String tipo) {
         if (tipo == null || tipo.isBlank()) {
-            System.out.println("Ingrese porfavor un texto");
+            // Tipo inválido: no generar reporte
+            return;
         }
         usuario.generarReporte(tipo);
     }

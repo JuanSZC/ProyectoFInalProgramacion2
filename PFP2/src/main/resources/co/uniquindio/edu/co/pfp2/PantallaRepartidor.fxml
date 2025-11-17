@@ -53,7 +53,8 @@
                                         <TableColumn fx:id="colEstado" prefWidth="160.0" text="Estado" />
                                     </columns>
                                 </TableView>
-                                <Button layoutX="1010.0" layoutY="560.0" mnemonicParsing="false" onAction="#volver" styleClass="button-dark" text="Volver" />
+                                <Button layoutX="1085.0" layoutY="109.0" mnemonicParsing="false" onAction="#generarPdfHistorial" styleClass="button-dark" text="📄 Generar PDF" />
+                                <Button layoutX="1173.0" layoutY="493.0" mnemonicParsing="false" onAction="#volver" styleClass="button-dark" text="Volver" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -79,7 +80,8 @@
                                     </columns>
                                 </TableView>
                                 <Button layoutX="1079.0" layoutY="105.0" mnemonicParsing="false" onAction="#proximoEstado" styleClass="button-dark" text="▶ Siguiente Estado" />
-                                <Button layoutX="1072.0" layoutY="162.0" mnemonicParsing="false" onAction="#cancelarYReasignar" styleClass="button-danger" text="❌ Cancelar / Reasignar" />
+                                <Button layoutX="1063.0" layoutY="162.0" mnemonicParsing="false" onAction="#cancelarYReasignar" styleClass="button-danger" text="❌ Cancelar / Reasignar" />
+                                <Button layoutX="1098.0" layoutY="213.0" mnemonicParsing="false" onAction="#generarPdfEnCurso" styleClass="button-dark" text="📄 Generar PDF" />
                             </children>
                         </AnchorPane>
                     </content>

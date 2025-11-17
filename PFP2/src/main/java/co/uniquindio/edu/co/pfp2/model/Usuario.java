@@ -1,7 +1,11 @@
 package co.uniquindio.edu.co.pfp2.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase que representa un usuario del sistema. Extiende de {@link Persona}
@@ -11,24 +15,25 @@ import java.util.List;
  * crear y gestionar solicitudes de envío, y consultar historial.
  */
 public class Usuario extends Persona {
+    private static final Logger LOGGER = Logger.getLogger(Usuario.class.getName());
 
     /** Identificador único del usuario dentro del sistema */
     private int idUsuario;
 
     /** Lista de direcciones asociadas al usuario */
-    private List<Direccion> listDireccionesUsuario;
+    private ObservableList<Direccion> listDireccionesUsuario;
 
     /** Lista global de usuarios (utilizada para validar inicios de sesión) */
     private List<Usuario> listUsuarios;
 
     /** Lista de productos pertenecientes al usuario */
-    private List<Producto> listProductosUsuario;
+    private ObservableList<Producto> listProductosUsuario;
 
     /** Lista de envíos creados por el usuario */
-    private List<Envio> listEnviosUsuario;
+    private ObservableList<Envio> listEnviosUsuario;
 
     /** Lista de productos añadidos al carrito del usuario */
-    private List<Producto> listCarritosUsuario;
+    private ObservableList<Producto> listCarritosUsuario;
 
     /**
      * Constructor principal que inicializa los datos básicos del usuario
@@ -44,11 +49,11 @@ public class Usuario extends Persona {
     public Usuario(String nombreCompleto, String cedula, String correo, String contrasenia, int telefono, int idUsuario) {
         super(nombreCompleto, cedula, correo, contrasenia, telefono);
         this.idUsuario = idUsuario;
-        this.listDireccionesUsuario = new ArrayList<>();
+        this.listDireccionesUsuario = FXCollections.observableArrayList();
         this.listUsuarios = new ArrayList<>();
-        this.listProductosUsuario = new ArrayList<>();
-        this.listEnviosUsuario = new ArrayList<>();
-        this.listCarritosUsuario = new ArrayList<>();
+        this.listProductosUsuario = FXCollections.observableArrayList();
+        this.listEnviosUsuario = FXCollections.observableArrayList();
+        this.listCarritosUsuario = FXCollections.observableArrayList();
     }
 
     /** @return lista de usuarios registrados */
@@ -62,32 +67,32 @@ public class Usuario extends Persona {
     }
 
     /** @return lista de productos en el carrito del usuario */
-    public List<Producto> getListCarritosUsuario() {
+    public ObservableList<Producto> getListCarritosUsuario() {
         return listCarritosUsuario;
     }
 
     /** @param listCarritosUsuario asigna la lista del carrito del usuario */
-    public void setListCarritosUsuario(List<Producto> listCarritosUsuario) {
+    public void setListCarritosUsuario(ObservableList<Producto> listCarritosUsuario) {
         this.listCarritosUsuario = listCarritosUsuario;
     }
 
     /** @return lista de envíos del usuario */
-    public List<Envio> getListEnviosUsuario() {
+    public ObservableList<Envio> getListEnviosUsuario() {
         return listEnviosUsuario;
     }
 
     /** @param listEnviosUsuario asigna la lista de envíos */
-    public void setListEnviosUsuario(List<Envio> listEnviosUsuario) {
+    public void setListEnviosUsuario(ObservableList<Envio> listEnviosUsuario) {
         this.listEnviosUsuario = listEnviosUsuario;
     }
 
     /** @return lista de productos del usuario */
-    public List<Producto> getListProductosUsuario() {
+    public ObservableList<Producto> getListProductosUsuario() {
         return listProductosUsuario;
     }
 
     /** @param listProductosUsuario asigna la lista de productos del usuario */
-    public void setListProductosUsuario(List<Producto> listProductosUsuario) {
+    public void setListProductosUsuario(ObservableList<Producto> listProductosUsuario) {
         this.listProductosUsuario = listProductosUsuario;
     }
 
@@ -102,12 +107,12 @@ public class Usuario extends Persona {
     }
 
     /** @return lista de direcciones del usuario */
-    public List<Direccion> getListDireccionesUsuario() {
+    public ObservableList<Direccion> getListDireccionesUsuario() {
         return listDireccionesUsuario;
     }
 
     /** @param listDireccionesUsuario asigna la lista de direcciones */
-    public void setListDireccionesUsuario(List<Direccion> listDireccionesUsuario) {
+    public void setListDireccionesUsuario(ObservableList<Direccion> listDireccionesUsuario) {
         this.listDireccionesUsuario = listDireccionesUsuario;
     }
 
@@ -227,11 +232,11 @@ public class Usuario extends Persona {
      */
     public void generarReporte(String tipo) {
         if (tipo.equalsIgnoreCase("pdf"))
-            System.out.println("Generando reporte PDF...");
+            LOGGER.log(Level.INFO, "Generando reporte PDF...");
         else if (tipo.equalsIgnoreCase("csv"))
-            System.out.println("Generando reporte CSV...");
+            LOGGER.log(Level.INFO, "Generando reporte CSV...");
         else
-            System.out.println("Tipo no soportado");
+            LOGGER.log(Level.WARNING, "Tipo de reporte no soportado: {0}", tipo);
     }
 
     /**
@@ -245,10 +250,10 @@ public class Usuario extends Persona {
                 .anyMatch(e -> e.getIdEnvio() == envio.getIdEnvio());
         if (!existe) {
             listEnviosUsuario.add(envio);
-            System.out.println("Solicitud de envío creada correctamente: " + envio.getIdEnvio());
+            LOGGER.log(Level.INFO, "Solicitud de envío creada correctamente: {0}", envio.getIdEnvio());
             return true;
         }
-        System.out.println("Ya existe una solicitud con ese ID.");
+        LOGGER.log(Level.WARNING, "Ya existe una solicitud con ese ID: {0}", envio.getIdEnvio());
         return false;
     }
 
@@ -266,11 +271,11 @@ public class Usuario extends Persona {
                 envio.setDestino(nuevoEnvio.getDestino());
                 envio.setPaquete(nuevoEnvio.getPaquete());
                 envio.setFechaCreacion(nuevoEnvio.getFechaCreacion());
-                System.out.println("Solicitud de envío modificada correctamente.");
+                LOGGER.log(Level.INFO, "Solicitud de envío modificada correctamente: {0}", idEnvio);
                 return true;
             }
         }
-        System.out.println("No se encontró el envío o ya fue asignado.");
+        LOGGER.log(Level.WARNING, "No se encontró el envío o ya fue asignado: {0}", idEnvio);
         return false;
     }
 
@@ -284,11 +289,11 @@ public class Usuario extends Persona {
         for (Envio envio : listEnviosUsuario) {
             if (envio.getIdEnvio() == idEnvio && envio.getEstadoEnvio() == EstadoEnvio.SOLICITADO) {
                 envio.cambiarEstado(EstadoEnvio.CANCELADO);
-                System.out.println("Solicitud cancelada correctamente.");
+                LOGGER.log(Level.INFO, "Solicitud cancelada correctamente: {0}", idEnvio);
                 return true;
             }
         }
-        System.out.println("No se pudo cancelar el envío (ya está en proceso o no existe).");
+        LOGGER.log(Level.WARNING, "No se pudo cancelar el envío (ya está en proceso o no existe): {0}", idEnvio);
         return false;
     }
 
@@ -299,7 +304,7 @@ public class Usuario extends Persona {
      */
     public List<Envio> consultarHistorialEnvio() {
         if (listEnviosUsuario.isEmpty()) {
-            System.out.println("No hay envíos registrados en el historial.");
+            LOGGER.log(Level.INFO, "No hay envíos registrados en el historial para el usuario {0}", this.idUsuario);
         }
         return new ArrayList<>(listEnviosUsuario);
     }
@@ -313,11 +318,11 @@ public class Usuario extends Persona {
     public EstadoEnvio rastrearEstadoEnvio(int idEnvio) {
         for (Envio envio : listEnviosUsuario) {
             if (envio.getIdEnvio() == idEnvio) {
-                System.out.println("Estado actual del envío " + idEnvio + ": " + envio.getEstadoEnvio());
+                LOGGER.log(Level.INFO, "Estado actual del envío {0}: {1}", new Object[]{idEnvio, envio.getEstadoEnvio()});
                 return envio.getEstadoEnvio();
             }
         }
-        System.out.println("No se encontró el envío con ID " + idEnvio);
+        LOGGER.log(Level.WARNING, "No se encontró el envío con ID {0}", idEnvio);
         return null;
     }
 }

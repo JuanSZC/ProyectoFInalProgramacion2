@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaReportesAdminViewController">
+   <children>
+      <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reportes Administrador">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="22.0" />
+         </font>
+      </Text>
+      <PieChart fx:id="pieRepartidores" layoutX="14.0" layoutY="60.0" prefHeight="220.0" prefWidth="260.0" />
+      <BarChart fx:id="barProductosPorUsuario" layoutX="290.0" layoutY="60.0" prefHeight="260.0" prefWidth="500.0">
+        <xAxis>
+          <CategoryAxis fx:id="barCategorias" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="barNumeros" />
+        </yAxis>
+      </BarChart>
+      <LineChart fx:id="lineEnvios" layoutX="14.0" layoutY="290.0" prefHeight="260.0" prefWidth="776.0">
+        <xAxis>
+          <CategoryAxis fx:id="lineCategorias" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="lineNumeros" />
+        </yAxis>
+      </LineChart>
+      <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#generarReportes" prefHeight="28.0" prefWidth="110.0" text="Generar" />
+   </children>
+</AnchorPane>

@@ -48,7 +48,7 @@ public class PantallaAgregarRepartidorViewController {
 
             if (nombre.isEmpty() || cedula.isEmpty() || correo.isEmpty() ||
                     telefonoStr.isEmpty() || contrasena.isEmpty() || zona == null) {
-                DialogUtils.mostrarError("All fields are required.");
+                DialogUtils.mostrarError("Todos los campos son obligatorios.");
                 return;
             }
 
@@ -56,12 +56,12 @@ public class PantallaAgregarRepartidorViewController {
             try {
                 telefono = Integer.parseInt(telefonoStr);
             } catch (NumberFormatException e) {
-                DialogUtils.mostrarError("Phone must be a number.");
+                DialogUtils.mostrarError("El teléfono debe ser un número.");
                 return;
             }
 
             if (!correo.contains("@") || !correo.contains(".")) {
-                DialogUtils.mostrarError("Invalid email format.");
+                DialogUtils.mostrarError("Formato de correo inválido.");
                 return;
             }
 
@@ -70,12 +70,12 @@ public class PantallaAgregarRepartidorViewController {
             Repartidor nuevo = new Repartidor(id, nombre, cedula, correo, contrasena, telefono, zona, co.uniquindio.edu.co.pfp2.model.DisponibilidadRepartidor.DISPONIBLE);
             app.listGlobalRepartidores.add(nuevo);
 
-            DialogUtils.mostrarMensaje("Repartidor added successfully.");
+            DialogUtils.mostrarMensaje("Repartidor agregado correctamente.");
             cancelar();
 
         } catch (Exception e) {
             e.printStackTrace();
-            DialogUtils.mostrarError("Error adding repartidor: " + e.getMessage());
+            DialogUtils.mostrarError("Error al agregar el repartidor: " + e.getMessage());
         }
     }
 
