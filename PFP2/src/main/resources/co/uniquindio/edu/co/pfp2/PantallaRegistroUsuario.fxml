@@ -9,13 +9,13 @@
 
 <AnchorPane fx:id="panelPrincipal" prefHeight="720.0" prefWidth="720.0" stylesheets="@../../../../../Styles/styleButton.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaRegistroUsuarioViewController">
    <children>
-      <Rectangle fill="#66bfff" height="110.0" width="720.0" />
+      <Rectangle styleClass="top-bar" height="110.0" width="720.0" />
       <Text fill="white" layoutY="75.0" text="Registro de Usuario" textAlignment="CENTER" wrappingWidth="720.0">
          <font>
             <Font name="Segoe UI Bold Italic" size="55.0" />
          </font>
       </Text>
-      <Text fill="#2f6faf" layoutX="322.0" layoutY="150.0" text="Nombre:">
+      <Text styleClass="label-text" layoutX="322.0" layoutY="150.0" text="Nombre:">
          <font>
             <Font name="Segoe UI Bold" size="20.0" />
          </font>
@@ -31,25 +31,25 @@
             <Font name="Segoe UI Bold" size="18.0" />
          </font>
       </Button>
-      <Text fill="#2f6faf" layoutX="328.0" layoutY="240.0" text="Cédula:">
+      <Text styleClass="label-text" layoutX="328.0" layoutY="240.0" text="Cédula:">
          <font>
             <Font name="Segoe UI Bold" size="20.0" />
          </font>
       </Text>
       <TextField fx:id="txtCedula" alignment="TOP_CENTER" layoutX="222.0" layoutY="260.0" prefHeight="3.0" prefWidth="276.0" stylesheets="@../../../../../Styles/styleButton.css" />
-      <Text fill="#2f6faf" layoutX="328.0" layoutY="330.0" text="Correo:">
+      <Text styleClass="label-text" layoutX="328.0" layoutY="330.0" text="Correo:">
          <font>
             <Font name="Segoe UI Bold" size="20.0" />
          </font>
       </Text>
       <TextField fx:id="txtCorreo" alignment="TOP_CENTER" layoutX="222.0" layoutY="350.0" prefHeight="3.0" prefWidth="276.0" stylesheets="@../../../../../Styles/styleButton.css" />
-      <Text fill="#2f6faf" layoutX="316.0" layoutY="420.0" text="Teléfono:">
+      <Text styleClass="label-text" layoutX="316.0" layoutY="420.0" text="Teléfono:">
          <font>
             <Font name="Segoe UI Bold" size="20.0" />
          </font>
       </Text>
       <TextField fx:id="txtTelefono" alignment="TOP_CENTER" layoutX="222.0" layoutY="440.0" prefHeight="3.0" prefWidth="276.0" stylesheets="@../../../../../Styles/styleButton.css" />
-      <Text fill="#2f6faf" layoutX="307.0" layoutY="510.0" text="Contraseña:">
+      <Text styleClass="label-text" layoutX="307.0" layoutY="510.0" text="Contraseña:">
          <font>
             <Font name="Segoe UI Bold" size="20.0" />
          </font>

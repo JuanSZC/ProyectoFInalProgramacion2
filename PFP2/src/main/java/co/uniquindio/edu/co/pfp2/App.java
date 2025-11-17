@@ -56,6 +56,9 @@ public class App extends Application {
             pantallaBienvenidaViewController.setApp(this);
 
             Scene scene = new Scene(rootLayout);
+            // Aplicar hoja de estilos global y clase neutra para bienvenida
+            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-neutral");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -80,6 +83,8 @@ public class App extends Application {
             pantallaSesionUsuarioViewController.setListGlobalUsuarios(listGlobalUsuarios);
 
             Scene scene = new Scene(rootLayout);
+            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-user");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -104,6 +109,8 @@ public class App extends Application {
             }
             pantallaUsuarioViewController.initialize();
             Scene scene = new Scene(rootLayout);
+            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-user");
             stage.setScene(scene); stage.setResizable(false);
             stage.centerOnScreen(); stage.show();
                 } catch (IOException ex) {
@@ -126,7 +133,10 @@ public class App extends Application {
             // Crear la ventana modal
             Stage ventanaConfig = new Stage();
             ventanaConfig.setTitle("Configuración");
-            ventanaConfig.setScene(new Scene(rootLayout));
+            Scene sc = new Scene(rootLayout);
+            sc.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-user");
+            ventanaConfig.setScene(sc);
             ventanaConfig.initModality(Modality.WINDOW_MODAL);
             ventanaConfig.initOwner(stage); // el dueño es la ventana principal
             ventanaConfig.setResizable(false);
@@ -154,7 +164,10 @@ public class App extends Application {
             // Crear ventana modal correctamente sin tocar la principal
             Stage ventanaPago = new Stage();
             ventanaPago.setTitle("Pago");
-            ventanaPago.setScene(new Scene(rootLayout));
+            Scene sc = new Scene(rootLayout);
+            sc.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-user");
+            ventanaPago.setScene(sc);
             ventanaPago.initModality(Modality.WINDOW_MODAL);
             ventanaPago.initOwner(stage); // dueño = principal
             ventanaPago.setResizable(false);
@@ -181,7 +194,10 @@ public class App extends Application {
 
             Stage ventanaDireccion = new Stage();
             ventanaDireccion.setTitle("Dirección");
-            ventanaDireccion.setScene(new Scene(rootLayout));
+            Scene sc = new Scene(rootLayout);
+            sc.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-user");
+            ventanaDireccion.setScene(sc);
             ventanaDireccion.initModality(Modality.WINDOW_MODAL);
             ventanaDireccion.initOwner(ownerStage); // la ventana que la llamó
             ventanaDireccion.setResizable(false);
@@ -221,6 +237,8 @@ public class App extends Application {
             pantallaSesionRepartidorViewController.setListGlobalRepartidores(listGlobalRepartidores);
 
             Scene scene = new Scene(rootLayout);
+            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-repartidor");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -245,6 +263,8 @@ public class App extends Application {
             pantallaSesionAdministradorViewController.setAdministrador(admin);
 
             Scene scene = new Scene(rootLayout);
+            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-admin");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -268,6 +288,8 @@ public void openPantallaAdministrador() {
             controller.initialize();
 
             Scene scene = new Scene(rootLayout);
+            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-admin");
 
             stage.setScene(scene);
             stage.setResizable(false);
@@ -292,6 +314,8 @@ public void openPantallaAdministrador() {
                         controller.setRepartidor(repartidor);
 
                         Scene scene = new Scene(rootLayout);
+                        scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+                        rootLayout.getStyleClass().add("role-repartidor");
 
                         stage.setScene(scene);
                         stage.setResizable(false);
@@ -316,6 +340,8 @@ public void openPantallaAdministrador() {
             pantallaRegistroUsuarioViewController.usuarios = listGlobalUsuarios;
 
             Scene scene = new Scene(rootLayout);
+            scene.getStylesheets().add(getClass().getResource("/Styles/styleButton.css").toExternalForm());
+            rootLayout.getStyleClass().add("role-user");
 
             stage.setScene(scene);
             stage.setResizable(false);

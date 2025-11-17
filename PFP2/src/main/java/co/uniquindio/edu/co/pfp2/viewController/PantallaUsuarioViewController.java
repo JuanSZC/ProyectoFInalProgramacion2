@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.application.Platform;
+import javafx.scene.Parent;
 import reportesGenerador.PdfReporteEnvioUsuario;
 
 import java.io.File;
@@ -431,6 +433,14 @@ public class PantallaUsuarioViewController {
             String valorSesion = app.usuarioSesion.getNombreCompleto();
             if (!newValue.equals(valorSesion)) {
                 tUsuario.setText(valorSesion);
+            }
+        });
+
+        // Aplicar estilos por rol después de que la escena esté lista
+        Platform.runLater(() -> {
+            if (btAM != null && btAM.getScene() != null){
+                Parent root = btAM.getScene().getRoot();
+                VisualUtils.applyRoleStyles(root, "user");
             }
         });
 

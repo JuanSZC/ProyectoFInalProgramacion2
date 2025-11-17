@@ -6,6 +6,8 @@ import co.uniquindio.edu.co.pfp2.model.Usuario;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.application.Platform;
+import javafx.scene.Parent;
 
 public class PantallaSesionUsuarioViewController {
     App app;
@@ -53,6 +55,15 @@ public class PantallaSesionUsuarioViewController {
         } else {
             DialogUtils.mostrarMensaje("Correo o contraseña incorrectos. Intenta de nuevo.");
         }
+    }
+
+    public void initialize(){
+        Platform.runLater(() -> {
+            if (txtCorreo != null && txtCorreo.getScene() != null){
+                Parent root = txtCorreo.getScene().getRoot();
+                VisualUtils.applyRoleStyles(root, "user");
+            }
+        });
     }
 
 

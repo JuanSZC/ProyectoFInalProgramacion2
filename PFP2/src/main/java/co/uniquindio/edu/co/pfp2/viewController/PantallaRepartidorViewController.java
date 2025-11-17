@@ -20,6 +20,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.application.Platform;
+import javafx.scene.Parent;
 
 import java.io.File;
 import java.io.IOException;
@@ -79,6 +81,16 @@ public class PantallaRepartidorViewController {
 
 	public void setApp(App app) {
 		this.app = app;
+	}
+
+	public void initialize(){
+		// Aplicar paleta repartidor al terminar de cargar la escena
+		Platform.runLater(() -> {
+			if (tbEnvios != null && tbEnvios.getScene() != null){
+				Parent root = tbEnvios.getScene().getRoot();
+				VisualUtils.applyRoleStyles(root, "repartidor");
+			}
+		});
 	}
 
 	public void setRepartidor(Repartidor repartidor) {

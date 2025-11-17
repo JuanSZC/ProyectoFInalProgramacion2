@@ -1,6 +1,8 @@
 package co.uniquindio.edu.co.pfp2.viewController;
 
 import co.uniquindio.edu.co.pfp2.App;
+import javafx.application.Platform;
+import javafx.scene.Parent;
 
 public class PantallaBienvenidaViewController {
     App app;
@@ -19,8 +21,13 @@ public class PantallaBienvenidaViewController {
         this.app.openPantallaSesionAdministrador();
     }
 
-
-
-
+    public void initialize(){
+        Platform.runLater(() -> {
+            if (app != null && app.stage != null && app.stage.getScene() != null){
+                Parent root = app.stage.getScene().getRoot();
+                VisualUtils.applyRoleStyles(root, "neutral");
+            }
+        });
+    }
 
 }

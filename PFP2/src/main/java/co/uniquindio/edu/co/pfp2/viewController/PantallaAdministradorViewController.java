@@ -19,6 +19,8 @@ import reportesGenerador.PdfReporteEnvioUsuario;
 
 import java.io.File;
 import java.io.IOException;
+import javafx.application.Platform;
+import javafx.scene.Parent;
 
 public class PantallaAdministradorViewController {
 
@@ -163,6 +165,13 @@ public class PantallaAdministradorViewController {
                 new SimpleStringProperty(cellData.getValue().getZonaCobertura().toString()));
         colDisponibilidadRepartidor.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDisponibilidadRepartidor().toString()));
+        // Aplicar paleta admin una vez la escena esté lista
+        Platform.runLater(() -> {
+            if (btAM != null && btAM.getScene() != null){
+                Parent root = btAM.getScene().getRoot();
+                VisualUtils.applyRoleStyles(root, "admin");
+            }
+        });
     }
 
     @FXML

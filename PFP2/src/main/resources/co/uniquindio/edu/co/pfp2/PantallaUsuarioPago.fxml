@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="762.0" prefWidth="605.0" stylesheets="@../../../../../Styles/styleButton.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.PantallaUsuarioPagoViewController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66bfff" height="78.0" layoutX="3.0" layoutY="-3.0" stroke="#66bfff" strokeType="INSIDE" styleClass="label" width="611.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" styleClass="card-header" height="78.0" layoutX="3.0" layoutY="-3.0" strokeType="INSIDE" styleClass="label" width="611.0" />
       <Text fill="WHITE" layoutX="167.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de Pago">
          <font>
             <Font name="Segoe UI Bold Italic" size="45.0" />

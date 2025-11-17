@@ -4,6 +4,8 @@ import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
 import co.uniquindio.edu.co.pfp2.model.Administrador;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.application.Platform;
+import javafx.scene.Parent;
 
 public class PantallaSesionAdministradorViewController {
 
@@ -54,6 +56,15 @@ public class PantallaSesionAdministradorViewController {
         } else {
             DialogUtils.mostrarError("Correo o Clave incorrectos.");
         }
+    }
+
+    public void initialize(){
+        Platform.runLater(() -> {
+            if (txtCorreo != null && txtCorreo.getScene() != null){
+                Parent root = txtCorreo.getScene().getRoot();
+                VisualUtils.applyRoleStyles(root, "admin");
+            }
+        });
     }
 
 

@@ -10,19 +10,19 @@
 
 <AnchorPane fx:id="panelPrincipal" prefHeight="720.0" prefWidth="720.0" stylesheets="@../../../../../Styles/styleButton.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.pfp2.viewController.pantallaSesionRepartidorViewController">
    <children>
-      <Rectangle fill="#2f6faf" height="220.0" width="720.0" />
+      <Rectangle styleClass="top-bar" height="220.0" width="720.0" />
       <Text fill="white" layoutX="0.0" layoutY="130.0" text="Inicio de Sesión" textAlignment="CENTER" wrappingWidth="720.0">
          <font>
             <Font name="Segoe UI Bold Italic" size="55.0" />
          </font>
       </Text>
-      <Text fill="#2f6faf" layoutX="308.0" layoutY="302.0" text="Correo:">
+      <Text styleClass="label-text" layoutX="308.0" layoutY="302.0" text="Correo:">
          <font>
             <Font name="Segoe UI Bold" size="30.0" />
          </font>
       </Text>
       <TextField fx:id="txtCorreo" alignment="TOP_CENTER" layoutX="195.0" layoutY="332.0" prefHeight="40.0" prefWidth="330.0" stylesheets="@../../../../../Styles/styleButton.css" />
-      <Text fill="#2f6faf" layoutX="277.0" layoutY="432.0" text="Contraseña:">
+      <Text styleClass="label-text" layoutX="277.0" layoutY="432.0" text="Contraseña:">
          <font>
             <Font name="Segoe UI Bold" size="30.0" />
          </font>
