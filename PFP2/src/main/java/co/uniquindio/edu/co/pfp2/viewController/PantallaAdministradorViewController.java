@@ -2,10 +2,7 @@ package co.uniquindio.edu.co.pfp2.viewController;
 
 import co.uniquindio.edu.co.pfp2.App;
 import co.uniquindio.edu.co.pfp2.Extra.DialogUtils;
-import co.uniquindio.edu.co.pfp2.model.Repartidor;
-import co.uniquindio.edu.co.pfp2.model.Usuario;
-import co.uniquindio.edu.co.pfp2.model.Producto;
-import co.uniquindio.edu.co.pfp2.model.Envio;
+import co.uniquindio.edu.co.pfp2.model.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -320,10 +317,16 @@ public class PantallaAdministradorViewController {
             DialogUtils.mostrarError("Seleccione un usuario para eliminar.");
             return;
         }
+        if (usuarioSeleccionado.getListEnviosUsuario().isEmpty()) {
+            app.listGlobalUsuarios.remove(usuarioSeleccionado);
+            tbUsuarios.refresh();
+            DialogUtils.mostrarMensaje("Usuario eliminado correctamente.");
+        } else {
+            DialogUtils.mostrarError("No se puede eliminar un usuario con envíos pendientes.");
+        }
 
-        app.listGlobalUsuarios.remove(usuarioSeleccionado);
-        tbUsuarios.refresh();
-        DialogUtils.mostrarMensaje("Usuario eliminado correctamente.");
+
+
     }
 
     @FXML
@@ -475,10 +478,21 @@ public class PantallaAdministradorViewController {
             return;
         }
 
+
+        boolean tieneEnviosPendientes = app.listGlobalUsuarios.stream()
+                .flatMap(usuario -> usuario.getListEnviosUsuario().stream())
+                .anyMatch(envio -> envio.getRepartidor() == repartidorSeleccionado && !envio.getEstadoEnvio().equals(EstadoEnvio.ENTREGADO));
+
+        if (tieneEnviosPendientes) {
+            DialogUtils.mostrarError("El repartidor tiene envíos pendientes y no se puede eliminar.");
+            return;
+        }
+
         app.listGlobalRepartidores.remove(repartidorSeleccionado);
         tbRepartidores.refresh();
         DialogUtils.mostrarMensaje("Repartidor eliminado correctamente.");
     }
+
 
     @FXML
     private void limpiarSeleccionUsuario() {

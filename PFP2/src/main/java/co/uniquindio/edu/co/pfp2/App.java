@@ -31,6 +31,7 @@ public class App extends Application {
 
 
 
+
     public Usuario usuarioSesion;
     public static void main(String[] args) {
         launch(args);
@@ -1228,6 +1229,7 @@ public void openPantallaAdministrador() {
         paqueteU9_5.setPrecio(precioU9_5); paqueteU9_5.setPeso(pesoU9_5);
         Envio envioU9_5 = new Envio(idEnvio++, direccion2, direccion3, paqueteU9_5, LocalDate.of(2025,6,26), EstadoEnvio.CANCELADO, repartidor2);
         usuario9.getListEnviosUsuario().add(envioU9_5);
+
 
 
     }

@@ -133,112 +133,156 @@ public class PantallaRepartidorViewController {
 		colEstado2.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getEstadoEnvio() != null ? c.getValue().getEstadoEnvio().name() : "-"));
 	}
 
-	@FXML
-	private void proximoEstado() {
-		Envio seleccionado = tbEnCurso.getSelectionModel().getSelectedItem();
-		if (seleccionado == null) {
-			DialogUtils.mostrarError("Seleccione un envío.");
-			return;
-		}
+    @FXML
+    private void proximoEstado() {
+        Envio seleccionado = tbEnCurso.getSelectionModel().getSelectedItem();
+        if (seleccionado == null) {
+            DialogUtils.mostrarError("Error: No se ha seleccionado ningún envío.");
+            return;
+        }
 
-		EstadoEnvio estadoActual = seleccionado.getEstadoEnvio();
+        EstadoEnvio estadoActual = seleccionado.getEstadoEnvio();
+        Repartidor repartidor = seleccionado.getRepartidor();
 
-		// Transiciones permitidas: ASIGNADO -> EN_RUTA -> ENTREGADO
-		if (estadoActual == EstadoEnvio.ASIGNADO) {
-			seleccionado.setEstadoEnvio(EstadoEnvio.EN_RUTA);
-			if (seleccionado.getRepartidor() != null) {
-				seleccionado.getRepartidor().setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
-			}
-		} else if (estadoActual == EstadoEnvio.EN_RUTA) {
-			seleccionado.setEstadoEnvio(EstadoEnvio.ENTREGADO);
-			// Liberar repartidor si no tiene más envíos en ruta
-			if (seleccionado.getRepartidor() != null) {
-				boolean tieneEnRuta = false;
-				for (Usuario u : app.listGlobalUsuarios) {
-					for (Envio e : u.getListEnviosUsuario()) {
-						if (e.getRepartidor() != null && e.getRepartidor().getIdRepartidor() == seleccionado.getRepartidor().getIdRepartidor() && e.getEstadoEnvio() == EstadoEnvio.EN_RUTA) {
-							tieneEnRuta = true;
-							break;
-						}
-					}
-					if (tieneEnRuta) break;
-				}
-				if (!tieneEnRuta) {
-					seleccionado.getRepartidor().setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
-				}
-			}
-		}
+        DialogUtils.mostrarMensaje("Procesando envío ID: " + seleccionado.getIdEnvio() + " (Estado actual: " + estadoActual + ")");
 
-		cargarEnviosEnCurso();
-		cargarEnvios();
-	}
+        // Transiciones permitidas: ASIGNADO -> EN_RUTA -> ENTREGADO
+        if (estadoActual == EstadoEnvio.ASIGNADO) {
+            seleccionado.setEstadoEnvio(EstadoEnvio.EN_RUTA);
+            if (repartidor != null) {
+                repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
+                DialogUtils.mostrarMensaje("Envío en ruta. Repartidor: " + repartidor.getNombreCompleto() + " ahora en estado EN_RUTA.");
+            } else {
+                DialogUtils.mostrarError("El envío no tiene repartidor asignado.");
+            }
 
-	@FXML
-	private void cancelarYReasignar() {
-		Envio seleccionado = tbEnCurso.getSelectionModel().getSelectedItem();
-		if (seleccionado == null) {
-			DialogUtils.mostrarError("Seleccione un envío.");
-			return;
-		}
+        } else if (estadoActual == EstadoEnvio.EN_RUTA) {
+            seleccionado.setEstadoEnvio(EstadoEnvio.ENTREGADO);
+            if (repartidor != null) {
+                // Verificar si el repartidor tiene más envíos en ruta
+                boolean tieneEnRuta = false;
+                for (Usuario u : app.listGlobalUsuarios) {
+                    for (Envio e : u.getListEnviosUsuario()) {
+                        if (e.getRepartidor() != null &&
+                                e.getRepartidor().getIdRepartidor() == repartidor.getIdRepartidor() &&
+                                e.getEstadoEnvio() == EstadoEnvio.EN_RUTA) {
+                            tieneEnRuta = true;
+                            break;
+                        }
+                    }
+                    if (tieneEnRuta) break;
+                }
+                if (!tieneEnRuta) {
+                    repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
+                    DialogUtils.mostrarMensaje("Envío entregado. Repartidor " + repartidor.getNombreCompleto() + " liberado y disponible.");
+                } else {
+                    DialogUtils.mostrarMensaje("Envío entregado. Repartidor " + repartidor.getNombreCompleto() + " sigue con otros envíos en ruta.");
+                }
+            } else {
+                DialogUtils.mostrarError("El envío no tiene repartidor asignado.");
+            }
 
-		// Buscar otro repartidor disponible en la MISMA ZONA de cobertura del destino
-		Repartidor nuevoRepartidor = null;
-		if (seleccionado.getDestino() != null && seleccionado.getDestino().getZonaCobertura() != null) {
-			ZonaCobertura zonaDestino = seleccionado.getDestino().getZonaCobertura();
-			for (Repartidor r : app.listGlobalRepartidores) {
-				// Buscar: distinto del actual, misma zona, disponible
-				if (r.getIdRepartidor() != repartidor.getIdRepartidor() &&
-						r.getZonaCobertura() == zonaDestino &&
-						r.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE) {
-					nuevoRepartidor = r;
-					break;
-				}
-			}
-		}
+        } else if (estadoActual == EstadoEnvio.ENTREGADO) {
+            DialogUtils.mostrarError("El envío ya ha sido entregado. No se puede avanzar más.");
+        } else {
+            DialogUtils.mostrarError("Estado del envío desconocido: " + estadoActual);
+        }
 
-		if (nuevoRepartidor != null) {
-			// Reasignar a nuevo repartidor
-			seleccionado.setRepartidor(nuevoRepartidor);
-			seleccionado.setEstadoEnvio(EstadoEnvio.ASIGNADO);
-			nuevoRepartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
+        // Refrescar tablas
+        cargarEnviosEnCurso();
+        cargarEnvios();
+        tbEnCurso.refresh();
+        tbEnvios.refresh();
+        DialogUtils.mostrarMensaje("Actualización de tablas completada.");
+    }
 
-			// Liberar repartidor actual
-			boolean tieneEnRuta = false;
-			for (Usuario u : app.listGlobalUsuarios) {
-				for (Envio e : u.getListEnviosUsuario()) {
-					if (e.getRepartidor() != null && e.getRepartidor().getIdRepartidor() == repartidor.getIdRepartidor() && e.getEstadoEnvio() == EstadoEnvio.EN_RUTA) {
-						tieneEnRuta = true;
-						break;
-					}
-				}
-				if (tieneEnRuta) break;
-			}
-			if (!tieneEnRuta) {
-				repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
-			}
-		} else {
-			// No hay repartidor disponible en la zona: CANCELAR envío
-			seleccionado.setEstadoEnvio(EstadoEnvio.CANCELADO);
 
-			// Liberar repartidor actual
-			boolean tieneEnRuta = false;
-			for (Usuario u : app.listGlobalUsuarios) {
-				for (Envio e : u.getListEnviosUsuario()) {
-					if (e.getRepartidor() != null && e.getRepartidor().getIdRepartidor() == repartidor.getIdRepartidor() && e.getEstadoEnvio() == EstadoEnvio.EN_RUTA) {
-						tieneEnRuta = true;
-						break;
-					}
-				}
-				if (tieneEnRuta) break;
-			}
-			if (!tieneEnRuta) {
-				repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
-			}
-		}
+    @FXML
+    private void cancelarYReasignar() {
+        Envio seleccionado = tbEnCurso.getSelectionModel().getSelectedItem();
+        if (seleccionado == null) {
+            DialogUtils.mostrarError("Error: No se ha seleccionado ningún envío.");
+            return;
+        }
 
-		cargarEnviosEnCurso();
-		cargarEnvios();
-	}
+        DialogUtils.mostrarMensaje("Procesando envío ID: " + seleccionado.getIdEnvio());
+
+        // Buscar otro repartidor disponible en la MISMA ZONA de cobertura del destino
+        Repartidor nuevoRepartidor = null;
+        if (seleccionado.getDestino() != null && seleccionado.getDestino().getZonaCobertura() != null) {
+            ZonaCobertura zonaDestino = seleccionado.getDestino().getZonaCobertura();
+            for (Repartidor r : app.listGlobalRepartidores) {
+                if (r.getIdRepartidor() != repartidor.getIdRepartidor() &&
+                        r.getZonaCobertura() == zonaDestino &&
+                        r.getDisponibilidadRepartidor() == DisponibilidadRepartidor.DISPONIBLE) {
+                    nuevoRepartidor = r;
+                    break;
+                }
+            }
+
+            if (nuevoRepartidor != null) {
+                // Reasignar a nuevo repartidor
+                seleccionado.setRepartidor(nuevoRepartidor);
+                seleccionado.setEstadoEnvio(EstadoEnvio.ASIGNADO);
+                nuevoRepartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.EN_RUTA);
+                DialogUtils.mostrarMensaje("Envío reasignado al repartidor: " + nuevoRepartidor.getNombreCompleto());
+
+                // Liberar repartidor actual si no tiene más envíos en ruta
+                boolean tieneEnRuta = false;
+                for (Usuario u : app.listGlobalUsuarios) {
+                    for (Envio e : u.getListEnviosUsuario()) {
+                        if (e.getRepartidor() != null &&
+                                e.getRepartidor().getIdRepartidor() == repartidor.getIdRepartidor() &&
+                                e.getEstadoEnvio() == EstadoEnvio.EN_RUTA) {
+                            tieneEnRuta = true;
+                            break;
+                        }
+                    }
+                    if (tieneEnRuta) break;
+                }
+                if (!tieneEnRuta) {
+                    repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
+                    DialogUtils.mostrarMensaje("Repartidor original liberado: " + repartidor.getNombreCompleto());
+                } else {
+                    DialogUtils.mostrarMensaje("Repartidor original sigue con envíos en ruta: " + repartidor.getNombreCompleto());
+                }
+
+            } else {
+                // No hay repartidor disponible en la zona: CANCELAR envío
+                seleccionado.setEstadoEnvio(EstadoEnvio.CANCELADO);
+                DialogUtils.mostrarError("No hay repartidor disponible en la zona. Envío cancelado.");
+
+                // Liberar repartidor actual si no tiene más envíos en ruta
+                boolean tieneEnRuta = false;
+                for (Usuario u : app.listGlobalUsuarios) {
+                    for (Envio e : u.getListEnviosUsuario()) {
+                        if (e.getRepartidor() != null &&
+                                e.getRepartidor().getIdRepartidor() == repartidor.getIdRepartidor() &&
+                                e.getEstadoEnvio() == EstadoEnvio.EN_RUTA) {
+                            tieneEnRuta = true;
+                            break;
+                        }
+                    }
+                    if (tieneEnRuta) break;
+                }
+                if (!tieneEnRuta) {
+                    repartidor.setDisponibilidadRepartidor(DisponibilidadRepartidor.DISPONIBLE);
+                    DialogUtils.mostrarMensaje("Repartidor original liberado: " + repartidor.getNombreCompleto());
+                } else {
+                    DialogUtils.mostrarMensaje("Repartidor original sigue con envíos en ruta: " + repartidor.getNombreCompleto());
+                }
+            }
+
+        } else {
+            DialogUtils.mostrarError("Error: El envío no tiene destino o zona de cobertura definida.");
+        }
+
+        // Refrescar tablas
+        cargarEnviosEnCurso();
+        cargarEnvios();
+        DialogUtils.mostrarMensaje("Actualización de tablas completada.");
+    }
+
 
 	private void cargarEnvios() {
 		if (app == null || repartidor == null) return;
@@ -323,7 +367,7 @@ public class PantallaRepartidorViewController {
 		}
 
 		try {
-			String ruta = "ReportesPDF" + File.separator + "repartidores" + File.separator
+			String ruta = "ReportesPDF" + File.separator + "repartidores" + File.separator+ "Repartidor"+repartidor.getIdRepartidor()+ File.separator
 					+ "reporte_envio_" + seleccionado.getIdEnvio() + ".pdf";
 			File file = new File(ruta);
 			file.getParentFile().mkdirs();

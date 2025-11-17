@@ -30,7 +30,7 @@
                     </font>
                 </Text>
 
-                <Button onAction="#openPantallaSesionUsuario" prefHeight="40" prefWidth="180" styleClass="button-primary" stylesheets="@../../../../../styles/paletaAzul.css" text="Usuario" />
+                <Button onAction="#openPantallaSesionUsuario" prefHeight="40" prefWidth="180" styleClass="button-dark" stylesheets="@../../../../../styles/paletaAzul.css" text="Usuario" />
                 <Button onAction="#openPantallaSesionRepartidor" prefHeight="40" prefWidth="180" styleClass="button-dark" stylesheets="@../../../../../styles/paletaVerde.css" text="Repartidor" />
                 <Button onAction="#openPantallaSesionAdministrador" prefHeight="40" prefWidth="180" styleClass="button-danger" stylesheets="@../../../../../styles/paletaRoja.css" text="Administrador" />
             </children>
