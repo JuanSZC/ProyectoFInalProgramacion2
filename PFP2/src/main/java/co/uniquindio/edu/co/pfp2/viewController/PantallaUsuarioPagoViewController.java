@@ -72,7 +72,7 @@ public class PantallaUsuarioPagoViewController {
 
         tbCarritoPago.setItems(app.usuarioSesion.getListCarritosUsuario());
 
-        // Ejemplo de textos (puedes adaptarlo según tu modelo)
+
 
         double precio = 0;
         double peso = 0;
@@ -175,7 +175,8 @@ public class PantallaUsuarioPagoViewController {
         DialogUtils.mostrarMensaje("Pedido Realizado con éxito.\nEl Repartidor elegido fue: "+repartidor.getNombreCompleto()+".");
         app.usuarioSesion.getListCarritosUsuario().removeAll(app.usuarioSesion.getListCarritosUsuario());
 
-        Envio envio = new Envio(app.idEnvio+1,cbDireccionesPago.getValue(),cbDireccionesPago.getValue(),this.paquete, LocalDate.now(),EstadoEnvio.ASIGNADO,repartidor);
+        Envio envio = new Envio(app.idEnvio,cbDireccionesPago.getValue(),cbDireccionesPago.getValue(),this.paquete, LocalDate.now(),EstadoEnvio.ASIGNADO,repartidor);
+        app.idEnvio++;
         app.usuarioSesion.getListEnviosUsuario().add(envio);
 
 

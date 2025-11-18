@@ -317,13 +317,13 @@ public class PantallaAdministradorViewController {
             DialogUtils.mostrarError("Seleccione un usuario para eliminar.");
             return;
         }
-        if (usuarioSeleccionado.getListEnviosUsuario().isEmpty()) {
-            app.listGlobalUsuarios.remove(usuarioSeleccionado);
-            tbUsuarios.refresh();
-            DialogUtils.mostrarMensaje("Usuario eliminado correctamente.");
-        } else {
-            DialogUtils.mostrarError("No se puede eliminar un usuario con envíos pendientes.");
-        }
+       for (Envio en : usuarioSeleccionado.getListEnviosUsuario()){
+           if ((en.getEstadoEnvio() == EstadoEnvio.EN_RUTA)){
+               DialogUtils.mostrarError("No se puede eliminar un usuario con envios pendientes.");
+               return;
+           }
+       }
+       DialogUtils.mostrarMensaje("Usuario eliminado con éxito");
 
 
 

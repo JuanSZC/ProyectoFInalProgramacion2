@@ -754,8 +754,9 @@ public void openPantallaAdministrador() {
         double precioU0_1=0, pesoU0_1=0;
         for (Producto p : paqueteU0_1.getProductos()) { precioU0_1 += p.getPrecio() * p.getCantidad(); pesoU0_1 += p.getPeso() * p.getCantidad(); }
         paqueteU0_1.setPrecio(precioU0_1); paqueteU0_1.setPeso(pesoU0_1);
-        Envio envioU0_1 = new Envio(idEnvio++, direccion, direccion1, paqueteU0_1, LocalDate.of(2025,6,12), EstadoEnvio.ENTREGADO, repartidor);
+        Envio envioU0_1 = new Envio(idEnvio, direccion, direccion1, paqueteU0_1, LocalDate.of(2025,6,12), EstadoEnvio.ENTREGADO, repartidor);
         usuario.getListEnviosUsuario().add(envioU0_1);
+        idEnvio++;
 
         Paquete paqueteU0_2 = new Paquete(0,0,0);
         paqueteU0_2.getProductos().add(producto3);
@@ -763,8 +764,9 @@ public void openPantallaAdministrador() {
         double precioU0_2=0, pesoU0_2=0;
         for (Producto p : paqueteU0_2.getProductos()) { precioU0_2 += p.getPrecio() * p.getCantidad(); pesoU0_2 += p.getPeso() * p.getCantidad(); }
         paqueteU0_2.setPrecio(precioU0_2); paqueteU0_2.setPeso(pesoU0_2);
-        Envio envioU0_2 = new Envio(idEnvio++, direccion1, direccion2, paqueteU0_2, LocalDate.of(2025,6,15), EstadoEnvio.CANCELADO, repartidor1);
+        Envio envioU0_2 = new Envio(idEnvio, direccion1, direccion2, paqueteU0_2, LocalDate.of(2025,6,15), EstadoEnvio.CANCELADO, repartidor1);
         usuario.getListEnviosUsuario().add(envioU0_2);
+        idEnvio++;
 
         Paquete paqueteU0_3 = new Paquete(0,0,0);
         paqueteU0_3.getProductos().add(producto5);
@@ -773,8 +775,9 @@ public void openPantallaAdministrador() {
         double precioU0_3=0, pesoU0_3=0;
         for (Producto p : paqueteU0_3.getProductos()) { precioU0_3 += p.getPrecio() * p.getCantidad(); pesoU0_3 += p.getPeso() * p.getCantidad(); }
         paqueteU0_3.setPrecio(precioU0_3); paqueteU0_3.setPeso(pesoU0_3);
-        Envio envioU0_3 = new Envio(idEnvio++, direccion2, direccion3, paqueteU0_3, LocalDate.of(2025,6,18), EstadoEnvio.CANCELADO, repartidor2);
+        Envio envioU0_3 = new Envio(idEnvio, direccion2, direccion3, paqueteU0_3, LocalDate.of(2025,6,18), EstadoEnvio.CANCELADO, repartidor2);
         usuario.getListEnviosUsuario().add(envioU0_3);
+        idEnvio++;
 
         Paquete paqueteU0_4 = new Paquete(0,0,0);
         paqueteU0_4.getProductos().add(producto8);
@@ -782,8 +785,9 @@ public void openPantallaAdministrador() {
         double precioU0_4=0, pesoU0_4=0;
         for (Producto p : paqueteU0_4.getProductos()) { precioU0_4 += p.getPrecio() * p.getCantidad(); pesoU0_4 += p.getPeso() * p.getCantidad(); }
         paqueteU0_4.setPrecio(precioU0_4); paqueteU0_4.setPeso(pesoU0_4);
-        Envio envioU0_4 = new Envio(idEnvio++, direccion3, direccion4, paqueteU0_4, LocalDate.of(2025,6,21), EstadoEnvio.ENTREGADO, repartidor3);
+        Envio envioU0_4 = new Envio(idEnvio, direccion3, direccion4, paqueteU0_4, LocalDate.of(2025,6,21), EstadoEnvio.ENTREGADO, repartidor3);
         usuario.getListEnviosUsuario().add(envioU0_4);
+        idEnvio++;
 
         Paquete paqueteU0_5 = new Paquete(0,0,0);
         paqueteU0_5.getProductos().add(producto10);
@@ -791,8 +795,9 @@ public void openPantallaAdministrador() {
         double precioU0_5=0, pesoU0_5=0;
         for (Producto p : paqueteU0_5.getProductos()) { precioU0_5 += p.getPrecio() * p.getCantidad(); pesoU0_5 += p.getPeso() * p.getCantidad(); }
         paqueteU0_5.setPrecio(precioU0_5); paqueteU0_5.setPeso(pesoU0_5);
-        Envio envioU0_5 = new Envio(idEnvio++, direccion4, direccion, paqueteU0_5, LocalDate.of(2025,6,25), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU0_5 = new Envio(idEnvio, direccion4, direccion, paqueteU0_5, LocalDate.of(2025,6,25), EstadoEnvio.CANCELADO, repartidor4);
         usuario.getListEnviosUsuario().add(envioU0_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario1 ===================
@@ -803,8 +808,9 @@ public void openPantallaAdministrador() {
         double precioU1_1=0, pesoU1_1=0;
         for (Producto p : paqueteU1_1.getProductos()) { precioU1_1 += p.getPrecio() * p.getCantidad(); pesoU1_1 += p.getPeso() * p.getCantidad(); }
         paqueteU1_1.setPrecio(precioU1_1); paqueteU1_1.setPeso(pesoU1_1);
-        Envio envioU1_1 = new Envio(idEnvio++, direccion1, direccion2, paqueteU1_1, LocalDate.of(2025,6,11), EstadoEnvio.CANCELADO, repartidor1);
+        Envio envioU1_1 = new Envio(idEnvio, direccion1, direccion2, paqueteU1_1, LocalDate.of(2025,6,11), EstadoEnvio.CANCELADO, repartidor1);
         usuario1.getListEnviosUsuario().add(envioU1_1);
+        idEnvio++;
 
         Paquete paqueteU1_2 = new Paquete(0,0,0);
         paqueteU1_2.getProductos().add(producto3);
@@ -812,8 +818,9 @@ public void openPantallaAdministrador() {
         double precioU1_2=0, pesoU1_2=0;
         for (Producto p : paqueteU1_2.getProductos()) { precioU1_2 += p.getPrecio() * p.getCantidad(); pesoU1_2 += p.getPeso() * p.getCantidad(); }
         paqueteU1_2.setPrecio(precioU1_2); paqueteU1_2.setPeso(pesoU1_2);
-        Envio envioU1_2 = new Envio(idEnvio++, direccion2, direccion3, paqueteU1_2, LocalDate.of(2025,6,14), EstadoEnvio.CANCELADO, repartidor2);
+        Envio envioU1_2 = new Envio(idEnvio, direccion2, direccion3, paqueteU1_2, LocalDate.of(2025,6,14), EstadoEnvio.CANCELADO, repartidor2);
         usuario1.getListEnviosUsuario().add(envioU1_2);
+        idEnvio++;
 
         Paquete paqueteU1_3 = new Paquete(0,0,0);
         paqueteU1_3.getProductos().add(producto7);
@@ -822,8 +829,9 @@ public void openPantallaAdministrador() {
         double precioU1_3=0, pesoU1_3=0;
         for (Producto p : paqueteU1_3.getProductos()) { precioU1_3 += p.getPrecio() * p.getCantidad(); pesoU1_3 += p.getPeso() * p.getCantidad(); }
         paqueteU1_3.setPrecio(precioU1_3); paqueteU1_3.setPeso(pesoU1_3);
-        Envio envioU1_3 = new Envio(idEnvio++, direccion3, direccion4, paqueteU1_3, LocalDate.of(2025,6,17), EstadoEnvio.CANCELADO, repartidor3);
+        Envio envioU1_3 = new Envio(idEnvio, direccion3, direccion4, paqueteU1_3, LocalDate.of(2025,6,17), EstadoEnvio.CANCELADO, repartidor3);
         usuario1.getListEnviosUsuario().add(envioU1_3);
+        idEnvio++;
 
         Paquete paqueteU1_4 = new Paquete(0,0,0);
         paqueteU1_4.getProductos().add(producto10);
@@ -831,8 +839,9 @@ public void openPantallaAdministrador() {
         double precioU1_4=0, pesoU1_4=0;
         for (Producto p : paqueteU1_4.getProductos()) { precioU1_4 += p.getPrecio() * p.getCantidad(); pesoU1_4 += p.getPeso() * p.getCantidad(); }
         paqueteU1_4.setPrecio(precioU1_4); paqueteU1_4.setPeso(pesoU1_4);
-        Envio envioU1_4 = new Envio(idEnvio++, direccion4, direccion1, paqueteU1_4, LocalDate.of(2025,6,20), EstadoEnvio.ENTREGADO, repartidor4);
+        Envio envioU1_4 = new Envio(idEnvio, direccion4, direccion1, paqueteU1_4, LocalDate.of(2025,6,20), EstadoEnvio.ENTREGADO, repartidor4);
         usuario1.getListEnviosUsuario().add(envioU1_4);
+        idEnvio++;
 
         Paquete paqueteU1_5 = new Paquete(0,0,0);
         paqueteU1_5.getProductos().add(producto11);
@@ -840,8 +849,9 @@ public void openPantallaAdministrador() {
         double precioU1_5=0, pesoU1_5=0;
         for (Producto p : paqueteU1_5.getProductos()) { precioU1_5 += p.getPrecio() * p.getCantidad(); pesoU1_5 += p.getPeso() * p.getCantidad(); }
         paqueteU1_5.setPrecio(precioU1_5); paqueteU1_5.setPeso(pesoU1_5);
-        Envio envioU1_5 = new Envio(idEnvio++, direccion1, direccion3, paqueteU1_5, LocalDate.of(2025,6,23), EstadoEnvio.ENTREGADO, repartidor);
+        Envio envioU1_5 = new Envio(idEnvio, direccion1, direccion3, paqueteU1_5, LocalDate.of(2025,6,23), EstadoEnvio.ENTREGADO, repartidor);
         usuario1.getListEnviosUsuario().add(envioU1_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario2 ===================
@@ -851,8 +861,9 @@ public void openPantallaAdministrador() {
         double precioU2_1=0, pesoU2_1=0;
         for (Producto p : paqueteU2_1.getProductos()) { precioU2_1 += p.getPrecio() * p.getCantidad(); pesoU2_1 += p.getPeso() * p.getCantidad(); }
         paqueteU2_1.setPrecio(precioU2_1); paqueteU2_1.setPeso(pesoU2_1);
-        Envio envioU2_1 = new Envio(idEnvio++, direccion2, direccion4, paqueteU2_1, LocalDate.of(2025,6,13), EstadoEnvio.ENTREGADO, repartidor2);
+        Envio envioU2_1 = new Envio(idEnvio, direccion2, direccion4, paqueteU2_1, LocalDate.of(2025,6,13), EstadoEnvio.ENTREGADO, repartidor2);
         usuario2.getListEnviosUsuario().add(envioU2_1);
+        idEnvio++;
 
         Paquete paqueteU2_2 = new Paquete(0,0,0);
         paqueteU2_2.getProductos().add(producto14);
@@ -861,8 +872,9 @@ public void openPantallaAdministrador() {
         double precioU2_2=0, pesoU2_2=0;
         for (Producto p : paqueteU2_2.getProductos()) { precioU2_2 += p.getPrecio() * p.getCantidad(); pesoU2_2 += p.getPeso() * p.getCantidad(); }
         paqueteU2_2.setPrecio(precioU2_2); paqueteU2_2.setPeso(pesoU2_2);
-        Envio envioU2_2 = new Envio(idEnvio++, direccion3, direccion1, paqueteU2_2, LocalDate.of(2025,6,16), EstadoEnvio.CANCELADO, repartidor3);
+        Envio envioU2_2 = new Envio(idEnvio, direccion3, direccion1, paqueteU2_2, LocalDate.of(2025,6,16), EstadoEnvio.CANCELADO, repartidor3);
         usuario2.getListEnviosUsuario().add(envioU2_2);
+        idEnvio++;
 
         Paquete paqueteU2_3 = new Paquete(0,0,0);
         paqueteU2_3.getProductos().add(producto5);
@@ -870,8 +882,9 @@ public void openPantallaAdministrador() {
         double precioU2_3=0, pesoU2_3=0;
         for (Producto p : paqueteU2_3.getProductos()) { precioU2_3 += p.getPrecio() * p.getCantidad(); pesoU2_3 += p.getPeso() * p.getCantidad(); }
         paqueteU2_3.setPrecio(precioU2_3); paqueteU2_3.setPeso(pesoU2_3);
-        Envio envioU2_3 = new Envio(idEnvio++, direccion4, direccion2, paqueteU2_3, LocalDate.of(2025,6,19), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU2_3 = new Envio(idEnvio, direccion4, direccion2, paqueteU2_3, LocalDate.of(2025,6,19), EstadoEnvio.CANCELADO, repartidor4);
         usuario2.getListEnviosUsuario().add(envioU2_3);
+        idEnvio++;
 
         Paquete paqueteU2_4 = new Paquete(0,0,0);
         paqueteU2_4.getProductos().add(producto8);
@@ -880,8 +893,9 @@ public void openPantallaAdministrador() {
         double precioU2_4=0, pesoU2_4=0;
         for (Producto p : paqueteU2_4.getProductos()) { precioU2_4 += p.getPrecio() * p.getCantidad(); pesoU2_4 += p.getPeso() * p.getCantidad(); }
         paqueteU2_4.setPrecio(precioU2_4); paqueteU2_4.setPeso(pesoU2_4);
-        Envio envioU2_4 = new Envio(idEnvio++, direccion1, direccion3, paqueteU2_4, LocalDate.of(2025,6,22), EstadoEnvio.ENTREGADO, repartidor);
+        Envio envioU2_4 = new Envio(idEnvio, direccion1, direccion3, paqueteU2_4, LocalDate.of(2025,6,22), EstadoEnvio.ENTREGADO, repartidor);
         usuario2.getListEnviosUsuario().add(envioU2_4);
+        idEnvio++;
 
         Paquete paqueteU2_5 = new Paquete(0,0,0);
         paqueteU2_5.getProductos().add(producto2);
@@ -889,8 +903,9 @@ public void openPantallaAdministrador() {
         double precioU2_5=0, pesoU2_5=0;
         for (Producto p : paqueteU2_5.getProductos()) { precioU2_5 += p.getPrecio() * p.getCantidad(); pesoU2_5 += p.getPeso() * p.getCantidad(); }
         paqueteU2_5.setPrecio(precioU2_5); paqueteU2_5.setPeso(pesoU2_5);
-        Envio envioU2_5 = new Envio(idEnvio++, direccion2, direccion4, paqueteU2_5, LocalDate.of(2025,6,26), EstadoEnvio.CANCELADO, repartidor1);
+        Envio envioU2_5 = new Envio(idEnvio, direccion2, direccion4, paqueteU2_5, LocalDate.of(2025,6,26), EstadoEnvio.CANCELADO, repartidor1);
         usuario2.getListEnviosUsuario().add(envioU2_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario3 ===================
@@ -900,8 +915,9 @@ public void openPantallaAdministrador() {
         double precioU3_1=0, pesoU3_1=0;
         for (Producto p : paqueteU3_1.getProductos()) { precioU3_1 += p.getPrecio() * p.getCantidad(); pesoU3_1 += p.getPeso() * p.getCantidad(); }
         paqueteU3_1.setPrecio(precioU3_1); paqueteU3_1.setPeso(pesoU3_1);
-        Envio envioU3_1 = new Envio(idEnvio++, direccion3, direccion4, paqueteU3_1, LocalDate.of(2025,6,14), EstadoEnvio.CANCELADO, repartidor3);
+        Envio envioU3_1 = new Envio(idEnvio, direccion3, direccion4, paqueteU3_1, LocalDate.of(2025,6,14), EstadoEnvio.CANCELADO, repartidor3);
         usuario3.getListEnviosUsuario().add(envioU3_1);
+        idEnvio++;
 
         Paquete paqueteU3_2 = new Paquete(0,0,0);
         paqueteU3_2.getProductos().add(producto17);
@@ -910,8 +926,9 @@ public void openPantallaAdministrador() {
         double precioU3_2=0, pesoU3_2=0;
         for (Producto p : paqueteU3_2.getProductos()) { precioU3_2 += p.getPrecio() * p.getCantidad(); pesoU3_2 += p.getPeso() * p.getCantidad(); }
         paqueteU3_2.setPrecio(precioU3_2); paqueteU3_2.setPeso(pesoU3_2);
-        Envio envioU3_2 = new Envio(idEnvio++, direccion4, direccion, paqueteU3_2, LocalDate.of(2025,6,17), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU3_2 = new Envio(idEnvio, direccion4, direccion, paqueteU3_2, LocalDate.of(2025,6,17), EstadoEnvio.CANCELADO, repartidor4);
         usuario3.getListEnviosUsuario().add(envioU3_2);
+        idEnvio++;
 
         Paquete paqueteU3_3 = new Paquete(0,0,0);
         paqueteU3_3.getProductos().add(producto20);
@@ -919,8 +936,9 @@ public void openPantallaAdministrador() {
         double precioU3_3=0, pesoU3_3=0;
         for (Producto p : paqueteU3_3.getProductos()) { precioU3_3 += p.getPrecio() * p.getCantidad(); pesoU3_3 += p.getPeso() * p.getCantidad(); }
         paqueteU3_3.setPrecio(precioU3_3); paqueteU3_3.setPeso(pesoU3_3);
-        Envio envioU3_3 = new Envio(idEnvio++, direccion, direccion1, paqueteU3_3, LocalDate.of(2025,6,20), EstadoEnvio.ENTREGADO, repartidor);
+        Envio envioU3_3 = new Envio(idEnvio, direccion, direccion1, paqueteU3_3, LocalDate.of(2025,6,20), EstadoEnvio.ENTREGADO, repartidor);
         usuario3.getListEnviosUsuario().add(envioU3_3);
+        idEnvio++;
 
         Paquete paqueteU3_4 = new Paquete(0,0,0);
         paqueteU3_4.getProductos().add(producto22);
@@ -929,8 +947,9 @@ public void openPantallaAdministrador() {
         double precioU3_4=0, pesoU3_4=0;
         for (Producto p : paqueteU3_4.getProductos()) { precioU3_4 += p.getPrecio() * p.getCantidad(); pesoU3_4 += p.getPeso() * p.getCantidad(); }
         paqueteU3_4.setPrecio(precioU3_4); paqueteU3_4.setPeso(pesoU3_4);
-        Envio envioU3_4 = new Envio(idEnvio++, direccion1, direccion2, paqueteU3_4, LocalDate.of(2025,6,23), EstadoEnvio.ENTREGADO, repartidor1);
+        Envio envioU3_4 = new Envio(idEnvio, direccion1, direccion2, paqueteU3_4, LocalDate.of(2025,6,23), EstadoEnvio.ENTREGADO, repartidor1);
         usuario3.getListEnviosUsuario().add(envioU3_4);
+        idEnvio++;
 
         Paquete paqueteU3_5 = new Paquete(0,0,0);
         paqueteU3_5.getProductos().add(producto1);
@@ -938,8 +957,9 @@ public void openPantallaAdministrador() {
         double precioU3_5=0, pesoU3_5=0;
         for (Producto p : paqueteU3_5.getProductos()) { precioU3_5 += p.getPrecio() * p.getCantidad(); pesoU3_5 += p.getPeso() * p.getCantidad(); }
         paqueteU3_5.setPrecio(precioU3_5); paqueteU3_5.setPeso(pesoU3_5);
-        Envio envioU3_5 = new Envio(idEnvio++, direccion2, direccion3, paqueteU3_5, LocalDate.of(2025,6,27), EstadoEnvio.CANCELADO, repartidor2);
+        Envio envioU3_5 = new Envio(idEnvio, direccion2, direccion3, paqueteU3_5, LocalDate.of(2025,6,27), EstadoEnvio.CANCELADO, repartidor2);
         usuario3.getListEnviosUsuario().add(envioU3_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario4 ===================
@@ -949,8 +969,9 @@ public void openPantallaAdministrador() {
         double precioU4_1=0, pesoU4_1=0;
         for (Producto p : paqueteU4_1.getProductos()) { precioU4_1 += p.getPrecio() * p.getCantidad(); pesoU4_1 += p.getPeso() * p.getCantidad(); }
         paqueteU4_1.setPrecio(precioU4_1); paqueteU4_1.setPeso(pesoU4_1);
-        Envio envioU4_1 = new Envio(idEnvio++, direccion3, direccion4, paqueteU4_1, LocalDate.of(2025,6,12), EstadoEnvio.ENTREGADO, repartidor3);
+        Envio envioU4_1 = new Envio(idEnvio, direccion3, direccion4, paqueteU4_1, LocalDate.of(2025,6,12), EstadoEnvio.ENTREGADO, repartidor3);
         usuario4.getListEnviosUsuario().add(envioU4_1);
+        idEnvio++;
 
         Paquete paqueteU4_2 = new Paquete(0,0,0);
         paqueteU4_2.getProductos().add(producto3);
@@ -959,8 +980,9 @@ public void openPantallaAdministrador() {
         double precioU4_2=0, pesoU4_2=0;
         for (Producto p : paqueteU4_2.getProductos()) { precioU4_2 += p.getPrecio() * p.getCantidad(); pesoU4_2 += p.getPeso() * p.getCantidad(); }
         paqueteU4_2.setPrecio(precioU4_2); paqueteU4_2.setPeso(pesoU4_2);
-        Envio envioU4_2 = new Envio(idEnvio++, direccion4, direccion, paqueteU4_2, LocalDate.of(2025,6,15), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU4_2 = new Envio(idEnvio, direccion4, direccion, paqueteU4_2, LocalDate.of(2025,6,15), EstadoEnvio.CANCELADO, repartidor4);
         usuario4.getListEnviosUsuario().add(envioU4_2);
+        idEnvio++;
 
         Paquete paqueteU4_3 = new Paquete(0,0,0);
         paqueteU4_3.getProductos().add(producto7);
@@ -968,8 +990,9 @@ public void openPantallaAdministrador() {
         double precioU4_3=0, pesoU4_3=0;
         for (Producto p : paqueteU4_3.getProductos()) { precioU4_3 += p.getPrecio() * p.getCantidad(); pesoU4_3 += p.getPeso() * p.getCantidad(); }
         paqueteU4_3.setPrecio(precioU4_3); paqueteU4_3.setPeso(pesoU4_3);
-        Envio envioU4_3 = new Envio(idEnvio++, direccion, direccion1, paqueteU4_3, LocalDate.of(2025,6,18), EstadoEnvio.CANCELADO, repartidor);
+        Envio envioU4_3 = new Envio(idEnvio, direccion, direccion1, paqueteU4_3, LocalDate.of(2025,6,18), EstadoEnvio.CANCELADO, repartidor);
         usuario4.getListEnviosUsuario().add(envioU4_3);
+        idEnvio++;
 
         Paquete paqueteU4_4 = new Paquete(0,0,0);
         paqueteU4_4.getProductos().add(producto9);
@@ -978,8 +1001,9 @@ public void openPantallaAdministrador() {
         double precioU4_4=0, pesoU4_4=0;
         for (Producto p : paqueteU4_4.getProductos()) { precioU4_4 += p.getPrecio() * p.getCantidad(); pesoU4_4 += p.getPeso() * p.getCantidad(); }
         paqueteU4_4.setPrecio(precioU4_4); paqueteU4_4.setPeso(pesoU4_4);
-        Envio envioU4_4 = new Envio(idEnvio++, direccion1, direccion2, paqueteU4_4, LocalDate.of(2025,6,21), EstadoEnvio.ENTREGADO, repartidor1);
+        Envio envioU4_4 = new Envio(idEnvio, direccion1, direccion2, paqueteU4_4, LocalDate.of(2025,6,21), EstadoEnvio.ENTREGADO, repartidor1);
         usuario4.getListEnviosUsuario().add(envioU4_4);
+        idEnvio++;
 
         Paquete paqueteU4_5 = new Paquete(0,0,0);
         paqueteU4_5.getProductos().add(producto13);
@@ -987,8 +1011,9 @@ public void openPantallaAdministrador() {
         double precioU4_5=0, pesoU4_5=0;
         for (Producto p : paqueteU4_5.getProductos()) { precioU4_5 += p.getPrecio() * p.getCantidad(); pesoU4_5 += p.getPeso() * p.getCantidad(); }
         paqueteU4_5.setPrecio(precioU4_5); paqueteU4_5.setPeso(pesoU4_5);
-        Envio envioU4_5 = new Envio(idEnvio++, direccion2, direccion3, paqueteU4_5, LocalDate.of(2025,6,24), EstadoEnvio.ENTREGADO, repartidor2);
+        Envio envioU4_5 = new Envio(idEnvio, direccion2, direccion3, paqueteU4_5, LocalDate.of(2025,6,24), EstadoEnvio.ENTREGADO, repartidor2);
         usuario4.getListEnviosUsuario().add(envioU4_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario5 ===================
@@ -998,8 +1023,9 @@ public void openPantallaAdministrador() {
         double precioU5_1=0, pesoU5_1=0;
         for (Producto p : paqueteU5_1.getProductos()) { precioU5_1 += p.getPrecio() * p.getCantidad(); pesoU5_1 += p.getPeso() * p.getCantidad(); }
         paqueteU5_1.setPrecio(precioU5_1); paqueteU5_1.setPeso(pesoU5_1);
-        Envio envioU5_1 = new Envio(idEnvio++, direccion3, direccion4, paqueteU5_1, LocalDate.of(2025,6,13), EstadoEnvio.CANCELADO, repartidor3);
+        Envio envioU5_1 = new Envio(idEnvio, direccion3, direccion4, paqueteU5_1, LocalDate.of(2025,6,13), EstadoEnvio.CANCELADO, repartidor3);
         usuario5.getListEnviosUsuario().add(envioU5_1);
+        idEnvio++;
 
         Paquete paqueteU5_2 = new Paquete(0,0,0);
         paqueteU5_2.getProductos().add(producto16);
@@ -1008,8 +1034,9 @@ public void openPantallaAdministrador() {
         double precioU5_2=0, pesoU5_2=0;
         for (Producto p : paqueteU5_2.getProductos()) { precioU5_2 += p.getPrecio() * p.getCantidad(); pesoU5_2 += p.getPeso() * p.getCantidad(); }
         paqueteU5_2.setPrecio(precioU5_2); paqueteU5_2.setPeso(pesoU5_2);
-        Envio envioU5_2 = new Envio(idEnvio++, direccion4, direccion, paqueteU5_2, LocalDate.of(2025,6,16), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU5_2 = new Envio(idEnvio, direccion4, direccion, paqueteU5_2, LocalDate.of(2025,6,16), EstadoEnvio.CANCELADO, repartidor4);
         usuario5.getListEnviosUsuario().add(envioU5_2);
+        idEnvio++;
 
         Paquete paqueteU5_3 = new Paquete(0,0,0);
         paqueteU5_3.getProductos().add(producto20);
@@ -1017,8 +1044,9 @@ public void openPantallaAdministrador() {
         double precioU5_3=0, pesoU5_3=0;
         for (Producto p : paqueteU5_3.getProductos()) { precioU5_3 += p.getPrecio() * p.getCantidad(); pesoU5_3 += p.getPeso() * p.getCantidad(); }
         paqueteU5_3.setPrecio(precioU5_3); paqueteU5_3.setPeso(pesoU5_3);
-        Envio envioU5_3 = new Envio(idEnvio++, direccion, direccion1, paqueteU5_3, LocalDate.of(2025,6,19), EstadoEnvio.ENTREGADO, repartidor);
+        Envio envioU5_3 = new Envio(idEnvio, direccion, direccion1, paqueteU5_3, LocalDate.of(2025,6,19), EstadoEnvio.ENTREGADO, repartidor);
         usuario5.getListEnviosUsuario().add(envioU5_3);
+        idEnvio++;
 
         Paquete paqueteU5_4 = new Paquete(0,0,0);
         paqueteU5_4.getProductos().add(producto22);
@@ -1026,8 +1054,9 @@ public void openPantallaAdministrador() {
         double precioU5_4=0, pesoU5_4=0;
         for (Producto p : paqueteU5_4.getProductos()) { precioU5_4 += p.getPrecio() * p.getCantidad(); pesoU5_4 += p.getPeso() * p.getCantidad(); }
         paqueteU5_4.setPrecio(precioU5_4); paqueteU5_4.setPeso(pesoU5_4);
-        Envio envioU5_4 = new Envio(idEnvio++, direccion1, direccion2, paqueteU5_4, LocalDate.of(2025,6,22), EstadoEnvio.CANCELADO, repartidor1);
+        Envio envioU5_4 = new Envio(idEnvio, direccion1, direccion2, paqueteU5_4, LocalDate.of(2025,6,22), EstadoEnvio.CANCELADO, repartidor1);
         usuario5.getListEnviosUsuario().add(envioU5_4);
+        idEnvio++;
 
         Paquete paqueteU5_5 = new Paquete(0,0,0);
         paqueteU5_5.getProductos().add(producto24);
@@ -1035,8 +1064,9 @@ public void openPantallaAdministrador() {
         double precioU5_5=0, pesoU5_5=0;
         for (Producto p : paqueteU5_5.getProductos()) { precioU5_5 += p.getPrecio() * p.getCantidad(); pesoU5_5 += p.getPeso() * p.getCantidad(); }
         paqueteU5_5.setPrecio(precioU5_5); paqueteU5_5.setPeso(pesoU5_5);
-        Envio envioU5_5 = new Envio(idEnvio++, direccion2, direccion3, paqueteU5_5, LocalDate.of(2025,6,26), EstadoEnvio.ENTREGADO, repartidor2);
+        Envio envioU5_5 = new Envio(idEnvio, direccion2, direccion3, paqueteU5_5, LocalDate.of(2025,6,26), EstadoEnvio.ENTREGADO, repartidor2);
         usuario5.getListEnviosUsuario().add(envioU5_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario6 ===================
@@ -1046,8 +1076,9 @@ public void openPantallaAdministrador() {
         double precioU6_1=0, pesoU6_1=0;
         for (Producto p : paqueteU6_1.getProductos()) { precioU6_1 += p.getPrecio() * p.getCantidad(); pesoU6_1 += p.getPeso() * p.getCantidad(); }
         paqueteU6_1.setPrecio(precioU6_1); paqueteU6_1.setPeso(pesoU6_1);
-        Envio envioU6_1 = new Envio(idEnvio++, direccion3, direccion4, paqueteU6_1, LocalDate.of(2025,6,13), EstadoEnvio.ENTREGADO, repartidor3);
+        Envio envioU6_1 = new Envio(idEnvio, direccion3, direccion4, paqueteU6_1, LocalDate.of(2025,6,13), EstadoEnvio.ENTREGADO, repartidor3);
         usuario6.getListEnviosUsuario().add(envioU6_1);
+        idEnvio++;
 
         Paquete paqueteU6_2 = new Paquete(0,0,0);
         paqueteU6_2.getProductos().add(producto6);
@@ -1056,8 +1087,9 @@ public void openPantallaAdministrador() {
         double precioU6_2=0, pesoU6_2=0;
         for (Producto p : paqueteU6_2.getProductos()) { precioU6_2 += p.getPrecio() * p.getCantidad(); pesoU6_2 += p.getPeso() * p.getCantidad(); }
         paqueteU6_2.setPrecio(precioU6_2); paqueteU6_2.setPeso(pesoU6_2);
-        Envio envioU6_2 = new Envio(idEnvio++, direccion4, direccion, paqueteU6_2, LocalDate.of(2025,6,16), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU6_2 = new Envio(idEnvio, direccion4, direccion, paqueteU6_2, LocalDate.of(2025,6,16), EstadoEnvio.CANCELADO, repartidor4);
         usuario6.getListEnviosUsuario().add(envioU6_2);
+        idEnvio++;
 
         Paquete paqueteU6_3 = new Paquete(0,0,0);
         paqueteU6_3.getProductos().add(producto9);
@@ -1065,8 +1097,9 @@ public void openPantallaAdministrador() {
         double precioU6_3=0, pesoU6_3=0;
         for (Producto p : paqueteU6_3.getProductos()) { precioU6_3 += p.getPrecio() * p.getCantidad(); pesoU6_3 += p.getPeso() * p.getCantidad(); }
         paqueteU6_3.setPrecio(precioU6_3); paqueteU6_3.setPeso(pesoU6_3);
-        Envio envioU6_3 = new Envio(idEnvio++, direccion, direccion1, paqueteU6_3, LocalDate.of(2025,6,19), EstadoEnvio.CANCELADO, repartidor);
+        Envio envioU6_3 = new Envio(idEnvio, direccion, direccion1, paqueteU6_3, LocalDate.of(2025,6,19), EstadoEnvio.CANCELADO, repartidor);
         usuario6.getListEnviosUsuario().add(envioU6_3);
+        idEnvio++;
 
         Paquete paqueteU6_4 = new Paquete(0,0,0);
         paqueteU6_4.getProductos().add(producto11);
@@ -1074,8 +1107,9 @@ public void openPantallaAdministrador() {
         double precioU6_4=0, pesoU6_4=0;
         for (Producto p : paqueteU6_4.getProductos()) { precioU6_4 += p.getPrecio() * p.getCantidad(); pesoU6_4 += p.getPeso() * p.getCantidad(); }
         paqueteU6_4.setPrecio(precioU6_4); paqueteU6_4.setPeso(pesoU6_4);
-        Envio envioU6_4 = new Envio(idEnvio++, direccion1, direccion2, paqueteU6_4, LocalDate.of(2025,6,22), EstadoEnvio.ENTREGADO, repartidor1);
+        Envio envioU6_4 = new Envio(idEnvio, direccion1, direccion2, paqueteU6_4, LocalDate.of(2025,6,22), EstadoEnvio.ENTREGADO, repartidor1);
         usuario6.getListEnviosUsuario().add(envioU6_4);
+        idEnvio++;
 
         Paquete paqueteU6_5 = new Paquete(0,0,0);
         paqueteU6_5.getProductos().add(producto13);
@@ -1083,8 +1117,9 @@ public void openPantallaAdministrador() {
         double precioU6_5=0, pesoU6_5=0;
         for (Producto p : paqueteU6_5.getProductos()) { precioU6_5 += p.getPrecio() * p.getCantidad(); pesoU6_5 += p.getPeso() * p.getCantidad(); }
         paqueteU6_5.setPrecio(precioU6_5); paqueteU6_5.setPeso(pesoU6_5);
-        Envio envioU6_5 = new Envio(idEnvio++, direccion2, direccion3, paqueteU6_5, LocalDate.of(2025,6,26), EstadoEnvio.CANCELADO, repartidor2);
+        Envio envioU6_5 = new Envio(idEnvio, direccion2, direccion3, paqueteU6_5, LocalDate.of(2025,6,26), EstadoEnvio.CANCELADO, repartidor2);
         usuario6.getListEnviosUsuario().add(envioU6_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario7 ===================
@@ -1094,8 +1129,9 @@ public void openPantallaAdministrador() {
         double precioU7_1=0, pesoU7_1=0;
         for (Producto p : paqueteU7_1.getProductos()) { precioU7_1 += p.getPrecio() * p.getCantidad(); pesoU7_1 += p.getPeso() * p.getCantidad(); }
         paqueteU7_1.setPrecio(precioU7_1); paqueteU7_1.setPeso(pesoU7_1);
-        Envio envioU7_1 = new Envio(idEnvio++, direccion3, direccion4, paqueteU7_1, LocalDate.of(2025,6,14), EstadoEnvio.CANCELADO, repartidor3);
+        Envio envioU7_1 = new Envio(idEnvio, direccion3, direccion4, paqueteU7_1, LocalDate.of(2025,6,14), EstadoEnvio.CANCELADO, repartidor3);
         usuario7.getListEnviosUsuario().add(envioU7_1);
+        idEnvio++;
 
         Paquete paqueteU7_2 = new Paquete(0,0,0);
         paqueteU7_2.getProductos().add(producto17);
@@ -1104,8 +1140,9 @@ public void openPantallaAdministrador() {
         double precioU7_2=0, pesoU7_2=0;
         for (Producto p : paqueteU7_2.getProductos()) { precioU7_2 += p.getPrecio() * p.getCantidad(); pesoU7_2 += p.getPeso() * p.getCantidad(); }
         paqueteU7_2.setPrecio(precioU7_2); paqueteU7_2.setPeso(pesoU7_2);
-        Envio envioU7_2 = new Envio(idEnvio++, direccion4, direccion, paqueteU7_2, LocalDate.of(2025,6,17), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU7_2 = new Envio(idEnvio, direccion4, direccion, paqueteU7_2, LocalDate.of(2025,6,17), EstadoEnvio.CANCELADO, repartidor4);
         usuario7.getListEnviosUsuario().add(envioU7_2);
+        idEnvio++;
 
         Paquete paqueteU7_3 = new Paquete(0,0,0);
         paqueteU7_3.getProductos().add(producto20);
@@ -1113,8 +1150,9 @@ public void openPantallaAdministrador() {
         double precioU7_3=0, pesoU7_3=0;
         for (Producto p : paqueteU7_3.getProductos()) { precioU7_3 += p.getPrecio() * p.getCantidad(); pesoU7_3 += p.getPeso() * p.getCantidad(); }
         paqueteU7_3.setPrecio(precioU7_3); paqueteU7_3.setPeso(pesoU7_3);
-        Envio envioU7_3 = new Envio(idEnvio++, direccion, direccion1, paqueteU7_3, LocalDate.of(2025,6,20), EstadoEnvio.ENTREGADO, repartidor);
+        Envio envioU7_3 = new Envio(idEnvio, direccion, direccion1, paqueteU7_3, LocalDate.of(2025,6,20), EstadoEnvio.ENTREGADO, repartidor);
         usuario7.getListEnviosUsuario().add(envioU7_3);
+        idEnvio++;
 
         Paquete paqueteU7_4 = new Paquete(0,0,0);
         paqueteU7_4.getProductos().add(producto22);
@@ -1122,8 +1160,9 @@ public void openPantallaAdministrador() {
         double precioU7_4=0, pesoU7_4=0;
         for (Producto p : paqueteU7_4.getProductos()) { precioU7_4 += p.getPrecio() * p.getCantidad(); pesoU7_4 += p.getPeso() * p.getCantidad(); }
         paqueteU7_4.setPrecio(precioU7_4); paqueteU7_4.setPeso(pesoU7_4);
-        Envio envioU7_4 = new Envio(idEnvio++, direccion1, direccion2, paqueteU7_4, LocalDate.of(2025,6,23), EstadoEnvio.ENTREGADO, repartidor1);
+        Envio envioU7_4 = new Envio(idEnvio, direccion1, direccion2, paqueteU7_4, LocalDate.of(2025,6,23), EstadoEnvio.ENTREGADO, repartidor1);
         usuario7.getListEnviosUsuario().add(envioU7_4);
+        idEnvio++;
 
         Paquete paqueteU7_5 = new Paquete(0,0,0);
         paqueteU7_5.getProductos().add(producto24);
@@ -1131,8 +1170,9 @@ public void openPantallaAdministrador() {
         double precioU7_5=0, pesoU7_5=0;
         for (Producto p : paqueteU7_5.getProductos()) { precioU7_5 += p.getPrecio() * p.getCantidad(); pesoU7_5 += p.getPeso() * p.getCantidad(); }
         paqueteU7_5.setPrecio(precioU7_5); paqueteU7_5.setPeso(pesoU7_5);
-        Envio envioU7_5 = new Envio(idEnvio++, direccion2, direccion3, paqueteU7_5, LocalDate.of(2025,6,27), EstadoEnvio.CANCELADO, repartidor2);
+        Envio envioU7_5 = new Envio(idEnvio, direccion2, direccion3, paqueteU7_5, LocalDate.of(2025,6,27), EstadoEnvio.CANCELADO, repartidor2);
         usuario7.getListEnviosUsuario().add(envioU7_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario8 ===================
@@ -1142,8 +1182,9 @@ public void openPantallaAdministrador() {
         double precioU8_1=0, pesoU8_1=0;
         for (Producto p : paqueteU8_1.getProductos()) { precioU8_1 += p.getPrecio() * p.getCantidad(); pesoU8_1 += p.getPeso() * p.getCantidad(); }
         paqueteU8_1.setPrecio(precioU8_1); paqueteU8_1.setPeso(pesoU8_1);
-        Envio envioU8_1 = new Envio(idEnvio++, direccion3, direccion4, paqueteU8_1, LocalDate.of(2025,6,12), EstadoEnvio.CANCELADO, repartidor3);
+        Envio envioU8_1 = new Envio(idEnvio, direccion3, direccion4, paqueteU8_1, LocalDate.of(2025,6,12), EstadoEnvio.CANCELADO, repartidor3);
         usuario8.getListEnviosUsuario().add(envioU8_1);
+        idEnvio++;
 
         Paquete paqueteU8_2 = new Paquete(0,0,0);
         paqueteU8_2.getProductos().add(producto3);
@@ -1152,8 +1193,9 @@ public void openPantallaAdministrador() {
         double precioU8_2=0, pesoU8_2=0;
         for (Producto p : paqueteU8_2.getProductos()) { precioU8_2 += p.getPrecio() * p.getCantidad(); pesoU8_2 += p.getPeso() * p.getCantidad(); }
         paqueteU8_2.setPrecio(precioU8_2); paqueteU8_2.setPeso(pesoU8_2);
-        Envio envioU8_2 = new Envio(idEnvio++, direccion4, direccion, paqueteU8_2, LocalDate.of(2025,6,15), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU8_2 = new Envio(idEnvio, direccion4, direccion, paqueteU8_2, LocalDate.of(2025,6,15), EstadoEnvio.CANCELADO, repartidor4);
         usuario8.getListEnviosUsuario().add(envioU8_2);
+        idEnvio++;
 
         Paquete paqueteU8_3 = new Paquete(0,0,0);
         paqueteU8_3.getProductos().add(producto6);
@@ -1161,8 +1203,9 @@ public void openPantallaAdministrador() {
         double precioU8_3=0, pesoU8_3=0;
         for (Producto p : paqueteU8_3.getProductos()) { precioU8_3 += p.getPrecio() * p.getCantidad(); pesoU8_3 += p.getPeso() * p.getCantidad(); }
         paqueteU8_3.setPrecio(precioU8_3); paqueteU8_3.setPeso(pesoU8_3);
-        Envio envioU8_3 = new Envio(idEnvio++, direccion, direccion1, paqueteU8_3, LocalDate.of(2025,6,18), EstadoEnvio.ENTREGADO, repartidor);
+        Envio envioU8_3 = new Envio(idEnvio, direccion, direccion1, paqueteU8_3, LocalDate.of(2025,6,18), EstadoEnvio.ENTREGADO, repartidor);
         usuario8.getListEnviosUsuario().add(envioU8_3);
+        idEnvio++;
 
         Paquete paqueteU8_4 = new Paquete(0,0,0);
         paqueteU8_4.getProductos().add(producto8);
@@ -1170,8 +1213,9 @@ public void openPantallaAdministrador() {
         double precioU8_4=0, pesoU8_4=0;
         for (Producto p : paqueteU8_4.getProductos()) { precioU8_4 += p.getPrecio() * p.getCantidad(); pesoU8_4 += p.getPeso() * p.getCantidad(); }
         paqueteU8_4.setPrecio(precioU8_4); paqueteU8_4.setPeso(pesoU8_4);
-        Envio envioU8_4 = new Envio(idEnvio++, direccion1, direccion2, paqueteU8_4, LocalDate.of(2025,6,21), EstadoEnvio.ENTREGADO, repartidor1);
+        Envio envioU8_4 = new Envio(idEnvio, direccion1, direccion2, paqueteU8_4, LocalDate.of(2025,6,21), EstadoEnvio.ENTREGADO, repartidor1);
         usuario8.getListEnviosUsuario().add(envioU8_4);
+        idEnvio++;
 
         Paquete paqueteU8_5 = new Paquete(0,0,0);
         paqueteU8_5.getProductos().add(producto12);
@@ -1179,8 +1223,9 @@ public void openPantallaAdministrador() {
         double precioU8_5=0, pesoU8_5=0;
         for (Producto p : paqueteU8_5.getProductos()) { precioU8_5 += p.getPrecio() * p.getCantidad(); pesoU8_5 += p.getPeso() * p.getCantidad(); }
         paqueteU8_5.setPrecio(precioU8_5); paqueteU8_5.setPeso(pesoU8_5);
-        Envio envioU8_5 = new Envio(idEnvio++, direccion2, direccion3, paqueteU8_5, LocalDate.of(2025,6,25), EstadoEnvio.CANCELADO, repartidor2);
+        Envio envioU8_5 = new Envio(idEnvio, direccion2, direccion3, paqueteU8_5, LocalDate.of(2025,6,25), EstadoEnvio.CANCELADO, repartidor2);
         usuario8.getListEnviosUsuario().add(envioU8_5);
+        idEnvio++;
 
 
 // =================== ENVIOS PARA usuario9 ===================
@@ -1190,8 +1235,9 @@ public void openPantallaAdministrador() {
         double precioU9_1=0, pesoU9_1=0;
         for (Producto p : paqueteU9_1.getProductos()) { precioU9_1 += p.getPrecio() * p.getCantidad(); pesoU9_1 += p.getPeso() * p.getCantidad(); }
         paqueteU9_1.setPrecio(precioU9_1); paqueteU9_1.setPeso(pesoU9_1);
-        Envio envioU9_1 = new Envio(idEnvio++, direccion3, direccion4, paqueteU9_1, LocalDate.of(2025,6,13), EstadoEnvio.CANCELADO, repartidor3);
+        Envio envioU9_1 = new Envio(idEnvio, direccion3, direccion4, paqueteU9_1, LocalDate.of(2025,6,13), EstadoEnvio.CANCELADO, repartidor3);
         usuario9.getListEnviosUsuario().add(envioU9_1);
+        idEnvio++;
 
         Paquete paqueteU9_2 = new Paquete(0,0,0);
         paqueteU9_2.getProductos().add(producto16);
@@ -1200,8 +1246,9 @@ public void openPantallaAdministrador() {
         double precioU9_2=0, pesoU9_2=0;
         for (Producto p : paqueteU9_2.getProductos()) { precioU9_2 += p.getPrecio() * p.getCantidad(); pesoU9_2 += p.getPeso() * p.getCantidad(); }
         paqueteU9_2.setPrecio(precioU9_2); paqueteU9_2.setPeso(pesoU9_2);
-        Envio envioU9_2 = new Envio(idEnvio++, direccion4, direccion, paqueteU9_2, LocalDate.of(2025,6,16), EstadoEnvio.CANCELADO, repartidor4);
+        Envio envioU9_2 = new Envio(idEnvio, direccion4, direccion, paqueteU9_2, LocalDate.of(2025,6,16), EstadoEnvio.CANCELADO, repartidor4);
         usuario9.getListEnviosUsuario().add(envioU9_2);
+        idEnvio++;
 
         Paquete paqueteU9_3 = new Paquete(0,0,0);
         paqueteU9_3.getProductos().add(producto19);
@@ -1209,8 +1256,9 @@ public void openPantallaAdministrador() {
         double precioU9_3=0, pesoU9_3=0;
         for (Producto p : paqueteU9_3.getProductos()) { precioU9_3 += p.getPrecio() * p.getCantidad(); pesoU9_3 += p.getPeso() * p.getCantidad(); }
         paqueteU9_3.setPrecio(precioU9_3); paqueteU9_3.setPeso(pesoU9_3);
-        Envio envioU9_3 = new Envio(idEnvio++, direccion, direccion1, paqueteU9_3, LocalDate.of(2025,6,19), EstadoEnvio.ENTREGADO, repartidor);
+        Envio envioU9_3 = new Envio(idEnvio, direccion, direccion1, paqueteU9_3, LocalDate.of(2025,6,19), EstadoEnvio.ENTREGADO, repartidor);
         usuario9.getListEnviosUsuario().add(envioU9_3);
+        idEnvio++;
 
         Paquete paqueteU9_4 = new Paquete(0,0,0);
         paqueteU9_4.getProductos().add(producto21);
@@ -1218,8 +1266,9 @@ public void openPantallaAdministrador() {
         double precioU9_4=0, pesoU9_4=0;
         for (Producto p : paqueteU9_4.getProductos()) { precioU9_4 += p.getPrecio() * p.getCantidad(); pesoU9_4 += p.getPeso() * p.getCantidad(); }
         paqueteU9_4.setPrecio(precioU9_4); paqueteU9_4.setPeso(pesoU9_4);
-        Envio envioU9_4 = new Envio(idEnvio++, direccion1, direccion2, paqueteU9_4, LocalDate.of(2025,6,22), EstadoEnvio.ENTREGADO, repartidor1);
+        Envio envioU9_4 = new Envio(idEnvio, direccion1, direccion2, paqueteU9_4, LocalDate.of(2025,6,22), EstadoEnvio.ENTREGADO, repartidor1);
         usuario9.getListEnviosUsuario().add(envioU9_4);
+        idEnvio++;
 
         Paquete paqueteU9_5 = new Paquete(0,0,0);
         paqueteU9_5.getProductos().add(producto23);
@@ -1227,8 +1276,9 @@ public void openPantallaAdministrador() {
         double precioU9_5=0, pesoU9_5=0;
         for (Producto p : paqueteU9_5.getProductos()) { precioU9_5 += p.getPrecio() * p.getCantidad(); pesoU9_5 += p.getPeso() * p.getCantidad(); }
         paqueteU9_5.setPrecio(precioU9_5); paqueteU9_5.setPeso(pesoU9_5);
-        Envio envioU9_5 = new Envio(idEnvio++, direccion2, direccion3, paqueteU9_5, LocalDate.of(2025,6,26), EstadoEnvio.CANCELADO, repartidor2);
+        Envio envioU9_5 = new Envio(idEnvio, direccion2, direccion3, paqueteU9_5, LocalDate.of(2025,6,26), EstadoEnvio.CANCELADO, repartidor2);
         usuario9.getListEnviosUsuario().add(envioU9_5);
+        idEnvio++;
 
 
 
